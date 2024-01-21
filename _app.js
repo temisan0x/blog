@@ -18,8 +18,8 @@ export default function App({
 
   return (
     <SessionProvider session={session}>
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
           <ThemeProvider>
             <Head>
               <title>Temycodes</title>
@@ -36,8 +36,8 @@ export default function App({
             </Head>
           </ThemeProvider>
           <Component {...pageProps} key={pageKey} />
-      </PersistGate>
-    </Provider>
-        </SessionProvider>
+        </PersistGate>
+      </Provider>
+    </SessionProvider>
   );
 }

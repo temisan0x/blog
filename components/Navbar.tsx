@@ -10,7 +10,7 @@ import { BsSearch } from "react-icons/bs";
 import { motion } from "framer-motion";
 import ProfileToggler from "./ProfileToggle";
 import axios from "axios";
-import { authOptions } from "@/app/api/auth/[...nextauth]";
+import { AuthOptions } from "next-auth";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
