@@ -17,6 +17,12 @@ export default function LoginForm() {
     signIn("google");
   };
 
+  const handleSignInClickGithub: SignInButtonProps["onClick"] = (e) => {
+    e.preventDefault();
+    signIn("github");
+  };
+
+
   const createUser = useCallback(async () => {
     try {
       const response = await axios.get("/api/auth/session"); // Fetch the session separately
@@ -85,7 +91,7 @@ export default function LoginForm() {
     <div className="flex items-center justify-center min-h-screen">
       <div className="max-w-md px-6 py-8 bg-white rounded-lg shadow-md">
         <h1 className="text-3xl font-bold text-center text-gray-800">
-          Welcome 
+          Welcome
         </h1>
         <p className="text-gray-600 text-center mt-2">
           {session
@@ -96,13 +102,22 @@ export default function LoginForm() {
         </p>
         <div className="mt-4">
           {!session && (
-            <button
-              onClick={handleSignInClick}
-              className="w-full flex items-center justify-center px-4 py-2 rounded-md bg-gray-600 text-white font-semibold hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
-              aria-label="Sign in with Google"
-            >
-              Sign in with Google
-            </button>
+            <>
+              <button
+                onClick={handleSignInClick}
+                className="w-full flex items-center justify-center px-4 py-2 rounded-md bg-gray-600 text-white font-semibold hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                aria-label="Sign in with Google"
+              >
+                Sign in with Google
+              </button>
+              <button
+                onClick={handleSignInClickGithub}
+                className="w-full flex items-center justify-center px-4 py-2 rounded-md bg-gray-600 text-white font-semibold hover:bg-gray-700 focus:outline-none focus:bg-gray-700"
+                aria-label="Sign in with Google"
+              >
+                Sign in with Github
+              </button>
+            </>
           )}
           {session && !userData && (
             <button

@@ -63,7 +63,7 @@ const Navbar: React.FC = () => {
 
   const handleSignOut = async () => {
     await signOut();
-    router.push("/");
+    // router.push("/");
   };
 
   const isAdmin = session?.user?.email === "temycodes@gmail.com";
@@ -113,9 +113,9 @@ const Navbar: React.FC = () => {
                 >
                   About
                 </Link>
-                {/* {session ? (
+                {session ? (
                   <>
-                    <Link href={isAdmin ? "/admin" : "/profile"} passHref title={isAdmin ? "Admin Page" : "Profile Page"}>
+                    <Link href={isAdmin ? "/" : "/profile"} passHref title={isAdmin ? "Admin Page" : "Profile Page"}>
                       <div className="relative">
                         <Image
                           src={session?.user?.image}
@@ -143,7 +143,7 @@ const Navbar: React.FC = () => {
                   >
                     Login
                   </Link>
-                )} */}
+                )}
                 <form
                   onSubmit={handleSearch}
                   className="px-3 py-2 rounded-md text-[15px] border border-gray-700 text-white flex items-center"

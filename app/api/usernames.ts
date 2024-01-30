@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { getServerSession } from "next-auth";
 import Username from "@/model/Username";
 import User from "@/model/User";
-import { authOptions } from "./auth/...nextauth/[...nextauth.ts]";
+import { authOptions } from "./auth/[...nextauth]/[...nextauth.ts]";
 
 // POST /api/usernames
 export async function createUsername(
