@@ -12,7 +12,7 @@ export default async function ProtectedRoute(){
         <div>
             This is a protected route
             <br />
-            You will only see this if you're protected
+            You will only see this if you&apos;re protected
         </div>
     )
 }
