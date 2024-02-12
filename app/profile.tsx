@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
-import Layout from "../../components/Layout";
 import Image from "next/image";
 import { useSession } from "next-auth/react";
 import axios from "axios";
 import { useRouter } from "next/router";
 import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "../../redux/rootReducer";
-import { toggleTheme } from "../../redux/slices/ThemeSlice";
+import { RootState } from "@/redux/rootReducer";
+import { toggleTheme } from "@/redux/slices/ThemeSlice";
 
 const Profile: React.FC = () => {
   const [isDeleteModalOpen, setDeleteModalOpen] = useState(false);
@@ -90,7 +89,7 @@ const Profile: React.FC = () => {
   }, [fetchDateCreated, fetchUsername, router, session]);
 
   return (
-    <Layout>
+    <>
       <div
         className="text-white p-8 m-auto mt-20"
         style={{ maxWidth: "500px" }}
@@ -172,7 +171,7 @@ const Profile: React.FC = () => {
           </div>
         </div>
       )}
-    </Layout>
+    </>
   );
 };
 

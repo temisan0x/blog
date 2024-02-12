@@ -1,12 +1,11 @@
 import React, { useCallback, useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Layout from "../../../components/Layout";
 import Parser from "html-react-parser";
 import Image from "next/image";
 import { FiTwitter, FiLinkedin, FiFacebook } from "react-icons/fi";
 import Head from "next/head";
-import Loader from "../../../components/Loader";
+import Loader from "@/components/Loader";
 import { motion } from "framer-motion";
 import Link from "next/link";
 import {
@@ -85,7 +84,7 @@ const ReadMore = () => {
   };
 
   return (
-    <Layout>
+    <>
       <Head>
         {/* Open Graph Meta Tags for Facebook */}
         <meta charSet="UTF-8" />
@@ -259,7 +258,7 @@ const ReadMore = () => {
           </g>
         </svg>
       </div>
-    </Layout>
+    </>
   );
 };
 

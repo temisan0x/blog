@@ -3,7 +3,6 @@
 import React from "react";
 import Image from "next/image";
 import AvatarLogo from "@/public/uploads/adminImg.png";
-import Layout from "@/components/Layout";
 import MongoDb from "@/public/uploads/mongodb.png";
 import ReactPg from "@/public/uploads/react.png";
 import NodePg from "@/public/uploads/nodejs.png";
@@ -39,7 +38,7 @@ const AboutMe: React.FC = () => {
   ];
 
   return (
-    <Layout>
+    <>
       <div className="about-container mx-auto mt-20">
         <div
           className="flex flex-col items-center"
@@ -141,7 +140,7 @@ const AboutMe: React.FC = () => {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   );
 };
 

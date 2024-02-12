@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useRouter } from "next/router";
 import axios from "axios";
-import Layout from "../../components/Layout";
 
 const CreateUser = () => {
   const [username, setUsername] = useState("");
@@ -36,7 +35,7 @@ const CreateUser = () => {
   
 
   return (
-    <Layout>
+    <>
       <div className="min-h-screen flex items-center justify-center bg-blue-500">
       <div className="bg-white p-8 rounded-md shadow-md w-full max-w-md">
         <h1 className="text-3xl font-bold mb-6 text-center text-gray-800">
@@ -66,7 +65,7 @@ const CreateUser = () => {
         </button>
       </div>
     </div>
-    </Layout>
+    </>
   );
 };
 

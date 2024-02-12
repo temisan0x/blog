@@ -21,7 +21,7 @@ export default async function RootLayout({
       <body>
         <SessionProvider>
           <main>
-            <div className="container mx-auto px-6 max-w-7xl lg:max-w-full min-h-screen">
+            <div className="container mx-auto max-w-full min-h-screen">
               <Navbar />
               {children}
               <Footer />

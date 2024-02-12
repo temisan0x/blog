@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import Layout from "../../components/Layout";
 import SearchPosts from "../../components/SearchedPost";
 import { useRouter } from "next/router";
 import { IPost } from "../../types/post";
@@ -26,7 +25,7 @@ const SearchPage: React.FC = () => {
   }, [searchQuery]);
 
   return (
-    <Layout>
+    <>
       <div className="container mx-auto" style={{ marginTop: "30px" }}>
         <h1 className="text-gray-400 text-2xl py-7">Searched Results: ({searchResults.length})</h1>
         {searchResults.length > 0 ? (
@@ -46,7 +45,7 @@ const SearchPage: React.FC = () => {
           </div>
         )}
       </div>
-    </Layout>
+    </>
   );
 };
 

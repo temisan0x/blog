@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
-import Layout from "../../components/Layout";
 import { IPost } from "../../types/post";
 import PostCard from "../../components/PostCard";
 import { BsFillBookmarkHeartFill } from "react-icons/bs";
@@ -67,7 +66,7 @@ const Bookmark = () => {
   console.log("Fetching posts", posts);
 
   return (
-    <Layout>
+    <>
       <section className="py-10 container mx-auto">
         <div className="text-white mt-20">
           <div className="flex items-center">
@@ -103,7 +102,7 @@ const Bookmark = () => {
           )}
         </div>
       </section>
-    </Layout>
+    </>
   );
 };
 

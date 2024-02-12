@@ -8,9 +8,10 @@ import Image from "next/image";
 import NavbarImg from "../public/uploads/navlogo.png";
 import { BsSearch } from "react-icons/bs";
 import { motion } from "framer-motion";
-import ProfileToggler from "./ProfileToggle";
+import ProfileTogoler from "./ProfileToggle";
 import axios from "axios";
 import { AuthOptions } from "next-auth";
+import ProfileToggler from "./ProfileToggle";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -19,7 +20,7 @@ const Navbar: React.FC = () => {
   const [usernameData, setUsernameData] = useState<any>(null);
 
   const router = useRouter();
-  const {data: session}  = useSession()
+  const { data: session } = useSession();
   console.log("user", session);
 
   const fetchUsername = useCallback(async () => {
@@ -67,7 +68,7 @@ const Navbar: React.FC = () => {
   };
 
   const isAdmin = session?.user?.email === "temycodes@gmail.com";
-  console.log(isAdmin, "isAdmin")
+  console.log(isAdmin, "isAdmin");
   return (
     <nav className="bg-gray-900 nav-font w-full fixed top-0 z-50 border-b border-gray-800 bg-bg/75 ">
       <div className="mx-auto nav">
@@ -88,34 +89,38 @@ const Navbar: React.FC = () => {
                 <Link
                   passHref
                   href="/"
-                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-[15px]"
+                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-sm"
                 >
                   Home
                 </Link>
                 <Link
                   passHref
                   href="/blog"
-                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-[15px]"
+                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-sm"
                 >
                   Blog
                 </Link>
                 <Link
                   passHref
                   href="/bookmarks"
-                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-[15px]"
+                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-sm"
                 >
                   Bookmarks
                 </Link>
                 <Link
                   passHref
                   href="/temisan"
-                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-[15px]"
+                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-sm"
                 >
                   About
                 </Link>
                 {session ? (
                   <>
-                    <Link href={isAdmin ? "/" : "/profile"} passHref title={isAdmin ? "Admin Page" : "Profile Page"}>
+                    <Link
+                      href={isAdmin ? "/" : "/profile"}
+                      passHref
+                      title={isAdmin ? "Admin Page" : "Profile Page"}
+                    >
                       <div className="relative">
                         <Image
                           src={session?.user?.image}
@@ -139,14 +144,14 @@ const Navbar: React.FC = () => {
                   <Link
                     passHref
                     href="/login"
-                    className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-[15px]"
+                    className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-sm"
                   >
                     Login
                   </Link>
                 )}
                 <form
                   onSubmit={handleSearch}
-                  className="px-3 py-2 rounded-md text-[15px] border border-gray-700 text-white flex items-center"
+                  className="px-3 py-2 rounded-md text-sm border border-gray-700 text-white flex items-center"
                 >
                   <BsSearch />
                   <input
@@ -207,34 +212,34 @@ const Navbar: React.FC = () => {
           <Link
             passHref
             href="/"
-            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-[15px] "
+            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm "
           >
             Home
           </Link>
           <Link
             passHref
             href="/blog"
-            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-[15px] "
+            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm "
           >
             Blog
           </Link>
           <Link
             passHref
             href="/bookmarks"
-            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-[15px] "
+            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm "
           >
             Bookmarks
           </Link>
           <Link
             passHref
             href="/temisan"
-            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-[15px]"
+            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm"
           >
             About
           </Link>
           <form
             onSubmit={handleSearch}
-            className="px-3 py-2 rounded-md text-[15px]  border border-gray-700 text-white flex items-center w-full mb-3"
+            className="px-3 py-2 rounded-md text-sm  border border-gray-700 text-white flex items-center w-full mb-3"
           >
             <BsSearch />
             <input
@@ -250,14 +255,14 @@ const Navbar: React.FC = () => {
               <Link
                 passHref
                 href="/admin"
-                className="block text-gray-400  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-[15px] "
+                className="block text-gray-400  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm "
               >
                 Admin
               </Link>
               <Link
                 href={"#"}
                 type="submit"
-                className="block text-gray-400  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-[15px] "
+                className="block text-gray-400  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm "
                 onClick={handleSignOut}
               >
                 Logout
@@ -267,7 +272,7 @@ const Navbar: React.FC = () => {
             <Link
               passHref
               href="/login"
-              className="block text-gray-400  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-[15px] "
+              className="block text-gray-400  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm "
             >
               Login
             </Link>

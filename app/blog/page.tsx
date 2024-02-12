@@ -3,7 +3,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import LatestBlogPosts from "@/components/LatestBlogPosts";
-import Layout from "@/components/Layout";
 import { IPost } from "@/types/post";
 import NewsletterSignupModal from "@/components/NewsLetterSignupModal";
 import { motion } from "framer-motion";
@@ -41,7 +40,7 @@ const BlogPage = () => {
   };
 
   return (
-    <Layout>
+    <>
       <div className="container mx-auto py-10  mt-20">
         <h1
           className="text-white text-2xl"
@@ -73,7 +72,7 @@ const BlogPage = () => {
         )}
       </div>
       {/* {modalVisible && <NewsletterSignupModal closeModal={closeModal} />} */}
-    </Layout>
+    </>
   );
 };
 

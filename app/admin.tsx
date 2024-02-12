@@ -1,7 +1,6 @@
 import { useSession } from "next-auth/react";
 import React, { useState, useEffect, useCallback } from "react";
 import axios from "axios";
-import Layout from "@/components/Layout";
 import RestrictSection from "@/components/RestrictSection";
 import Dashboard from "@/components/Dashboard";
 import AdminPosts from "@/components/AdminPosts";
@@ -88,7 +87,7 @@ const AdminPage: React.FC = () => {
   }, [fetchPosts, fetchUserData]);
 
   return (
-    <Layout>
+    <>
       {session ? (
         <Dashboard>
           <div style={{ marginTop: "30px" }}>
@@ -121,7 +120,7 @@ const AdminPage: React.FC = () => {
       ) : (
         <RestrictSection />
       )}
-    </Layout>
+    </>
   );
 };
 
