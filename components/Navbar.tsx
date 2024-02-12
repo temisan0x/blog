@@ -153,13 +153,13 @@ const Navbar: React.FC = () => {
                   onSubmit={handleSearch}
                   className="px-3 py-2 rounded-md text-sm border border-gray-700 text-white flex items-center"
                 >
-                  <BsSearch />
+                  <BsSearch size={10}/>
                   <input
                     type="text"
                     placeholder="Search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="bg-transparent ml-2 text-white"
+                    className="bg-transparent ml-2 text-sm text-white"
                   />
                 </form>
               </div>

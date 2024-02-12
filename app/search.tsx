@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import SearchPosts from "../../components/SearchedPost";
+import SearchPosts from "@/components/SearchedPost";
 import { useRouter } from "next/router";
-import { IPost } from "../../types/post";
+import { IPost } from "@/types/post";
 
 const SearchPage: React.FC = () => {
   const [searchResults, setSearchResults] = useState<IPost[]>([]);
