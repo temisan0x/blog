@@ -65,9 +65,9 @@ const ProfileCard: React.FC = () => {
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="p-14 text-center text-gray-400  text-sm bug-free"
+        className="p-10 text-center text-gray-400  text-sm bug-free"
       >
-        <div className="flex items-center flex-col">
+        <div className="flex items-center flex-col text-base">
           <p>Wishing you a bug-free {getDayName()}! ⋆｡°✩</p>
         </div>
       </motion.div>

@@ -14,10 +14,10 @@ const HeroSection: React.FC = () => {
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-        <Image src={AuthorImg} width={400} height={300} alt={"AuthorImg"}/>
+        <Image src={AuthorImg} width={300} height={300} alt={"AuthorImg"}/>
         </motion.div>
         <motion.h3
-          className="text-stone-300 blog-title"
+          className="text-stone-300 blog-title text-base"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 1 }}

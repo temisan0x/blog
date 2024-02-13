@@ -4,6 +4,7 @@ import "./globals.css";
 import { getServerSession } from "next-auth";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { Providers } from "@/redux/provider";
 
 export const metadata = {
   title: "Next.js",
@@ -20,6 +21,7 @@ export default async function RootLayout({
     <html lang="en">
       <body>
         <SessionProvider>
+          <Providers>
           <main>
             <div className="container mx-auto max-w-full min-h-screen">
               <Navbar />
@@ -27,8 +29,10 @@ export default async function RootLayout({
               <Footer />
             </div>
           </main>
+          </Providers>
         </SessionProvider>
       </body>
     </html>
   );
 }
+

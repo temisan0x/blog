@@ -4,7 +4,7 @@
 
 :root {
   --dark: #0f0f10;
-  --light: #ffffff; 
+  --light: #ffffff;
 }
 
 *,
@@ -24,11 +24,19 @@ body {
 }
 
 .darkmode body {
-  background-color: var(--light)
+  background-color: var(--light);
 }
 
 h3 {
   text-transform: capitalize;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%; 
+  text-align: center;
 }
 
 h1,
@@ -91,7 +99,6 @@ ol {
 }
 
 .blog-title {
-  font-size: 20px;
   line-height: 28px;
   font-weight: 500;
   font-family: "Schibsted Grotesk", sans-serif;
@@ -598,7 +605,7 @@ ul > li > p {
 
 .content-container {
   max-width: 400px;
-  margin-top: 50px;
+  margin-top: 40px;
 }
 
 .content-container > div:nth-child(1) {
@@ -657,10 +664,6 @@ ul > li > p {
     background-color: rgba(255, 255, 255, 0.5);
     padding: 5px;
   }
-}
-
-.bug-free {
-  font-size: 18px;
 }
 
 .border-subscribe {
