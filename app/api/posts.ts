@@ -1,8 +1,8 @@
-import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import PostModel, { Post } from "@/model/Posts";
 import { initMongoose } from "@/lib/mongooseConfig";
 import { getServerSession } from "next-auth";
-import { authOptions } from "./auth/[...nextauth]/[...nextauth.ts]";
+import { authOptions } from "@/auth/[...nextauth]/[...nextauth.ts]";
 import UserModel from "@/model/User";
 import { Types } from "mongoose";
 import Tags from "@/model/Tags";
