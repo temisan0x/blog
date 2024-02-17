@@ -1,5 +1,3 @@
-import "../package.json";
-import "./globals.css";
 import { getServerSession } from "next-auth";
 import { Providers } from "@/redux/provider";
 
