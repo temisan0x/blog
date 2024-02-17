@@ -15,13 +15,11 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-          <Providers>
           <main>
             <div className="container mx-auto max-w-full min-h-screen">
               {children}
             </div>
           </main>
-          </Providers>
       </body>
     </html>
   );
