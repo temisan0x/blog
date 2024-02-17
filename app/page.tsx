@@ -1,11 +1,7 @@
-"use client"
-
-const HomePage = async() => {
-  return (
-    <>
-    Mutherfucker
-    </>
-  );
-};
-
-export default HomePage;
+export default function Home(){
+    return (
+        <main>
+            <h1>Hello World!</h1>
+        </main>
+    )
+}
