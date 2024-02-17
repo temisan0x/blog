@@ -70,7 +70,7 @@ const Navbar: React.FC = () => {
   const isAdmin = session?.user?.email === "temycodes@gmail.com";
   console.log(isAdmin, "isAdmin");
   return (
-    <nav className="bg-gray-900 nav-font w-full fixed top-0 z-50 border-b border-gray-800 bg-bg/75 ">
+    <nav className="bg-gray-900 nav-font w-full sticky top-0 z-50 border-b border-gray-800 bg-bg/75">
       <div className="mx-auto nav">
         <div className="flex items-center justify-between h-20 w-full">
           <div className="flex w-full">
