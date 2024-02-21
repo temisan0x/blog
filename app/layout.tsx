@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import "@/app/global.css";
+import { EdgeStoreProvider } from "@/lib/edgestore";
 
 export const metadata: Metadata = {
   title: "Next.js",
@@ -12,13 +13,13 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en"  suppressHydrationWarning={true}>
-      <body  suppressHydrationWarning={true}>
-          <main>
-            <div className="container mx-auto max-w-full min-h-screen">
-              {children}
-            </div>
-          </main>
+    <html lang="en" suppressHydrationWarning={true}>
+      <body suppressHydrationWarning={true}>
+        <main>
+          <div className="container mx-auto max-w-full min-h-screen">
+            <EdgeStoreProvider>{children}</EdgeStoreProvider>
+          </div>
+        </main>
       </body>
     </html>
   );
