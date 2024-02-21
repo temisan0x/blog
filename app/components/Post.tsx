@@ -9,7 +9,7 @@ interface PostProps {
 
 const Post: React.FC<PostProps> = ({ id, title, content, authorName }) => {
     return (
-        <div style={{border: "1px solid black", padding: "15px", margin: "10px auto", width:"30%"}}>
+        <div className="border border-cyan-200">
             <h3>{authorName ?? 'Unknown Author'}</h3>
             <h4>{title}</h4>
             <p>{content}</p>
