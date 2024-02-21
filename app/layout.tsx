@@ -12,8 +12,8 @@ export default async function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
+    <html lang="en"  suppressHydrationWarning={true}>
+      <body  suppressHydrationWarning={true}>
           <main>
             <div className="container mx-auto max-w-full min-h-screen">
               {children}

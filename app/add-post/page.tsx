@@ -10,23 +10,55 @@ const AddPost: React.FC<PostFormProps> = ({ onSubmit }) => {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [image, setImage] = useState<File | null>(null);
+  const [loading, setLoading] = useState(false);
 
-  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  //convert file to base64
+  const convert2base64 = (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files && e.target.files[0];
     setImage(file);
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
-    const formData = new FormData();
-    formData.append("title", title);
-    formData.append("content", content);
-    if (image) {
-      formData.append("image", image);
-    }
+    try {
+      const formData = new FormData();
+      formData.append("title", title);
+      formData.append("content", content);
+      if (image) {
+        const reader = new FileReader();
+        reader.onloadend = async () => {
+          if (reader.result !== null) {
+            formData.append("image", reader.result.toString());
+        
+            // Send the request after the image has been read
+            const response = await fetch("/api/add-movie", {
+              method: "POST",
+              body: formData,
+            });
+            // ... handle response
+          }
+        };
+        reader.readAsDataURL(image);
+      }
 
-    onSubmit(formData);
+      setLoading(true);
+      const response = await fetch("/api/add-movie", {
+        method: "POST",
+        body: formData,
+      });
+      setLoading(false);
+      if (response.ok) {
+        console.log(response);
+        setTitle("");
+        setContent("");
+        setImage(null);
+      } else {
+        console.error("Failed to submit data:", await response.text);
+      }
+    } catch (error) {
+      console.error(error);
+    }
   };
 
   return (
@@ -70,7 +102,7 @@ const AddPost: React.FC<PostFormProps> = ({ onSubmit }) => {
             id="image"
             name="image"
             accept="image/*"
-            onChange={handleFileChange}
+            onChange={convert2base64}
             className="mt-1 p-2 w-full border rounded-md"
           />
         </div>
