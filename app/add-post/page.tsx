@@ -1,22 +1,24 @@
 "use client";
 import { useState } from "react";
 import styles from "@/app/page.module.css";
+import { useEdgeStore } from "@/lib/edgestore";
+import Link from "next/link";
 
 interface PostFormProps {
   onSubmit: (formData: FormData) => void;
 }
 
-const AddPost: React.FC<PostFormProps> = ({ onSubmit }) => {
+export default function AddPost(onSubmit: PostFormProps) {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [image, setImage] = useState<File | null>(null);
+  const [file, setFile] = useState<File>();
   const [loading, setLoading] = useState(false);
+  const [urls, setUrls] = useState<{
+    url: string;
+    thumbnailUrl: string | null;
+  }>();
 
-  //convert file to base64
-  const convert2base64 = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files && e.target.files[0];
-    setImage(file);
-  };
+  const { edgestore } = useEdgeStore();
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -25,22 +27,6 @@ const AddPost: React.FC<PostFormProps> = ({ onSubmit }) => {
       const formData = new FormData();
       formData.append("title", title);
       formData.append("content", content);
-      if (image) {
-        const reader = new FileReader();
-        reader.onloadend = async () => {
-          if (reader.result !== null) {
-            formData.append("image", reader.result.toString());
-        
-            // Send the request after the image has been read
-            const response = await fetch("/api/add-movie", {
-              method: "POST",
-              body: formData,
-            });
-            // ... handle response
-          }
-        };
-        reader.readAsDataURL(image);
-      }
 
       setLoading(true);
       const response = await fetch("/api/add-movie", {
@@ -52,7 +38,6 @@ const AddPost: React.FC<PostFormProps> = ({ onSubmit }) => {
         console.log(response);
         setTitle("");
         setContent("");
-        setImage(null);
       } else {
         console.error("Failed to submit data:", await response.text);
       }
@@ -102,22 +87,47 @@ const AddPost: React.FC<PostFormProps> = ({ onSubmit }) => {
             id="image"
             name="image"
             accept="image/*"
-            onChange={convert2base64}
+            onChange={(e) => setFile(e.target.files?.[0])}
             className="mt-1 p-2 w-full border rounded-md"
           />
         </div>
 
         <div>
           <button
+            onClick={async () => {
+              if (file) {
+                const res = await edgestore.myPublicImages.upload({
+                  file,
+                  onProgressChange: (progress) => {
+                    console.log(progress);
+                  },
+                });
+                setUrls({
+                  url: res.url,
+                  thumbnailUrl: res.thumbnailUrl,
+                });
+                console.log(res, "checking...");
+              }
+            }}
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
           >
             Submit
           </button>
+          <div className="text-white">
+            {urls?.url && (
+              <Link href={urls.url} target="_blank">
+                URL
+              </Link>
+            )}
+            {urls?.thumbnailUrl && (
+              <Link href={urls.thumbnailUrl} target="_blank">
+                URL
+              </Link>
+            )}
+          </div>
         </div>
       </form>
     </main>
   );
-};
-
-export default AddPost;
+}

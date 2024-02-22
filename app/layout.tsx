@@ -15,11 +15,13 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
+      <EdgeStoreProvider>
         <main>
           <div className="container mx-auto max-w-full min-h-screen">
-            <EdgeStoreProvider>{children}</EdgeStoreProvider>
+           {children}
           </div>
         </main>
+        </EdgeStoreProvider>
       </body>
     </html>
   );
