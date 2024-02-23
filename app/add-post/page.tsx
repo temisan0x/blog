@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "@/app/page.module.css";
 import { useEdgeStore } from "@/lib/edgestore";
 import Link from "next/link";
+import { SingleImageDropzone } from "../components/SingleImageDropZone";
 
 interface PostFormProps {
   onSubmit: (formData: FormData) => void;
@@ -46,6 +47,23 @@ export default function AddPost(onSubmit: PostFormProps) {
     }
   };
 
+  const handleUpload = async () => {
+    if (file) {
+      const res = await edgestore.myPublicImages.upload({
+        file,
+        onProgressChange: (progress) => {
+          console.log(progress);
+        },
+        input: { type: "post" },
+      });
+      setUrls({
+        url: res.url,
+        thumbnailUrl: res.thumbnailUrl,
+      });
+      console.log(res, "checking...");
+    }
+  };
+
   return (
     <main className={styles.main}>
       <h1>Add New Movie</h1>
@@ -82,33 +100,19 @@ export default function AddPost(onSubmit: PostFormProps) {
           <label htmlFor="image" className="block text-gray-600 font-medium">
             Image
           </label>
-          <input
-            type="file"
-            id="image"
-            name="image"
-            accept="image/*"
-            onChange={(e) => setFile(e.target.files?.[0])}
-            className="mt-1 p-2 w-full border rounded-md"
+          <SingleImageDropzone
+            width={200}
+            height={200}
+            value={file}
+            onChange={(file) => {
+              setFile(file);
+            }}
           />
         </div>
 
         <div>
           <button
-            onClick={async () => {
-              if (file) {
-                const res = await edgestore.myPublicImages.upload({
-                  file,
-                  onProgressChange: (progress) => {
-                    console.log(progress);
-                  },
-                });
-                setUrls({
-                  url: res.url,
-                  thumbnailUrl: res.thumbnailUrl,
-                });
-                console.log(res, "checking...");
-              }
-            }}
+            onClick={handleUpload}
             type="submit"
             className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
           >
