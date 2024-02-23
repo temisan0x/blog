@@ -7,7 +7,6 @@ import { SingleImageDropzone } from "../components/SingleImageDropZone";
 import axios from "axios";
 
 export default function AddPost() {
-
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [file, setFile] = useState<File>();
@@ -22,11 +21,11 @@ export default function AddPost() {
 
   const handleTitleChange = React.useCallback((e: any) => {
     setTitle(e.target.value);
-  },[]);
+  }, []);
 
   const handleContentChange = React.useCallback((e: any) => {
     setContent(e.target.value);
-  },[]);
+  }, []);
 
   const handleUpload = async () => {
     try {
@@ -52,11 +51,12 @@ export default function AddPost() {
   const handleSubmit = async () => {
     try {
       setLoading(true);
+      
       //axios fetch data
       const response = await axios.post("/api/add-movie", {
         title,
         content,
-        imageUrl: urls?.url || "",
+        imageUrl: file || "",
       });
 
       setLoading(false);
@@ -76,14 +76,9 @@ export default function AddPost() {
     e.preventDefault();
     try {
       await handleUpload();
-    } catch (uploadError) {
-      console.error("Error uploading", uploadError);
-    }
-
-    try {
       await handleSubmit();
-    } catch (submitError) {
-      console.error("Error submitting form:", submitError);
+    } catch (error) {
+      console.error(error);
     }
   };
 
