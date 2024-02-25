@@ -9,12 +9,12 @@ import axios from "axios";
 export default function AddPost() {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [file, setFile] =  useState<File>();
-  // const [loading, setLoading] = useState(false);
+  const [file, setFile] = useState<File>();
+  const [loading, setLoading] = useState(false);
   const [urls, setUrls] = useState<{
     url: string;
     thumbnailUrl: string | null;
-  }>();
+  }>({ url: "", thumbnailUrl: null });
 
   const { edgestore } = useEdgeStore();
 
@@ -28,11 +28,19 @@ export default function AddPost() {
           },
           input: { type: "post" },
         });
+
+        setUrls({
+          url: res.url,
+          thumbnailUrl: res.thumbnailUrl,
+        });
+
         console.log(res, "checking...");
+        return res.url;
       }
     } catch (error) {
       console.error(error);
     }
+    return undefined;
   };
 
   const handleTitleChange = (e: any) => {
@@ -43,19 +51,16 @@ export default function AddPost() {
     setContent(e.target.value);
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-
+  const handleSubmit = async (imageUrl: string | undefined) => {
     try {
-      // setLoading(true);
+      setLoading(true);
       //axios fetch data
       const response = await axios.post("/api/add-movie", {
         title,
         content,
-        imageUrl: urls?.url || "",
+        imageUrl: imageUrl || "unable to load",
       });
-
-      // setLoading(false);
+      setLoading(false);
       if (response.status == 200) {
         console.log(response);
         setTitle("");
@@ -68,10 +73,23 @@ export default function AddPost() {
     }
   };
 
+  const handleCombinedSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    try {
+      const imageUrl = await handleUpload();
+      await handleSubmit(imageUrl);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   return (
     <main className={styles.main}>
       <h1>Add New Movie</h1>
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-6">
+      <form
+        onSubmit={(e) => handleCombinedSubmit(e)}
+        className="max-w-md mx-auto mt-6"
+      >
         <div className="mb-4">
           <label htmlFor="title" className="block text-gray-600 font-medium">
             Title
@@ -121,18 +139,6 @@ export default function AddPost() {
           >
             Submit
           </button>
-          <div className="text-white">
-            {urls?.url && (
-              <Link href={urls.url} target="_blank">
-                URL
-              </Link>
-            )}
-            {urls?.thumbnailUrl && (
-              <Link href={urls.thumbnailUrl} target="_blank">
-                URL
-              </Link>
-            )}
-          </div>
         </div>
       </form>
     </main>
