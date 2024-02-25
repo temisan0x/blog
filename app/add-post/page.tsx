@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "@/app/page.module.css";
 import { useEdgeStore } from "@/lib/edgestore";
 import Link from "next/link";
@@ -9,23 +9,14 @@ import axios from "axios";
 export default function AddPost() {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [file, setFile] = useState<File>();
-  const [loading, setLoading] = useState(false);
+  const [file, setFile] =  useState<File>();
+  // const [loading, setLoading] = useState(false);
   const [urls, setUrls] = useState<{
     url: string;
     thumbnailUrl: string | null;
   }>();
 
-  const MemoizedSingleImageDropzone = React.memo(SingleImageDropzone);
   const { edgestore } = useEdgeStore();
-
-  const handleTitleChange = React.useCallback((e: any) => {
-    setTitle(e.target.value);
-  }, []);
-
-  const handleContentChange = React.useCallback((e: any) => {
-    setContent(e.target.value);
-  }, []);
 
   const handleUpload = async () => {
     try {
@@ -37,10 +28,6 @@ export default function AddPost() {
           },
           input: { type: "post" },
         });
-        setUrls({
-          url: res.url,
-          thumbnailUrl: res.thumbnailUrl,
-        });
         console.log(res, "checking...");
       }
     } catch (error) {
@@ -48,19 +35,28 @@ export default function AddPost() {
     }
   };
 
-  const handleSubmit = async () => {
+  const handleTitleChange = (e: any) => {
+    setTitle(e.target.value);
+  };
+
+  const handleContentChange = (e: any) => {
+    setContent(e.target.value);
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+
     try {
-      setLoading(true);
-      
+      // setLoading(true);
       //axios fetch data
       const response = await axios.post("/api/add-movie", {
         title,
         content,
-        imageUrl: file || "",
+        imageUrl: urls?.url || "",
       });
 
-      setLoading(false);
-      if (response.status === 200) {
+      // setLoading(false);
+      if (response.status == 200) {
         console.log(response);
         setTitle("");
         setContent("");
@@ -72,23 +68,10 @@ export default function AddPost() {
     }
   };
 
-  const handleCombinedSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      await handleUpload();
-      await handleSubmit();
-    } catch (error) {
-      console.error(error);
-    }
-  };
-
   return (
     <main className={styles.main}>
       <h1>Add New Movie</h1>
-      <form
-        onSubmit={(e) => handleCombinedSubmit(e)}
-        className="max-w-md mx-auto mt-6"
-      >
+      <form onSubmit={handleSubmit} className="max-w-md mx-auto mt-6">
         <div className="mb-4">
           <label htmlFor="title" className="block text-gray-600 font-medium">
             Title
@@ -121,7 +104,7 @@ export default function AddPost() {
           <label htmlFor="image" className="block text-gray-600 font-medium">
             Image
           </label>
-          <MemoizedSingleImageDropzone
+          <SingleImageDropzone
             width={200}
             height={200}
             value={file}
@@ -134,24 +117,22 @@ export default function AddPost() {
         <div>
           <button
             type="submit"
-            disabled={loading}
-            className={`bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600 ${
-              loading ? "opacity-50 cursor-not-allowed" : ""
-            }`}
+            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
           >
-            {loading ? "Submitting..." : "Submit"}
+            Submit
           </button>
-
-          {urls?.url && (
-            <Link href={urls.url} target="_blank">
-              View Image
-            </Link>
-          )}
-          {urls?.thumbnailUrl && (
-            <Link href={urls.thumbnailUrl} target="_blank">
-              View Thumbnail
-            </Link>
-          )}
+          <div className="text-white">
+            {urls?.url && (
+              <Link href={urls.url} target="_blank">
+                URL
+              </Link>
+            )}
+            {urls?.thumbnailUrl && (
+              <Link href={urls.thumbnailUrl} target="_blank">
+                URL
+              </Link>
+            )}
+          </div>
         </div>
       </form>
     </main>
