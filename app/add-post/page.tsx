@@ -6,6 +6,7 @@ import { useEdgeStore } from "@/lib/edgestore";
 import Link from "next/link";
 import { SingleImageDropzone } from "../components/SingleImageDropZone";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function AddPost() {
   const [title, setTitle] = useState<string>("");
@@ -17,6 +18,7 @@ export default function AddPost() {
     thumbnailUrl: string | null;
   }>();
 
+  const router = useRouter();
   const { edgestore } = useEdgeStore();
 
   const handleUpload = async () => {
@@ -71,8 +73,7 @@ export default function AddPost() {
       console.error(error);
     }
   };
-  
-  
+
   const handleCombinedSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -80,6 +81,8 @@ export default function AddPost() {
       if (imageUrl) {
         await handleSubmit(imageUrl);
       }
+
+      await router.refresh()
     } catch (error) {
       console.error(error);
     }

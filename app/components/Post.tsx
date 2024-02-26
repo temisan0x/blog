@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import styles from "@/app/page.module.css";
 
 interface PostProps {
   id: string;
@@ -17,19 +18,18 @@ const Post: React.FC<PostProps> = ({
   imageData,
 }) => {
   return (
-    <div className="border border-cyan-200">
-      <h4>{title}</h4>
-      <p>{content}</p>
-      <p>Author: {authorName}</p>
-      <div className="w-30">
+    <div className={`border border-black mt-4 mx-auto p-5 ${styles.postContainer}`}>
+      <h4 className="text-lg font-semibold">{title}</h4>
+      <p className="text-gray-700">{content}</p>
+      <p className="text-gray-500">Author: {authorName}</p>
+      <div className={`mx-auto ${styles.imageContainer}`}>
         {imageData && (
           <Image
             src={imageData.toString()}
-            alt={`Immage for ${title}`}
-            sizes="100vw"
-            width={0}
-            height={0}
-            style={{ width: "100%", height: "auto" }}
+            alt={`Image for ${title}`}
+            width={800}
+            height={600}
+            loading="lazy"
           />
         )}
       </div>

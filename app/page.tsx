@@ -1,7 +1,7 @@
 import prisma from "@/lib/prisma";
 import Post from "./components/Post";
 import Link from "next/link";
-import styles from '@/app/page.module.css';
+import styles from "@/app/page.module.css";
 
 async function getPosts() {
   const posts = await prisma.post.findMany({
@@ -18,9 +18,11 @@ async function getPosts() {
 export default async function Home() {
   const posts = await getPosts();
   return (
-    <main  className={styles.main}>
-      <h1 className="text-center text-[50px]">Welcome to movie world!</h1>
-      <Link href={'/add-post'}>Add Movie</Link>
+    <main className={`mx-auto text-center ${styles.main}`}>
+      <h1 className="text-[50px]">Welcome to movie world!</h1>
+      <Link href={"/add-post"} className=" my-10">
+        Add Movie
+      </Link>
       {posts.map((post) => {
         return (
           <Post
