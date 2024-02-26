@@ -82,7 +82,7 @@ export default function AddPost() {
         await handleSubmit(imageUrl);
       }
 
-      await router.refresh()
+      await router.refresh();
     } catch (error) {
       console.error(error);
     }
