@@ -1,5 +1,6 @@
-/* Resetting default styles for specific elements */
+
 .main {  
    background: pink;
+   min-height: 100vh;
 }
 

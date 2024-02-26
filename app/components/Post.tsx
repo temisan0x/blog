@@ -21,9 +21,18 @@ const Post: React.FC<PostProps> = ({
       <h4>{title}</h4>
       <p>{content}</p>
       <p>Author: {authorName}</p>
-      {imageData && (
-        <Image src={imageData.toString()} alt={`IMmage for ${title}`} fill />
-      )}
+      <div className="w-30">
+        {imageData && (
+          <Image
+            src={imageData.toString()}
+            alt={`Immage for ${title}`}
+            sizes="100vw"
+            width={0}
+            height={0}
+            style={{ width: "100%", height: "auto" }}
+          />
+        )}
+      </div>
     </div>
   );
 };
