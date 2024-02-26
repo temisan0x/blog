@@ -1,4 +1,5 @@
 "use client";
+
 import { useState } from "react";
 import styles from "@/app/page.module.css";
 import { useEdgeStore } from "@/lib/edgestore";
@@ -14,7 +15,7 @@ export default function AddPost() {
   const [urls, setUrls] = useState<{
     url: string;
     thumbnailUrl: string | null;
-  }>({ url: "", thumbnailUrl: null });
+  }>();
 
   const { edgestore } = useEdgeStore();
 
@@ -28,13 +29,11 @@ export default function AddPost() {
           },
           input: { type: "post" },
         });
-
+        console.log(res, "checking...");
         setUrls({
           url: res.url,
           thumbnailUrl: res.thumbnailUrl,
         });
-
-        console.log(res, "checking...");
         return res.url;
       }
     } catch (error) {
@@ -54,17 +53,17 @@ export default function AddPost() {
   const handleSubmit = async (imageUrl: string | undefined) => {
     try {
       setLoading(true);
-      //axios fetch data
       const response = await axios.post("/api/add-movie", {
         title,
         content,
-        imageUrl: imageUrl || "unable to load",
+        imageData: imageUrl?.toString(), // Convert to string explicitly
       });
       setLoading(false);
-      if (response.status == 200) {
+      if (response.status === 200) {
         console.log(response);
         setTitle("");
         setContent("");
+        setFile(null || undefined);
       } else {
         console.error("Failed to submit data:", await response.data);
       }
@@ -72,12 +71,15 @@ export default function AddPost() {
       console.error(error);
     }
   };
-
+  
+  
   const handleCombinedSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       const imageUrl = await handleUpload();
-      await handleSubmit(imageUrl);
+      if (imageUrl) {
+        await handleSubmit(imageUrl);
+      }
     } catch (error) {
       console.error(error);
     }
@@ -85,6 +87,7 @@ export default function AddPost() {
 
   return (
     <main className={styles.main}>
+      <Link href={"/"}>View feed</Link>
       <h1>Add New Movie</h1>
       <form
         onSubmit={(e) => handleCombinedSubmit(e)}
@@ -131,7 +134,16 @@ export default function AddPost() {
             }}
           />
         </div>
-
+        {urls?.url && (
+          <Link href={urls.url} target="_blank">
+            View Image
+          </Link>
+        )}
+        {urls?.thumbnailUrl && (
+          <Link href={urls.thumbnailUrl} target="_blank">
+            View Thumbnail
+          </Link>
+        )}
         <div>
           <button
             type="submit"

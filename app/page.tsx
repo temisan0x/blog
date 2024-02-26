@@ -28,6 +28,7 @@ export default async function Home() {
             id={post.id}
             title={post.title}
             content={post.content}
+            imageData={post.imageData}
             authorName={post.author?.name ?? null}
           />
         );

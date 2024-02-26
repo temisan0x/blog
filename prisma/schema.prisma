@@ -14,7 +14,7 @@ model Post {
   id        String     @default(cuid()) @id
   title     String
   content   String?
-  imageData Bytes?
+  imageData String?
   published Boolean @default(false)
   author    User?   @relation(fields: [authorId], references: [id])
   authorId  String?
