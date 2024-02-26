@@ -18,7 +18,7 @@ export default function DeletePostButton({postId}:any) {
     }
     return (
         <div>
-            <button onClick={handleClick}>Delete Post</button>
+            <button onClick={handleClick} className="btn">Delete Post</button>
         </div>
     )
 }

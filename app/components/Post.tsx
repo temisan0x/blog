@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import styles from "@/app/page.module.css";
+import DeletePostButton from "./DeletePostBtn";
 
 interface PostProps {
   id: string;
@@ -33,6 +34,7 @@ const Post: React.FC<PostProps> = ({
           />
         )}
       </div>
+      <DeletePostButton postId={id}/>
     </div>
   );
 };
