@@ -1,6 +1,9 @@
 import { Metadata } from "next";
 import "@/app/global.css";
 import { EdgeStoreProvider } from "@/lib/edgestore";
+import Navbar from "./components/Navbar";
+import Footer from "./components/Footer";
+import NextAuthProvider from './components/NextAuthProvider';
 
 export const metadata: Metadata = {
   title: "Next.js",
@@ -15,13 +18,17 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
-      <EdgeStoreProvider>
-        <main>
-          <div className="container mx-auto max-w-full min-h-screen">
-           {children}
-          </div>
-        </main>
+      <NextAuthProvider>
+        <EdgeStoreProvider>
+          <main>
+            <div className="container mx-auto max-w-full min-h-screen">
+              <Navbar />
+              {children}
+              <Footer />
+            </div>
+          </main>
         </EdgeStoreProvider>
+        </NextAuthProvider>
       </body>
     </html>
   );

@@ -23,7 +23,7 @@ export default async function Home() {
       <Link href={"/add-post"} className=" my-10">
         Add Movie
       </Link>
-      {posts.map((post) => {
+      {/* {posts.map((post) => {
         return (
           <Post
             key={post.id}
@@ -34,7 +34,7 @@ export default async function Home() {
             authorName={post.author?.name ?? null}
           />
         );
-      })}
+      })} */}
     </main>
   );
 }
