@@ -20,6 +20,7 @@ export default function AddPost() {
   const [content, setContent] = useState<string>("");
   const [file, setFile] = useState<File>();
   const [loading, setLoading] = useState(false);
+  const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [urls, setUrls] = useState<{
     url: string;
@@ -97,6 +98,8 @@ export default function AddPost() {
     }
   };
 
+
+
   return (
     <main className={styles.main}>
       <Link href={"/"}>View feed</Link>
@@ -112,6 +115,8 @@ export default function AddPost() {
         handleCombinedSubmit={handleCombinedSubmit}
         selectedCategory={selectedCategory}
         setSelectedCategory={setSelectedCategory}
+        categories={categories}
+        setCategories={setCategories}
       />
     </main>
   );

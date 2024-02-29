@@ -1,14 +1,15 @@
 "use client";
 
 import React from "react";
+import axios from "axios";
+import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import initFullProps from "@/types/initFullProps";
 import { SingleImageDropzone } from "./SingleImageDropZone";
 import CreateCategories from "./CreateCategories";
-import SelectedCat from "./SelectedCategories";
 
 const CreatePost = ({
-  handleSubmit,
   title,
   content,
   setFile,
@@ -20,7 +21,35 @@ const CreatePost = ({
   selectedCategory,
   setSelectedCategory,
   fetchCategories,
+  setCategories
 }: any) => {
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await axios.get("/api/categories");
+        setCategories(response.data);
+      } catch (error) {
+        console.error("Error fetching categories:", error);
+        setError("Failed to fetch categories. Please try again.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchCategories();
+  }, []);
+ 
+  if (loading) {
+    return <p>Loading categories...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
+
   return (
     <form
       onSubmit={(e) => handleCombinedSubmit(e)}
@@ -71,11 +100,29 @@ const CreatePost = ({
           </div>
           <div className="tagscats flex blog-card justify-between">
             {categories && categories.length > 0 && (
-              <SelectedCat
-                selectedCategory={selectedCategory}
-                setSelectedCategory={setSelectedCategory}
-                categories={categories}
-              />
+                 <motion.div
+                 className="mb-4 mr-2"
+                 initial={{ opacity: 0, y: -20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ duration: 0.5 }}
+               >
+                 <label htmlFor="category" className="block text-gray-700 font-bold mb-2">
+                   Category
+                 </label>
+                 <select
+                   id="category"
+                   value={selectedCategory}
+                   onChange={(e) => setSelectedCategory(e.target.value)}
+                   className="border rounded py-2 px-3 hero-action-input focus:outline-none focus:border-gray-600 pr-9 block text-sm dark:bg-[#0f0f10] dark:text-gray-400  hero-action-input"
+                 >
+                   <option>Select a category</option>
+                   {categories?.map((category: any) => (
+                     <option key={category._id} value={category._id}>
+                       {category.name}
+                     </option>
+                   ))}
+                 </select>
+               </motion.div>
             )}
           </div>
           <div>
