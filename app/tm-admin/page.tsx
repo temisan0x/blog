@@ -1,18 +1,26 @@
 "use client";
 
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import styles from "@/app/page.module.css";
 import { useEdgeStore } from "@/lib/edgestore";
 import Link from "next/link";
 import { SingleImageDropzone } from "../components/SingleImageDropZone";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import CreatePost from "../components/CreatePost";
+import prisma from "@/lib/prisma";
+
+interface Category {
+  _id: string;
+  name: string;
+}
 
 export default function AddPost() {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
   const [file, setFile] = useState<File>();
   const [loading, setLoading] = useState(false);
+  const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [urls, setUrls] = useState<{
     url: string;
     thumbnailUrl: string | null;
@@ -58,7 +66,8 @@ export default function AddPost() {
       const response = await axios.post("/api/add-movie", {
         title,
         content,
-        imageData: imageUrl?.toString(), // Convert to string explicitly
+        imageData: imageUrl?.toString(),
+        category: selectedCategory,
       });
       setLoading(false);
       if (response.status === 200) {
@@ -66,6 +75,7 @@ export default function AddPost() {
         setTitle("");
         setContent("");
         setFile(null || undefined);
+        setSelectedCategory("");
       } else {
         console.error("Failed to submit data:", await response.data);
       }
@@ -81,7 +91,6 @@ export default function AddPost() {
       if (imageUrl) {
         await handleSubmit(imageUrl);
       }
-
       await router.refresh();
     } catch (error) {
       console.error(error);
@@ -92,70 +101,18 @@ export default function AddPost() {
     <main className={styles.main}>
       <Link href={"/"}>View feed</Link>
       <h1>Add New Movie</h1>
-      <form
-        onSubmit={(e) => handleCombinedSubmit(e)}
-        className="max-w-md mx-auto mt-6"
-      >
-        <div className="mb-4">
-          <label htmlFor="title" className="block text-gray-600 font-medium">
-            Title
-          </label>
-          <input
-            type="text"
-            id="title"
-            name="title"
-            value={title}
-            onChange={handleTitleChange}
-            className="mt-1 p-2 w-full border rounded-md"
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="content" className="block text-gray-600 font-medium">
-            Content
-          </label>
-          <textarea
-            id="content"
-            name="content"
-            value={content}
-            onChange={handleContentChange}
-            className="mt-1 p-2 w-full border rounded-md"
-            rows={4}
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="image" className="block text-gray-600 font-medium">
-            Image
-          </label>
-          <SingleImageDropzone
-            width={200}
-            height={200}
-            value={file}
-            onChange={(file) => {
-              setFile(file);
-            }}
-          />
-        </div>
-        {urls?.url && (
-          <Link href={urls.url} target="_blank">
-            View Image
-          </Link>
-        )}
-        {urls?.thumbnailUrl && (
-          <Link href={urls.thumbnailUrl} target="_blank">
-            View Thumbnail
-          </Link>
-        )}
-        <div>
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded-md hover:bg-blue-600"
-          >
-            Submit
-          </button>
-        </div>
-      </form>
+      <CreatePost
+        handleSubmit={handleSubmit}
+        title={title}
+        setTitle={setTitle}
+        content={content}
+        setContent={setContent}
+        handleTitleChange={handleTitleChange}
+        handleContentChange={handleContentChange}
+        handleCombinedSubmit={handleCombinedSubmit}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+      />
     </main>
   );
 }

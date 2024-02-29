@@ -4,6 +4,7 @@
 
 body {
     background: #000;
+    scroll-behavior:smooth;
 }
 
 .darkmode body {
