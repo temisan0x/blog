@@ -8,7 +8,6 @@ import { SingleImageDropzone } from "../components/SingleImageDropZone";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import CreatePost from "../components/CreatePost";
-import prisma from "@/lib/prisma";
 
 interface Category {
   _id: string;

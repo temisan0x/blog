@@ -55,6 +55,7 @@
     "tailwind-merge": "^2.2.1",
     "tinymce": "^6.5.0",
     "typescript": "^5.3.3",
+    "vercel": "^33.5.3",
     "zod": "^3.22.4"
   },
   "devDependencies": {

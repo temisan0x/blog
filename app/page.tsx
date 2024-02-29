@@ -3,20 +3,20 @@ import Post from "./components/Post";
 import Link from "next/link";
 import styles from "@/app/page.module.css";
 
-async function getPosts() {
-  const posts = await prisma.post.findMany({
-    where: { published: true },
-    include: {
-      author: {
-        select: { name: true },
-      },
-    },
-  });
-  return posts;
-}
+// async function getPosts() {
+//   const posts = await prisma.post.findMany({
+//     where: { published: true },
+//     include: {
+//       author: {
+//         select: { name: true },
+//       },
+//     },
+//   });
+//   return posts;
+// }
 
 export default async function Home() {
-  const posts = await getPosts();
+  // const posts = await getPosts();
   return (
     <main className={`mx-auto text-center ${styles.main}`}>
       <h1 className="text-[50px]">Welcome to movie world!</h1>

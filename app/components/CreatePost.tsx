@@ -9,6 +9,11 @@ import initFullProps from "@/types/initFullProps";
 import { SingleImageDropzone } from "./SingleImageDropZone";
 import CreateCategories from "./CreateCategories";
 
+interface Category {
+  _id: string;
+  name: string;
+}
+
 const CreatePost = ({
   title,
   content,
@@ -20,28 +25,27 @@ const CreatePost = ({
   categories,
   selectedCategory,
   setSelectedCategory,
-  fetchCategories,
-  setCategories
+  setCategories,
 }: any) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await axios.get("/api/categories");
-        setCategories(response.data);
-      } catch (error) {
-        console.error("Error fetching categories:", error);
-        setError("Failed to fetch categories. Please try again.");
-      } finally {
-        setLoading(false);
-      }
-    };
+  const fetchCategories = async () => {
+    try {
+      const response = await axios.get("/api/categories");
+      setCategories(response.data);
+    } catch (error) {
+      console.error("Error fetching categories:", error);
+      setError("Failed to fetch categories. Please try again.");
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  useEffect(() => {
     fetchCategories();
   }, []);
- 
+
   if (loading) {
     return <p>Loading categories...</p>;
   }
@@ -100,31 +104,35 @@ const CreatePost = ({
           </div>
           <div className="tagscats flex blog-card justify-between">
             {categories && categories.length > 0 && (
-                 <motion.div
-                 className="mb-4 mr-2"
-                 initial={{ opacity: 0, y: -20 }}
-                 animate={{ opacity: 1, y: 0 }}
-                 transition={{ duration: 0.5 }}
-               >
-                 <label htmlFor="category" className="block text-gray-700 font-bold mb-2">
-                   Category
-                 </label>
-                 <select
-                   id="category"
-                   value={selectedCategory}
-                   onChange={(e) => setSelectedCategory(e.target.value)}
-                   className="border rounded py-2 px-3 hero-action-input focus:outline-none focus:border-gray-600 pr-9 block text-sm dark:bg-[#0f0f10] dark:text-gray-400  hero-action-input"
-                 >
-                   <option>Select a category</option>
-                   {categories?.map((category: any) => (
-                     <option key={category._id} value={category._id}>
-                       {category.name}
-                     </option>
-                   ))}
-                 </select>
-               </motion.div>
+              <motion.div
+                className="mb-4 mr-2"
+                initial={{ opacity: 0, y: -20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+              >
+                <label
+                  htmlFor="category"
+                  className="block text-gray-700 font-bold mb-2"
+                >
+                  Category
+                </label>
+                <select
+                  id="category"
+                  value={selectedCategory}
+                  onChange={(e) => setSelectedCategory(e.target.value)}
+                  className="border rounded py-2 px-3 hero-action-input focus:outline-none focus:border-gray-600 pr-9 block text-sm dark:bg-[#0f0f10] dark:text-gray-400  hero-action-input"
+                >
+                  <option>Select a category</option>
+                  {categories.map((category: Category) => (
+                    <option key={category._id} value={category._id}>
+                      {category.name}
+                    </option>
+                  ))}
+                </select>
+              </motion.div>
             )}
           </div>
+
           <div>
             <button
               type="submit"
