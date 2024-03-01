@@ -1,20 +1,33 @@
 import { NextResponse } from "next/server";
 import bcrypt from "bcrypt";
-import { connectToDb } from "@/helpers/server-helpers";
 import prisma from "@/prisma";
+import { connectToDb } from "@/helpers/server-helpers";
 
 export const POST = async (req: Request) => {
   try {
     const { name, email, password } = await req.json();
     if (!name || !email || !password) {
       return NextResponse.json(
-        { message: "Invalid username or password" },
+        { message: "Name, email, or password is missing" },
+        { status: 422 }
+      );
+    }
+
+    await connectToDb();
+
+    // Check if the email already exists
+    const existingUser = await prisma.user.findFirst({
+      where: { email },
+    });
+
+    if (existingUser) {
+      return NextResponse.json(
+        { message: "Email address is already registered" },
         { status: 422 }
       );
     }
 
     const hashedPassword = await bcrypt.hash(password, 10);
-    await connectToDb();  // Corrected function name
 
     const user = await prisma.user.create({
       data: {
@@ -26,10 +39,10 @@ export const POST = async (req: Request) => {
 
     return NextResponse.json({
       message: "User created successfully",
-      user: user,
+      user,
     });
   } catch (error) {
-    console.log(error);
+    console.error("Error registering user", error);
     return NextResponse.json({ message: "Server error" }, { status: 500 });
   } finally {
     await prisma.$disconnect();

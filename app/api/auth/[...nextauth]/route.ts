@@ -1,14 +1,11 @@
-/**
- * NextAuth Configuration
- * @param {string} GOOGLE_CLIENT_ID - Google OAuth client ID.
- * @param {string} GOOGLE_CLIENT_SECRET - Google OAuth client secret.
- * @param {string} JWT_SECRET - Secret key for JSON Web Token (JWT) encryption.
- */
-
-import NextAuth, { Session, User } from "next-auth";
+import NextAuth from "next-auth";
+import { Session, User } from "next-auth";
 import { NextApiRequest, NextApiResponse } from "next";
 import GoogleProvider from "next-auth/providers/google";
-
+import CredentialsProvider from "next-auth/providers/credentials"; // Corrected import
+import { connectToDb } from "@/helpers/server-helpers";
+import prisma from "@/prisma";
+import bcrypt from "bcrypt";
 
 const authOptions = {
   providers: [
@@ -16,13 +13,47 @@ const authOptions = {
       clientId: process.env.GOOGLE_CLIENT_ID || "",
       clientSecret: process.env.GOOGLE_CLIENT_SECRET || "",
     }),
+    CredentialsProvider({
+      name: "credentials",
+      credentials: {
+        email: { label: "Email", placeholder: "Enter your email address" },
+        password: { label: "Password", placeholder: "Enter your password" },
+      },
+      async authorize(credentials) {
+        if (!credentials || credentials.email || credentials.password)
+          return null;
+        try {
+          await connectToDb();
+          const user = await prisma.user.findFirst({
+            where: { email: credentials.email },
+          });
+          if (!user?.hashedPassword) {
+            return null;
+          }
+          const isPasswordCorrect = await bcrypt.compare(
+            credentials.password,
+            user.hashedPassword
+          );
+
+          if (isPasswordCorrect) {
+            return user;
+          }
+          return null;
+        } catch (error) {
+          console.error(error);
+          return null;
+        } finally {
+          await prisma.$disconnect();
+        }
+      },
+    }),
   ],
   callbacks: {
-    async signIn({ user, account }:any) {
+    async signIn({ user, account }: any) {
       if (account.provider === "google") {
         const { name, email } = user;
         try {
-        
+          // Your logic here
         } catch (error) {
           console.log(error);
         }
