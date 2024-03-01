@@ -5,25 +5,25 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url = env("POSTGRES_PRISMA_URL") // uses connection pooling
-  directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+  provider = "mongodb"
+  url = env("DATABASE_URL") // uses connection pooling
 }
 
 model Post {
-  id        String     @default(cuid()) @id
+  id        String     @id @map("_id")
   title     String
   content   String?
   imageData String?
   published Boolean @default(false)
-  author    User?   @relation(fields: [authorId], references: [id])
+  author    User?      @relation(fields: [authorId], references: [id])
   authorId  String?
 }
 
 model User {
-  id            String       @default(cuid()) @id
+  id            String    @id @map("_id") @db.ObjectId
   name          String?
   email         String?   @unique
+  hashedPassword String?
   createdAt     DateTime  @default(now()) @map(name: "created_at")
   updatedAt     DateTime  @updatedAt @map(name: "updated_at")
   posts         Post[]
@@ -31,6 +31,6 @@ model User {
 }
 
 model Category {
-  id        Int      @id @default(autoincrement())
-  name      String
+  id   Int    @id @map("_id")
+  name String
 }
