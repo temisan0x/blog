@@ -10,13 +10,15 @@ datasource db {
 }
 
 model Post {
-  id        String     @id @map("_id")
+  id        String     @id @default(auto()) @map("_id") @db.ObjectId
   title     String
   content   String?
   imageData String?
   published Boolean @default(false)
   author    User?      @relation(fields: [authorId], references: [id])
-  authorId  String?
+  authorId  String     @db.ObjectId
+  category  Category?  @relation(fields: [categoryId], references: [id]) // Add this line
+  categoryId String    @db.ObjectId 
 }
 
 model User {
@@ -30,8 +32,8 @@ model User {
   @@map(name: "users")
 }
 
-
 model Category {
-  id   Int    @id @map("_id")
+  id   String @id @default(auto()) @map("_id") @db.ObjectId
   name String
+  posts Post[] 
 }

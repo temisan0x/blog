@@ -17,6 +17,7 @@ interface Category {
 const CreatePost = ({
   title,
   content,
+  setContent,
   setFile,
   file,
   handleCombinedSubmit,
@@ -79,7 +80,7 @@ const CreatePost = ({
         </label>
         <Editor
           value={content}
-          onEditorChange={handleContentChange}
+          onEditorChange={(newContent)=> setContent(newContent)}
           init={{
             ...initFullProps,
           }}

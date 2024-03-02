@@ -49,17 +49,11 @@ const authOptions = {
     }),
   ],
   callbacks: {
-    async signIn({ user, account }: any) {
-      if (account.provider === "google") {
-        const { name, email } = user;
-        try {
-          // Your logic here
-        } catch (error) {
-          console.log(error);
-        }
+    session: async ({ token, session }: { token: any; session: Session }) => {
+      if (token?.sub) {
+        session.user.id = token.sub as string;
       }
-
-      return user;
+      return session;
     },
   },
 };

@@ -93,8 +93,8 @@ const initFullProps = {
     }
 
     .mce-content-body {
-      overflow-wrap: break-word;
-      word-wrap: break-word;
+      // overflow-wrap: break-word;
+      // word-wrap: break-word;
       padding: 2px;
       background: rgb(16, 16, 16);
       border: 1px solid rgb(48, 48, 48);

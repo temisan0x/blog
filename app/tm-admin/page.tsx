@@ -4,7 +4,6 @@ import { useCallback, useEffect, useState } from "react";
 import styles from "@/app/page.module.css";
 import { useEdgeStore } from "@/lib/edgestore";
 import Link from "next/link";
-import { SingleImageDropzone } from "../components/SingleImageDropZone";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import CreatePost from "../components/CreatePost";
@@ -55,15 +54,14 @@ export default function AddPost() {
   const handleTitleChange = (e: any) => {
     setTitle(e.target.value);
   };
-
-  const handleContentChange = (e: any) => {
+  const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
   };
 
   const handleSubmit = async (imageUrl: string | undefined) => {
     try {
       setLoading(true);
-      const response = await axios.post("/api/add-movie", {
+      const response = await axios.post("/api/add-post", {
         title,
         content,
         imageData: imageUrl?.toString(),
@@ -97,8 +95,6 @@ export default function AddPost() {
     }
   };
 
-
-
   return (
     <main className={styles.main}>
       <Link href={"/"}>View feed</Link>
@@ -108,6 +104,7 @@ export default function AddPost() {
         title={title}
         setTitle={setTitle}
         content={content}
+        setFile={setFile}
         setContent={setContent}
         handleTitleChange={handleTitleChange}
         handleContentChange={handleContentChange}

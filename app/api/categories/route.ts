@@ -1,4 +1,4 @@
-import prisma from "@/lib/prisma";
+import prisma from "@/prisma"; 
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -14,7 +14,6 @@ export async function POST(request: Request) {
     const createdCategory = await prisma.category.create({
       data: {
         name: name.trim(),
-        // Add any additional fields you may have in your Category model
       },
     });
 
