@@ -7,8 +7,8 @@ export async function POST(request: Request) {
   console.log("Received data", res);
 
   // Assuming you have a Category model in your Prisma schema
-  const existingCategory = await prisma.category.findUnique({
-    where: { id: category },
+  const existingCategory = await prisma.category.findFirst({
+    where: { name: category },
   });
 
   if (!existingCategory) {
@@ -29,7 +29,7 @@ export async function POST(request: Request) {
       },
       category: {
         connect: {
-          id: category,
+          id: existingCategory.id,
         },
       },
     },

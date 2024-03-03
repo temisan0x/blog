@@ -38,7 +38,6 @@ export default function AddPost() {
           },
           input: { type: "post" },
         });
-        console.log(res, "checking...");
         setUrls({
           url: res.url,
           thumbnailUrl: res.thumbnailUrl,
@@ -89,7 +88,7 @@ export default function AddPost() {
       if (imageUrl) {
         await handleSubmit(imageUrl);
       }
-      await router.refresh();
+      router.refresh();
     } catch (error) {
       console.error(error);
     }
@@ -100,10 +99,11 @@ export default function AddPost() {
       <Link href={"/"}>View feed</Link>
       <h1>Add New Movie</h1>
       <CreatePost
+        loading={loading}
         handleSubmit={handleSubmit}
         title={title}
-        setTitle={setTitle}
         content={content}
+        file={file}
         setFile={setFile}
         setContent={setContent}
         handleTitleChange={handleTitleChange}
@@ -113,6 +113,7 @@ export default function AddPost() {
         setSelectedCategory={setSelectedCategory}
         categories={categories}
         setCategories={setCategories}
+        setLoading={setLoading}
       />
     </main>
   );

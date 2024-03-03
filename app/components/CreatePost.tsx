@@ -8,27 +8,48 @@ import { Editor } from "@tinymce/tinymce-react";
 import initFullProps from "@/types/initFullProps";
 import { SingleImageDropzone } from "./SingleImageDropZone";
 import CreateCategories from "./CreateCategories";
+import styles from "@/app/page.module.css";
+import { useEdgeStore } from "@/lib/edgestore";
+import Link from "next/link";
 
 interface Category {
   _id: string;
   name: string;
 }
 
+interface CreatePostProps {
+  file: File | undefined;
+  loading: boolean;
+  setLoading: any;
+  handleSubmit: (imageUrl: string | undefined) => Promise<void>;
+  title: string;
+  content: string;
+  setFile: (file: File | undefined) => void;
+  setContent: (content: string) => void;
+  handleTitleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleContentChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+  handleCombinedSubmit: (e: React.FormEvent) => void;
+  selectedCategory: string;
+  setSelectedCategory: (category: string) => void;
+  categories: Category[];
+  setCategories: React.Dispatch<React.SetStateAction<Category[]>>;
+}
+
 const CreatePost = ({
   title,
   content,
-  setContent,
-  setFile,
   file,
-  handleCombinedSubmit,
+  setFile,
   handleTitleChange,
-  handleContentChange,
+  setContent,
   categories,
   selectedCategory,
   setSelectedCategory,
   setCategories,
-}: any) => {
-  const [loading, setLoading] = useState(true);
+  handleCombinedSubmit,
+  loading,
+  setLoading,
+}: CreatePostProps) => {
   const [error, setError] = useState<string | null>(null);
 
   const fetchCategories = async () => {
@@ -80,7 +101,7 @@ const CreatePost = ({
         </label>
         <Editor
           value={content}
-          onEditorChange={(newContent)=> setContent(newContent)}
+          onEditorChange={(newContent) => setContent(newContent)}
           init={{
             ...initFullProps,
           }}

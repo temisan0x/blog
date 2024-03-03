@@ -54,7 +54,7 @@
     "redux-persist": "^6.0.0",
     "slugify": "^1.6.6",
     "tailwind-merge": "^2.2.1",
-    "tinymce": "^6.5.0",
+    "tinymce": "^6.8.3",
     "typescript": "^5.3.3",
     "vercel": "^33.5.3",
     "zod": "^3.22.4"
