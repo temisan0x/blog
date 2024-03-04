@@ -12,7 +12,6 @@ export async function POST(request: Request) {
   });
 
   if (!existingCategory) {
-    // Handle the case where the specified category doesn't exist
     return NextResponse.json({ error: "Invalid category specified" }, { status: 400 });
   }
 
