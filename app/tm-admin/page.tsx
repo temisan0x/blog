@@ -7,12 +7,13 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import CreatePost from "../components/CreatePost";
-import {CldUploadWidget} from "next-cloudinary"; 
 
 interface Category {
   _id: string;
   name: string;
 }
+
+// ...
 
 export default function AddPost() {
   const [title, setTitle] = useState<string>("");
@@ -31,15 +32,16 @@ export default function AddPost() {
   const handleTitleChange = (e: any) => {
     setTitle(e.target.value);
   };
+
   const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setContent(e.target.value);
   };
 
-  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>)=> {
-    if(e.target.files){
-      setImage(e.target.files[0])
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files) {
+      setImage(e.target.files[0]);
     }
-
+  };
 
   const handleSubmit = async (imageUrl: string | undefined) => {
     try {
@@ -61,21 +63,26 @@ export default function AddPost() {
         console.error("Failed to submit data:", await response.data);
       }
     } catch (error) {
-      console.error("Error Message:",error);
+      console.error("Error Message:", error);
     }
   };
 
   const handleCombinedSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
-      if(!image){
-        return;
-      }
+      setLoading(true);
+
       const formData = new FormData();
       formData.append("image", image);
-      const response = await axios.post("/api/upload-image", formData);
-      const data = await response.data;
-      console.log({data});
+
+      // Make the actual API request
+      const uploadResponse = await axios.post("/api/upload-image", formData);
+
+      const imageUrl = uploadResponse.data.imageUrl; // Adjust this based on your API response structure
+
+      // Handle the imageUrl as needed
+
+      setLoading(false);
       router.refresh();
     } catch (error) {
       console.error(error);
@@ -86,23 +93,10 @@ export default function AddPost() {
     <main className={styles.main}>
       <Link href={"/"}>View feed</Link>
       <h1>Add New Movie</h1>
-      <CreatePost
-        loading={loading}
-        handleSubmit={handleSubmit}
-        title={title}
-        content={content}
-        // file={file}
-        // setFile={setFile}
-        setContent={setContent}
-        handleTitleChange={handleTitleChange}
-        handleContentChange={handleContentChange}
-        handleCombinedSubmit={handleCombinedSubmit}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        categories={categories}
-        setCategories={setCategories}
-        setLoading={setLoading}
-      />
+      <form onSubmit={handleCombinedSubmit}>
+        <input type="file" onChange={onChangeHandler} required/>
+        <button type="submit" style={{background: "red"}}>Submit</button>
+      </form>
     </main>
   );
 }

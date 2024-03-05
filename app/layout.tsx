@@ -19,7 +19,6 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
       <NextAuthProvider>
-        <EdgeStoreProvider>
           <main>
             <div className="container mx-auto max-w-full min-h-screen">
               <Navbar />
@@ -27,7 +26,6 @@ export default async function RootLayout({
               <Footer />
             </div>
           </main>
-        </EdgeStoreProvider>
         </NextAuthProvider>
       </body>
     </html>
