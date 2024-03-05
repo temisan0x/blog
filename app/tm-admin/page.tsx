@@ -13,8 +13,6 @@ interface Category {
   name: string;
 }
 
-// ...
-
 export default function AddPost() {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
@@ -74,14 +72,8 @@ export default function AddPost() {
 
       const formData = new FormData();
       formData.append("image", image);
-
-      // Make the actual API request
       const uploadResponse = await axios.post("/api/upload-image", formData);
-
-      const imageUrl = uploadResponse.data.imageUrl; // Adjust this based on your API response structure
-
-      // Handle the imageUrl as needed
-
+      const imageUrl = uploadResponse.data.imageUrl;
       setLoading(false);
       router.refresh();
     } catch (error) {
@@ -93,10 +85,23 @@ export default function AddPost() {
     <main className={styles.main}>
       <Link href={"/"}>View feed</Link>
       <h1>Add New Movie</h1>
-      <form onSubmit={handleCombinedSubmit}>
-        <input type="file" onChange={onChangeHandler} required/>
-        <button type="submit" style={{background: "red"}}>Submit</button>
-      </form>
+        <CreatePost
+          loading={loading}
+          handleSubmit={handleSubmit}
+          title={title}
+          content={content}
+          image={image}
+          setImage={setImage}
+          setContent={setContent}
+          handleTitleChange={handleTitleChange}
+          handleContentChange={handleContentChange}
+          handleCombinedSubmit={handleCombinedSubmit}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          categories={categories}
+          setCategories={setCategories}
+          setLoading={setLoading}
+        />
     </main>
   );
 }

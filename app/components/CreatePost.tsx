@@ -9,7 +9,6 @@ import initFullProps from "@/types/initFullProps";
 import { SingleImageDropzone } from "./SingleImageDropZone";
 import CreateCategories from "./CreateCategories";
 import styles from "@/app/page.module.css";
-import { useEdgeStore } from "@/lib/edgestore";
 import Link from "next/link";
 
 interface Category {
@@ -38,8 +37,8 @@ interface CreatePostProps {
 const CreatePost = ({
   title,
   content,
-  file,
-  setFile,
+  image,
+  setImage,
   handleTitleChange,
   setContent,
   categories,
@@ -111,7 +110,14 @@ const CreatePost = ({
           <label htmlFor="image" className="block text-gray-700 font-bold mb-2">
             Image
           </label>
-      
+          <SingleImageDropzone
+            width={200}
+            height={200}
+            value={image}
+            onChange={(image) => {
+              setImage(image);
+            }}
+          />
         </div>
         <div className="flex">
           <div className="tagscats flex flex-col lg:flex-row sm:flex-col md:flex-col event-content blog-card items-center justify-between">
