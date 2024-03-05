@@ -2,7 +2,6 @@
 
 import { ChangeEvent, useCallback, useEffect, useState } from "react";
 import styles from "@/app/page.module.css";
-import { useEdgeStore } from "@/lib/edgestore";
 import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
@@ -16,14 +15,11 @@ interface Category {
 export default function AddPost() {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [image, setImage] = useState<File | null>(null);
+  const [image, setImage] = useState<File| null >(null);
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const [urls, setUrls] = useState<{
-    url: string;
-    thumbnailUrl: string | null;
-  }>();
+  const [success, setSuccess] = useState<boolean>(false); 
 
   const router = useRouter();
 
@@ -57,6 +53,7 @@ export default function AddPost() {
         setContent("");
         setImage(null);
         setSelectedCategory("");
+        setSuccess(true); 
       } else {
         console.error("Failed to submit data:", await response.data);
       }
@@ -71,37 +68,63 @@ export default function AddPost() {
       setLoading(true);
 
       const formData = new FormData();
-      formData.append("image", image);
-      const uploadResponse = await axios.post("/api/upload-image", formData);
-      const imageUrl = uploadResponse.data.imageUrl;
-      setLoading(false);
-      router.refresh();
+      if (image) {
+        formData.append("image", image);
+        
+        const uploadResponse = await axios.post("/api/upload-image", formData);
+        const imageUrl = uploadResponse.data.imageUrl;
+        
+        setLoading(false);
+        await handleSubmit(imageUrl);
+        router.refresh();
+      } else {
+        setLoading(false);
+        console.error("No image selected");
+      }
     } catch (error) {
       console.error(error);
     }
   };
 
+    // Function to reset success state after a delay
+    const resetSuccess = () => {
+      setSuccess(false);
+    };
+  
+    // useEffect to reset success state after 3 seconds
+    useEffect(() => {
+      if (success) {
+        const timer = setTimeout(() => {
+          resetSuccess();
+        }, 3000);
+  
+        return () => clearTimeout(timer);
+      }
+    }, [success]);
+  
+
   return (
-    <main className={styles.main}>
+   <>
+     <main className={styles.main}>
       <Link href={"/"}>View feed</Link>
       <h1>Add New Movie</h1>
-        <CreatePost
-          loading={loading}
-          handleSubmit={handleSubmit}
-          title={title}
-          content={content}
-          image={image}
-          setImage={setImage}
-          setContent={setContent}
-          handleTitleChange={handleTitleChange}
-          handleContentChange={handleContentChange}
-          handleCombinedSubmit={handleCombinedSubmit}
-          selectedCategory={selectedCategory}
-          setSelectedCategory={setSelectedCategory}
-          categories={categories}
-          setCategories={setCategories}
-          setLoading={setLoading}
-        />
+      {success && <p className="text-green-500">Post submitted successfully!</p>}
+      <CreatePost
+        loading={loading}
+        title={title}
+        content={content}
+        onChangeHandler={onChangeHandler}
+        setContent={setContent}
+        handleTitleChange={handleTitleChange}
+        handleContentChange={handleContentChange}
+        handleCombinedSubmit={(e) => handleCombinedSubmit(e)}
+        selectedCategory={selectedCategory}
+        setSelectedCategory={setSelectedCategory}
+        categories={categories}
+        setCategories={setCategories}
+        setLoading={setLoading}
+      />
     </main>
+   </>
   );
 }

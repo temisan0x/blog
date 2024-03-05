@@ -3,18 +3,35 @@ import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
   const res = await request.json();
-  const { title, content, imageData, category } = res; // Extract category from request body
+  const { title, content, imageData, category, userName } = res; // Extract userName from request body
   console.log("Received data", res);
 
-  // Assuming you have a Category model in your Prisma schema
+  // Find an existing category with the provided name
   const existingCategory = await prisma.category.findFirst({
     where: { name: category },
   });
 
-  if (!existingCategory) {
-    return NextResponse.json({ error: "Invalid category specified" }, { status: 400 });
-  }
+  // Find an existing user with the provided name
+  const existingUser = await prisma.user.findFirst({
+    where: { name: userName },
+  });
 
+  if (!existingCategory) {
+    return NextResponse.json(
+      { error: `Category '${category}' not found` },
+      { status: 400 }
+    );
+  }
+  
+  if (!existingUser) {
+    return NextResponse.json(
+      { error: `User '${userName}' not found` },
+      { status: 400 }
+    );
+  }
+  
+
+  // Create a new post and connect it to the existing user and category
   const result = await prisma.post.create({
     data: {
       title,
@@ -22,8 +39,8 @@ export async function POST(request: Request) {
       imageData,
       published: true,
       author: {
-        create: {
-          name: "Temisan",
+        connect: {
+          id: existingUser.id,
         },
       },
       category: {
@@ -33,5 +50,6 @@ export async function POST(request: Request) {
       },
     },
   });
-  return NextResponse.json({result});
+
+  return NextResponse.json({ result });
 }

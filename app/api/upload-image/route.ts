@@ -7,8 +7,9 @@ export async function POST(req: Request) {
     const image = formData.get("image") as unknown as File;
     const imageUrl = await uploadImage(image, "nextjs-imagegallery");
 
+    console.log("worked..."); // Move this line before the return statement
+
     return NextResponse.json({ imageUrl }, { status: 200 });
-    console.log("worked...");
   } catch (error) {
     console.error("Error uploading image", error);
     return NextResponse.json(

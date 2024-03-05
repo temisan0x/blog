@@ -6,7 +6,6 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 import initFullProps from "@/types/initFullProps";
-import { SingleImageDropzone } from "./SingleImageDropZone";
 import CreateCategories from "./CreateCategories";
 import styles from "@/app/page.module.css";
 import Link from "next/link";
@@ -17,13 +16,11 @@ interface Category {
 }
 
 interface CreatePostProps {
-  file: File | undefined;
   loading: boolean;
   setLoading: any;
-  handleSubmit: (imageUrl: string | undefined) => Promise<void>;
   title: string;
   content: string;
-  setFile: (file: File | undefined) => void;
+  onChangeHandler: any;
   setContent: (content: string) => void;
   handleTitleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleContentChange: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
@@ -37,8 +34,7 @@ interface CreatePostProps {
 const CreatePost = ({
   title,
   content,
-  image,
-  setImage,
+  onChangeHandler,
   handleTitleChange,
   setContent,
   categories,
@@ -77,7 +73,7 @@ const CreatePost = ({
 
   return (
     <form
-      onSubmit={(e) => handleCombinedSubmit(e)}
+      onSubmit={handleCombinedSubmit}
       className="max-w-md mx-auto mt-6"
     >
       <div>
@@ -110,14 +106,7 @@ const CreatePost = ({
           <label htmlFor="image" className="block text-gray-700 font-bold mb-2">
             Image
           </label>
-          <SingleImageDropzone
-            width={200}
-            height={200}
-            value={image}
-            onChange={(image) => {
-              setImage(image);
-            }}
-          />
+          <input type="file" onChange={onChangeHandler} required/>
         </div>
         <div className="flex">
           <div className="tagscats flex flex-col lg:flex-row sm:flex-col md:flex-col event-content blog-card items-center justify-between">
