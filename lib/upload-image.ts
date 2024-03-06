@@ -15,7 +15,7 @@ export const uploadImage = async (file: File, folder: string) => {
             if (err) {
               reject(err.message);
             }
-            return resolve(result);
+            return resolve(result?.secure_url);
           }
         )
         .end(bytes);

@@ -1,16 +1,15 @@
-'use client'
-
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import styles from "@/app/page.module.css";
 import DeletePostButton from "./DeletePostBtn";
+import axios from "axios";
 
 interface PostProps {
   id: string;
   title: string;
   content: string | null;
   authorName: string | null;
-  imageData: any;
+  imageData: string | undefined | { url: string };
 }
 
 const Post: React.FC<PostProps> = ({
@@ -20,16 +19,26 @@ const Post: React.FC<PostProps> = ({
   authorName,
   imageData,
 }) => {
-  let imageUrl = "";
+  const [imageUrl, setImageUrl] = useState<string | null>(null);
 
-  if (typeof imageData === "string") {
-    // If imageData is already a string (URL or path), use it directly
-    imageUrl = imageData;
-  } else if (typeof imageData === "object" && imageData !== null) {
-    // If imageData is an object, extract the URL from it
-    imageUrl = imageData.url; // Replace 'url' with the correct property name
-  }
-  
+  useEffect(() => {
+    const fetchImage = async (url: string) => {
+      try {
+        const response = await axios.get(url, { responseType: 'arraybuffer' });
+        const blob = new Blob([response.data]);
+        setImageUrl(URL.createObjectURL(blob));
+      } catch (error) {
+        console.error("Error fetching image:", error);
+        // Handle the error, e.g., provide a fallback image URL
+        setImageUrl("fallback-image-url");
+      }
+    };
+
+    if (imageData && typeof imageData === "object" && 'url' in imageData) {
+      fetchImage(imageData.url);
+    }
+  }, [imageData]);
+
   return (
     <div className={`border border-black mt-4 mx-auto p-5 ${styles.postContainer}`}>
       <h4 className="text-lg font-semibold">{title}</h4>

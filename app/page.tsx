@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import React, { useEffect, useState } from "react";
 import Post from "./components/Post";
@@ -20,7 +20,7 @@ export default function Home() {
     };
 
     fetchPosts();
-  }, []); 
+  }, []);
   return (
     <main className={`mx-auto text-center mt-[20px] text-white ${styles.main}`}>
       <h1 className="text-[50px]">Welcome to movie world!</h1>
@@ -28,8 +28,8 @@ export default function Home() {
         Add Movie
       </Link>
       <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque et
-        harum nemo, expedita perferendis autem praesentium repellendus asperiores
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque et harum
+        nemo, expedita perferendis autem praesentium repellendus asperiores
         impedit corporis! Quae pariatur maxime vitae tenetur dolor consequuntur
         assumenda similique odio.
       </h1>
@@ -39,7 +39,7 @@ export default function Home() {
           id={post.id}
           title={post.title}
           content={post.content}
-          imageData={post.imageData ? post.imageData.url : ""}
+          imageData={{ url: post.imageData }} // Ensure it's passed as an object
           authorName={post.author?.name ?? null}
         />
       ))}

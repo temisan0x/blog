@@ -6,8 +6,10 @@ const nextConfig = {
       "lh3.googleusercontent.com",
       "avatars.githubusercontent.com",
       "files.edgestore.dev",
-      "cloudinary.com",
+      "res.cloudinary.com",
     ],
+    loader: "cloudinary",
+    path: "https://res.cloudinary.com/dgi0pwcxz/image/upload/", // Replace with your Cloudinary URL prefix
   },
   experimental: {
     appDir: true,
