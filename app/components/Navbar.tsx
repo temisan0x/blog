@@ -22,30 +22,26 @@ const Navbar: React.FC = () => {
 
   const fetchUsername = useCallback(async () => {
     try {
-      if (session?.user?.email) {
-        const response = await axios.get(
-          `/api/usernames?userId=${session?.user.email}`
-        );
-        if (response.status === 400) {
-          console.log("User not found. Redirect");
-        } else {
-          const { data } = response;
-          setUsernameData(data?.username);
-          console.log("checking user name...", data?.username);
-        }
+      if (session) {
+        const response = await axios.get("/api/user-email", {
+          params: { userId: session.user.id }, // Use 'params' instead of 'data'
+        });
+        console.log(response.data);
+        setUsernameData(response.data.email);
       }
-    } catch (error) {}
+    } catch (error) {
+      console.error("Error fetching username:", error);
+    }
   }, [session]);
+  
 
   useEffect(() => {
-    console.log("Nav effect running...");
     fetchUsername();
   }, [fetchUsername]);
 
   const toggleMenu = () => {
-    setIsMenuOpen(!isMenuOpen);
+    setIsMenuOpen((prevState) => !prevState);
   };
-
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
@@ -58,17 +54,10 @@ const Navbar: React.FC = () => {
     }
   };
 
-  const handleDropdownToggle = (isOpen: boolean) => {
-    setIsDropdownOpen(isOpen);
-  };
-
   const handleSignOut = async () => {
     await signOut();
     router.push("/");
   };
-
-  const isAdmin = session?.user?.email === "temycodes@gmail.com";
-  console.log(isAdmin);
 
   return (
     <nav className="bg-gray-900 nav-font w-full fixed top-0 z-50 border-b border-gray-800 bg-bg/75 ">

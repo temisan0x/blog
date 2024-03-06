@@ -48,6 +48,7 @@ const authOptions = {
       },
     }),
   ],
+  secret:'',
   callbacks: {
     session: async ({ token, session }: { token: any; session: Session }) => {
       if (token?.sub) {

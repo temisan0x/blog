@@ -1,6 +1,5 @@
 import { Metadata } from "next";
 import "@/app/global.css";
-import { EdgeStoreProvider } from "@/lib/edgestore";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import NextAuthProvider from './components/NextAuthProvider';

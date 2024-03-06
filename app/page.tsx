@@ -1,40 +1,48 @@
-import prisma from "@/lib/prisma";
+'use client'
+
+import React, { useEffect, useState } from "react";
 import Post from "./components/Post";
 import Link from "next/link";
 import styles from "@/app/page.module.css";
+import axios from "axios";
 
-// async function getPosts() {
-//   const posts = await prisma.post.findMany({
-//     where: { published: true },
-//     include: {
-//       author: {
-//         select: { name: true },
-//       },
-//     },
-//   });
-//   return posts;
-// }
+export default function Home() {
+  const [posts, setPosts] = useState([]);
 
-export default async function Home() {
-  // const posts = await getPosts();
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get("/api/posts");
+        setPosts(response.data.posts);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    };
+
+    fetchPosts();
+  }, []); 
   return (
-    <main className={`mx-auto text-center ${styles.main}`}>
+    <main className={`mx-auto text-center mt-[20px] text-white ${styles.main}`}>
       <h1 className="text-[50px]">Welcome to movie world!</h1>
       <Link href={"/add-post"} className=" my-10">
         Add Movie
       </Link>
-      {/* {posts.map((post) => {
-        return (
-          <Post
-            key={post.id}
-            id={post.id}
-            title={post.title}
-            content={post.content}
-            imageData={post.imageData}
-            authorName={post.author?.name ?? null}
-          />
-        );
-      })} */}
+      <h1>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque et
+        harum nemo, expedita perferendis autem praesentium repellendus asperiores
+        impedit corporis! Quae pariatur maxime vitae tenetur dolor consequuntur
+        assumenda similique odio.
+      </h1>
+      {posts.map((post: any) => (
+        <Post
+          key={post.id}
+          id={post.id}
+          title={post.title}
+          content={post.content}
+          imageData={post.imageData ? post.imageData.url : ""}
+          authorName={post.author?.name ?? null}
+        />
+      ))}
     </main>
   );
 }
