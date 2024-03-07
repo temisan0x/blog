@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 body {
-    background: #000;
+    background:#F5F5F4;
     scroll-behavior:smooth;
 }
 
@@ -23,7 +23,9 @@ body {
   h6 {
     font-family: "Schibsted Grotesk", sans-serif;
     line-height: 1.2 !important;
+    color: #4F4F4F;
   }
+  
   
   h5 {
     font-weight: 500;
@@ -72,6 +74,11 @@ body {
   .post-content-container ul,
   ol {
     list-style: circle !important;
+  }
+
+  .sub-text {
+    font-size: 17px !important;
+
   }
   
   .blog-title {

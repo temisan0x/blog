@@ -60,19 +60,19 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gray-900 nav-font w-full fixed top-0 z-50 border-b border-gray-800 bg-bg/75 ">
+    <nav className="bg-[#F5F5F4] nav-font w-full fixed top-0 z-50 border-b border-gray-300 bg-bg/75 ">
       <div className="mx-auto nav">
-        <div className="flex items-center justify-between h-20 w-full">
+        <div className="flex items-center justify-between h-16 w-full">
           <div className="flex w-full">
             <div className="flex-shrink-0 mx-5">
-              <Link href="/" className="text-white relative text-2xl" passHref>
+              {/* <Link href="/" className="text-white relative text-2xl" passHref>
                 <Image
                   src={NavbarImg}
                   alt={"temycodes"}
                   width={100}
                   height={100}
                 />
-              </Link>
+              </Link> */} Temisan0X
             </div>
             <div className="hidden lg:flex justify-end mr-10 w-full items-center">
               <div className="flex space-x-4">
@@ -155,7 +155,7 @@ const Navbar: React.FC = () => {
             <button
               type="button"
               onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white  focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out"
+              className="inline-flex items-center justify-center p-2 rounded-md text-[#4F4F4F] hover:text-[#4F4F4F]  focus:outline-none focus:bg-[#4F4F4F] focus:text-white transition duration-150 ease-in-out"
               aria-label="Menu"
               aria-expanded={isMenuOpen}
             >

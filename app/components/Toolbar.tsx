@@ -11,7 +11,7 @@ export function Toolbar({ editor }: Props) {
     return null;
   }
 
-  return (
+  return ( 
     <div className="border border-input bg-transparent rounded-br-lg">
       {/* Example toolbar with icons */}
       <button onClick={() => editor.chain().focus().toggleBold().run()}>

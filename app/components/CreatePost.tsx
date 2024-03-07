@@ -73,7 +73,7 @@ const CreatePost = ({
   return (
     <form
       onSubmit={handleCombinedSubmit}
-      className="max-w-md mx-auto mt-6 bg-white"
+      className="max-w-md mx-auto mt-6"
     >
       <div>
         <label htmlFor="title" className="block text-gray-700 font-bold mb-2">

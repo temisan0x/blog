@@ -6,6 +6,15 @@ import Link from "next/link";
 import styles from "@/app/page.module.css";
 import axios from "axios";
 
+interface PostProps {
+  author: any;
+  id: string;
+  title: string;
+  content: string | "";
+  authorName: string | null;
+  imageData: string | undefined | { url: string } | any;
+}
+
 export default function Home() {
   const [posts, setPosts] = useState([]);
 
@@ -21,28 +30,42 @@ export default function Home() {
 
     fetchPosts();
   }, []);
+
+
+  const truncateHTMLContent: (html: string, maxLength: number) => string = (
+    html: string,
+    maxLength: number
+  ): string => {
+    if (!html) {
+      return "";
+    }
+  
+    const truncatedHTML = html.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
+  
+    if (truncatedHTML.length <= maxLength) {
+      return html;
+    }
+  
+    const truncatedText = truncatedHTML.slice(0, maxLength) + "...";
+    return truncatedText;
+  };
+  
   return (
-    <main className={`mx-auto text-center mt-[20px] text-white ${styles.main}`}>
-      <h1 className="text-[50px]">Welcome to movie world!</h1>
-      <Link href={"/add-post"} className=" my-10">
-        Add Movie
-      </Link>
-      <h1>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque et harum
-        nemo, expedita perferendis autem praesentium repellendus asperiores
-        impedit corporis! Quae pariatur maxime vitae tenetur dolor consequuntur
-        assumenda similique odio.
-      </h1>
-      {posts.map((post: any) => (
-        <Post
-          key={post.id}
-          id={post.id}
-          title={post.title}
-          content={post.content}
-          imageData={{ url: post.imageData }} // Ensure it's passed as an object
-          authorName={post.author?.name ?? null}
-        />
-      ))}
+    <main className={`mx-auto mt-[20px] ${styles.main}`}>
+      <h1 className="text-[15px]">Welcome Home!</h1>
+      {posts.map((post: PostProps) => {
+        return (
+          <Post
+            key={post.id}
+            id={post.id}
+            title={post.title}
+            content={post.content}
+            imageData={{ url: post.imageData }} // Ensure it's passed as an object
+            authorName={post.author?.name ?? null}
+            truncatedContent={truncateHTMLContent}
+          />
+        );
+      })}
     </main>
   );
 }
