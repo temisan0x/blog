@@ -5,6 +5,7 @@ import React, { useEffect, useState } from "react";
 import styles from "@/app/page.module.css";
 import DeletePostButton from "./DeletePostBtn";
 import axios from "axios";
+import Link from "next/link";
 
 interface PostProps {
   id: string;
@@ -13,6 +14,7 @@ interface PostProps {
   imageData: string | undefined | { url: string };
   truncatedContent: (html: string, maxLength: number) => string;
   content: string | "";
+  slug: string
 }
 
 const Post: React.FC<PostProps> = ({
@@ -22,6 +24,7 @@ const Post: React.FC<PostProps> = ({
   imageData,
   truncatedContent,
   content,
+  slug,
 }) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
@@ -48,10 +51,12 @@ const Post: React.FC<PostProps> = ({
   return (
     <div className={`mt-4 ${styles.postContainer}`}>
       <h3 className="underline underline-offset-4">{title}</h3>
-      <div
+    <Link  href={`/blog/${slug}`}>
+    <div
         dangerouslySetInnerHTML={{ __html: truncatedContentText }}
         className="text-sm mb-2 mt-1 sub-text"
       />
+    </Link>
       {/* <p className="text-gray-500">Author: {authorName}</p> */}
       {/* <div className={`mx-auto ${styles.imageContainer}`}>
         {imageUrl && (

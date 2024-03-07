@@ -13,6 +13,7 @@ interface PostProps {
   content: string | "";
   authorName: string | null;
   imageData: string | undefined | { url: string } | any;
+  slug: string
 }
 
 export default function Home() {
@@ -63,6 +64,7 @@ export default function Home() {
             imageData={{ url: post.imageData }} // Ensure it's passed as an object
             authorName={post.author?.name ?? null}
             truncatedContent={truncateHTMLContent}
+            slug={post.slug}
           />
         );
       })}
