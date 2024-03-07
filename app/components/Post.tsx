@@ -43,13 +43,16 @@ const Post: React.FC<PostProps> = ({
     }
   }, [imageData]);
 
-  const truncatedContentText = truncatedContent(content, 100);
+  const truncatedContentText = truncatedContent(content, 60);
 
   return (
     <div className={`mt-4 ${styles.postContainer}`}>
-      <h3 className="text-md font-bold text-gray-700">{title}</h3>
-      <div className="sub-text" dangerouslySetInnerHTML={{ __html: truncatedContentText }} />
-      <p className="text-gray-500">Author: {authorName}</p>
+      <h3 className="underline underline-offset-4">{title}</h3>
+      <div
+        dangerouslySetInnerHTML={{ __html: truncatedContentText }}
+        className="text-sm mb-2 mt-1 sub-text"
+      />
+      {/* <p className="text-gray-500">Author: {authorName}</p> */}
       {/* <div className={`mx-auto ${styles.imageContainer}`}>
         {imageUrl && (
           <Image
@@ -61,7 +64,7 @@ const Post: React.FC<PostProps> = ({
           />
         )}
       </div> */}
-      <DeletePostButton postId={id} />
+      {/* <DeletePostButton postId={id} /> */}
     </div>
   );
 };

@@ -51,7 +51,7 @@ export default function Home() {
   };
   
   return (
-    <main className={`mx-auto mt-[20px] ${styles.main}`}>
+    <div className={`px-20 mt-[100px] ${styles.main} `}>
       <h1 className="text-[15px]">Welcome Home!</h1>
       {posts.map((post: PostProps) => {
         return (
@@ -59,13 +59,13 @@ export default function Home() {
             key={post.id}
             id={post.id}
             title={post.title}
-            content={post.content}
+             content={post.content}
             imageData={{ url: post.imageData }} // Ensure it's passed as an object
             authorName={post.author?.name ?? null}
             truncatedContent={truncateHTMLContent}
           />
         );
       })}
-    </main>
+    </div>
   );
 }

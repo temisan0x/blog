@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React from "react";
 import Image from "next/image";
 import NavbarImg from "@/public/uploads/navlogo.png";
 import Link from "next/link";
@@ -9,10 +9,8 @@ import styles from "@/app/page.module.css";
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
-  //   <><script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></><script noModule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script></>
-
   return (
-    <footer className={`${styles.footer}`}>
+    <footer className={`${styles.footer} flex flex-wrap justify-center px-6 py-12 text-white sm:px-8`}>
       <div className="flex justify-center flex-col items-center">
         <Link href="/" className="text-white text-2xl mb-2" passHref>
           <Image src={NavbarImg} alt={"temycodes"} width={80} height={100} />

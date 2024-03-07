@@ -12,36 +12,25 @@ interface HandleChangeProps {
 }
 
 const Tiptap = ({ content, onChange }: HandleChangeProps) => {
-    const editor = useEditor({
-      extensions: [
-        StarterKit.configure({}),
-        Heading.configure({
-          HTMLAttributes: {
-            class: "text-xl font-bold",
-            levels: [2],
-          },
-        }),
-      ],
-      content: content,
-      editorProps: {
-        attributes: {
-          class:
-            "rounded-md border min-h-[150px] border-input bg-inherit", // Remove "disabled: cursor-not-allowed"
-        },
+  const editor = useEditor({
+    extensions: [StarterKit.configure({})],
+    content: content,
+    editorProps: {
+      attributes: {
+        class: "rounded-md border min-h-[150px] border-input bg-inherit", // Remove "disabled: cursor-not-allowed"
       },
-      onUpdate({ editor }) {
-        onChange(editor.getHTML());
-        console.log(editor.getHTML());
-      },
-    });
-    return (
-      <div className="flex flex-col justify-stretch min-h-[250px]">
-        <Toolbar editor={editor} />
-        <EditorContent editor={editor} />
-      </div>
-    );
-  };
-  
-  export default Tiptap;
-  
+    },
+    onUpdate({ editor }) {
+      onChange(editor.getHTML());
+      console.log(editor.getHTML());
+    },
+  });
+  return (
+    <div className="flex flex-col justify-stretch min-h-[250px]">
+      <Toolbar editor={editor} />
+      <EditorContent editor={editor} />
+    </div>
+  );
+};
 
+export default Tiptap;

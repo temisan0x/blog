@@ -2,7 +2,7 @@ import { Metadata } from "next";
 import "@/app/global.css";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
-import NextAuthProvider from './components/NextAuthProvider';
+import NextAuthProvider from "./components/NextAuthProvider";
 
 export const metadata: Metadata = {
   title: "Next.js",
@@ -17,13 +17,13 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
-      <NextAuthProvider>
-          <main>
-            <div className="container mx-auto max-w-full min-h-screen">
+        <NextAuthProvider>
+          <main className="flex flex-col flex-1">
+            <div className="relative flex flex-wrap items-start justify-start">
               <Navbar />
               {children}
-              <Footer />
             </div>
+            <Footer />
           </main>
         </NextAuthProvider>
       </body>
