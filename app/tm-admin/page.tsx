@@ -105,9 +105,8 @@ export default function AddPost() {
 
   return (
    <>
-     <main className={styles.main}>
+     <main className={`px-20 mt-[100px] ${styles.main}`}>
       <Link href={"/"}>View feed</Link>
-      <h1>Add New Movie</h1>
       {success && <p className="text-green-500">Post submitted successfully!</p>}
       <CreatePost
         loading={loading}

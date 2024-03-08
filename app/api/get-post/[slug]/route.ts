@@ -1,18 +1,18 @@
-// api/posts/[slug].ts
-
 import prisma from "@/prisma";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-// Define the API endpoint handler
-export async function GET(req: any, res: any) {
-  if (req.method !== "GET") {
-    return NextResponse.json({ error: "Method not allowed" }, { status: 405 });
-  }
-
-  const { slug } = req;
-
+export async function GET(req: NextRequest, res: NextResponse) {
   try {
-    // Find the post based on the provided slug
+   
+    // const queryParams = req.nextUrl.searchParams;
+    // const slug = queryParams.get('slug');
+    const slug = req.url.split("get-post/")[1];
+
+    if (!slug) {
+      return NextResponse.json({ error: "Slug must not be null" }, { status: 400 });
+    }
+    console.log(slug);
+
     const post = await prisma.post.findFirst({
       where: { slug: slug },
     });

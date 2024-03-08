@@ -42,3 +42,6 @@ body {
     line-height: 1.2 !important;
   }
   
+  .content {
+    max-width: 1200px;
+  }

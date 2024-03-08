@@ -71,10 +71,7 @@ const CreatePost = ({
   }
 
   return (
-    <form
-      onSubmit={handleCombinedSubmit}
-      className="max-w-md mx-auto mt-6"
-    >
+    <form onSubmit={handleCombinedSubmit} className="max-w-md mx-auto mt-6">
       <div>
         <label htmlFor="title" className="block text-gray-700 font-bold mb-2">
           Title
@@ -88,7 +85,6 @@ const CreatePost = ({
           placeholder="Enter title"
         />
       </div>
-
       <div className="mt-4">
         <div>
           <label htmlFor="content" className="block mb-2 font-bold text-white">
