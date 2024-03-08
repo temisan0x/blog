@@ -18,12 +18,10 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
         <NextAuthProvider>
-          <main className="flex flex-col flex-1">
-            <div className="relative flex flex-wrap items-start justify-start">
+          <main className="container">
               <Navbar />
               {children}
-            </div>
-            <Footer />
+              <Footer />
           </main>
         </NextAuthProvider>
       </body>

@@ -3,9 +3,6 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(req: NextRequest, res: NextResponse) {
   try {
-   
-    // const queryParams = req.nextUrl.searchParams;
-    // const slug = queryParams.get('slug');
     const slug = req.url.split("get-post/")[1];
 
     if (!slug) {

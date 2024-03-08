@@ -1,10 +1,22 @@
 .imageContainer {
-   width: 20%;
+  max-width: 100%;
+  vertical-align: middle;
+  display: inline-block;
  }
 
  .postTitle {
   font-size: 40px;
   font-weight: 700;
+ }
+
+ .postHeader {
+  max-width: 42rem;
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: Polysans median, sans-serif;
+  font-size: 3rem;
+  font-weight: 600;
+  line-height: 1;
  }
  
  .postContainer {
@@ -14,7 +26,7 @@
  }
 
  .footer {
-   width: 100%;
+   width: 100vw;
    padding: 20px 50px;
    display: flex;
    justify-content: center;

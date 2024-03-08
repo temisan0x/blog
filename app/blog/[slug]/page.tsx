@@ -13,8 +13,8 @@ export default function FetchPost({ params }: { params: { slug: string } }) {
     const fetchPostData = async () => {
       try {
         const response = await axios.get(`/api/get-post/${params.slug}`);
-        console.log(response.config.url); 
-        const post = response.data.post; 
+        console.log(response.config.url);
+        const post = response.data.post;
         console.log(response);
         if (post) {
           setPostData({
@@ -33,12 +33,12 @@ export default function FetchPost({ params }: { params: { slug: string } }) {
   }, [params.slug]);
 
   return (
-    <div className="mt-40">
+    <div className="post-content-container">
       {postData ? (
         <>
-          <h1>{postData.title}</h1>
-          <p>{postData.content}</p>
-          <div className={`mx-auto ${styles.imageContainer}`}>
+          <div
+            className={`mx-auto ${styles.imageContainer} mt-40 usecase-media-wrap`}
+          >
             <Image
               src={postData.imageData}
               alt={`Image for ${postData.title}`}
@@ -47,6 +47,8 @@ export default function FetchPost({ params }: { params: { slug: string } }) {
               loading="lazy"
             />
           </div>
+          <h1 className={`${styles.postHeader}`}>{postData.title}</h1>
+          <div className="mb-40">{Parser(postData.content || "")}</div>
         </>
       ) : (
         <p>Loading...</p>

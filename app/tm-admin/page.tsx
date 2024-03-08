@@ -21,6 +21,8 @@ export default function AddPost() {
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
   const [success, setSuccess] = useState<boolean>(false);
+  const [posts, setPosts] = useState([]);
+
 
   const router = useRouter();
 
@@ -103,14 +105,26 @@ export default function AddPost() {
     }
   }, [success]);
 
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try {
+        const response = await axios.get("/api/posts");
+        setPosts(response.data.posts);
+      } catch (error) {
+        console.error("Error fetching posts:", error);
+      }
+    };
+
+    fetchPosts();
+  }, []);
+
   return (
     <>
       <main className={`flex flex-col max-w-md mx-auto mt-[70px]`}>
-        <Link href={"/"} className="flex items-center pt-5">
+        <Link href={"/view-feeds"} className="flex items-center pt-5">
           <TfiDirection size={20} />
           <p className="mx-1 hover:underline underline-offset-4 transition duration-700 ease-in-out"> View feed</p>
         </Link>
-
         {success && (
           <p className="text-green-500">Post submitted successfully!</p>
         )}
