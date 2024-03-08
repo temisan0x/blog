@@ -18,7 +18,7 @@ export default async function RootLayout({
     <html lang="en" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
         <NextAuthProvider>
-          <main className="container">
+          <main className="container-main">
               <Navbar />
               {children}
               <Footer />

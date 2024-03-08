@@ -5,9 +5,9 @@
 html,
 body {
   height: 100%;
-  margin:0;
-   padding:0;
-   width: 100;
+  margin: 0;
+  padding: 0;
+  width: 100;
 }
 
 body {
@@ -16,9 +16,9 @@ body {
   color: #252222;
 }
 
-.container {
-  min-height:100%;
-  position:relative;
+.container-main {
+  min-height: 100%;
+  position: relative;
   width: 100%;
 }
 
@@ -58,7 +58,7 @@ h6 {
   width: 90vw;
   max-width: 40rem;
 }
-
+/* 
 .post-content-container {
   max-width: 680px;
   overflow-wrap: break-word;
@@ -68,11 +68,11 @@ h6 {
   margin: 0 auto;
   width: 100%;
   margin: 40px;
-/* z-index: 50;
+  /* z-index: 50;
   text-align: center;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   display: flex;
   position: relative; */
-}
+/* Add these styles to your CSS file or in a style tag in your component */

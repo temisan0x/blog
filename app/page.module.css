@@ -2,6 +2,8 @@
   max-width: 100%;
   vertical-align: middle;
   display: inline-block;
+  margin-bottom: 20px;
+  margin-top: 10px;
  }
 
  .postTitle {
@@ -11,14 +13,22 @@
 
  .postHeader {
   max-width: 42rem;
-  margin-top: 0;
-  margin-bottom: 0;
+  margin-top: 20px;
   font-family: Polysans median, sans-serif;
   font-size: 3rem;
   font-weight: 600;
-  line-height: 1;
  }
  
+ .postContentContainer {
+  max-width: 680px;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+  word-break: break-word;
+  width: 100%;
+  margin: 40px auto;
+ }
+
  .postContainer {
    position: relative;
    margin-bottom: 20px;

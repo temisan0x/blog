@@ -33,11 +33,14 @@ export default function FetchPost({ params }: { params: { slug: string } }) {
   }, [params.slug]);
 
   return (
-    <div className="post-content-container">
+    <div
+      className={`${styles.postContentContainer} flex flex-col items-center justify-center min-h-screen`}
+    >
       {postData ? (
         <>
+          <h1 className={`${styles.postHeader}`}>{postData.title}</h1>
           <div
-            className={`mx-auto ${styles.imageContainer} mt-40 usecase-media-wrap`}
+            className={`mx-auto ${styles.imageContainer} usecase-media-wrap`}
           >
             <Image
               src={postData.imageData}
@@ -47,7 +50,6 @@ export default function FetchPost({ params }: { params: { slug: string } }) {
               loading="lazy"
             />
           </div>
-          <h1 className={`${styles.postHeader}`}>{postData.title}</h1>
           <div className="mb-40">{Parser(postData.content || "")}</div>
         </>
       ) : (

@@ -33,7 +33,6 @@ const Navbar: React.FC = () => {
       console.error("Error fetching username:", error);
     }
   }, [session]);
-  
 
   useEffect(() => {
     fetchUsername();
@@ -72,35 +71,36 @@ const Navbar: React.FC = () => {
                   width={100}
                   height={100}
                 />
-              </Link> */} Temisan0X
+              </Link> */}{" "}
+              Temisan0X
             </div>
             <div className="hidden lg:flex justify-end mr-10 w-full items-center">
               <div className="flex space-x-4">
                 <Link
                   passHref
                   href="/"
-                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-sm"
+                  className="hover:text-black px-3 py-2 rounded-md text-sm"
                 >
                   Home
                 </Link>
                 <Link
                   passHref
                   href="/blog"
-                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-sm"
+                  className="hover:text-black px-3 py-2 rounded-md text-sm"
                 >
                   Blog
                 </Link>
                 <Link
                   passHref
                   href="/bookmarks"
-                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-sm"
+                  className="hover:text-black px-3 py-2 rounded-md text-sm"
                 >
                   Bookmarks
                 </Link>
                 <Link
                   passHref
                   href="/temisan"
-                  className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-sm"
+                  className="hover:text-black px-3 py-2 rounded-md text-sm"
                 >
                   About
                 </Link>
@@ -137,7 +137,8 @@ const Navbar: React.FC = () => {
                 )} */}
                 <form
                   onSubmit={handleSearch}
-                  className="px-3 py-2 rounded-md text-sm border border-gray-700 text-white flex items-center"
+                  style={{ backgroundColor: 'transparent', outline: 'none' }}
+                  className="px-3 py-2 rounded-md text-sm border border-gray-700 flex items-center"
                 >
                   <BsSearch />
                   <input
@@ -145,7 +146,7 @@ const Navbar: React.FC = () => {
                     placeholder="Search"
                     value={searchQuery}
                     onChange={(e) => setSearchQuery(e.target.value)}
-                    className="bg-transparent ml-2 text-white"
+                    className="bg-transparent ml-2 outline-none"
                   />
                 </form>
               </div>
@@ -225,7 +226,8 @@ const Navbar: React.FC = () => {
           </Link>
           <form
             onSubmit={handleSearch}
-            className="px-3 py-2 rounded-md text-sm  border border-gray-700 text-white flex items-center w-full mb-3"
+            className="px-3 py-2 rounded-md text-sm border flex items-center w-full mb-3"
+            style={{ backgroundColor: "transparent", outline: "none" }}
           >
             <BsSearch />
             <input
@@ -233,9 +235,10 @@ const Navbar: React.FC = () => {
               placeholder="Search"
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="bg-transparent ml-2 text-white w-11/12"
+              className="ml-2 w-11/12 outline-none bg-transparent border-none"
             />
           </form>
+
           {/* {session ? (
             <>
               <Link
