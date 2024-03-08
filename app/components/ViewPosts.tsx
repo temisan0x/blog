@@ -55,7 +55,7 @@ const ViewPosts: React.FC<PostProps> = ({
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.5 }}
-      className={`mt-4 ${styles.postContainer}`}
+      className={`mt-4 ${styles.main} `}
     >
       <h3 className="underline underline-offset-4">{title}</h3>
       <Link href={`/tm-admin/${slug}`}>
@@ -70,13 +70,13 @@ const ViewPosts: React.FC<PostProps> = ({
       </Link>
 
       <p className="text-gray-500">Author: {authorName}</p>
-      <div className={`mx-auto ${styles.imageContainer}`}>
+      <div className={`mx-auto ${styles.imageContainer} usecase-media-wrap`}>
         {imageUrl && (
           <motion.img
             src={imageUrl}
             alt={`Image for ${title}`}
-            width={800}
-            height={600}
+            width={400}
+            height={400}
             loading="lazy"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -85,6 +85,7 @@ const ViewPosts: React.FC<PostProps> = ({
         )}
       </div>
       <DeletePostButton postId={id} />
+      <Link href={`/blog/${slug}`}>Edit...</Link>
     </motion.div>
   );
 };

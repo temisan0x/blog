@@ -1,21 +1,21 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import axios from "axios";
 import Image from "next/image";
 import styles from "@/app/page.module.css";
 import Parser from "html-react-parser";
 
-export default function FetchPost({ params }: { params: { slug: string } }) {
+const FetchPost = ({ params }: { params: { slug: string } }) => {
   const [postData, setPostData] = useState<any>(null);
 
   useEffect(() => {
     const fetchPostData = async () => {
       try {
         const response = await axios.get(`/api/get-post/${params.slug}`);
-        console.log(response.config.url);
         const post = response.data.post;
-        console.log(response);
+
         if (post) {
           setPostData({
             id: post.id,
@@ -33,13 +33,27 @@ export default function FetchPost({ params }: { params: { slug: string } }) {
   }, [params.slug]);
 
   return (
-    <div
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
       className={`${styles.postContentContainer} flex flex-col items-center justify-center min-h-screen`}
     >
       {postData ? (
         <>
-          <h1 className={`${styles.postHeader}`}>{postData.title}</h1>
-          <div
+          <motion.h1
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className={`${styles.postHeader}`}
+          >
+            {postData.title}
+          </motion.h1>
+          <motion.div
+            style={{ maxWidth: "100%" }}
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
             className={`mx-auto ${styles.imageContainer} usecase-media-wrap`}
           >
             <Image
@@ -49,12 +63,21 @@ export default function FetchPost({ params }: { params: { slug: string } }) {
               height={600}
               loading="lazy"
             />
-          </div>
-          <div className="mb-40">{Parser(postData.content || "")}</div>
+          </motion.div>
+          <motion.div
+            initial={{ y: -20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="mb-40"
+          >
+            {Parser(postData.content || "")}
+          </motion.div>
         </>
       ) : (
         <p>Loading...</p>
       )}
-    </div>
+    </motion.div>
   );
-}
+};
+
+export default FetchPost;

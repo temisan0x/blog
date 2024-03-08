@@ -64,15 +64,14 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16 w-full">
           <div className="flex w-full">
             <div className="flex-shrink-0 mx-5">
-              {/* <Link href="/" className="text-white relative text-2xl" passHref>
+              <Link href="/" className="text-white relative text-2xl" passHref>
                 <Image
                   src={NavbarImg}
                   alt={"temycodes"}
                   width={100}
                   height={100}
                 />
-              </Link> */}{" "}
-              Temisan0X
+              </Link>
             </div>
             <div className="hidden lg:flex justify-end mr-10 w-full items-center">
               <div className="flex space-x-4">
@@ -82,20 +81,6 @@ const Navbar: React.FC = () => {
                   className="hover:text-black px-3 py-2 rounded-md text-sm"
                 >
                   Home
-                </Link>
-                <Link
-                  passHref
-                  href="/blog"
-                  className="hover:text-black px-3 py-2 rounded-md text-sm"
-                >
-                  Blog
-                </Link>
-                <Link
-                  passHref
-                  href="/bookmarks"
-                  className="hover:text-black px-3 py-2 rounded-md text-sm"
-                >
-                  Bookmarks
                 </Link>
                 <Link
                   passHref
@@ -138,7 +123,7 @@ const Navbar: React.FC = () => {
                 <form
                   onSubmit={handleSearch}
                   style={{ backgroundColor: 'transparent', outline: 'none' }}
-                  className="px-3 py-2 rounded-md text-sm border border-gray-700 flex items-center"
+                  className="px-3 py-2 rounded-md text-sm border border-gray-400 flex items-center w-full"
                 >
                   <BsSearch />
                   <input
@@ -203,20 +188,7 @@ const Navbar: React.FC = () => {
           >
             Home
           </Link>
-          <Link
-            passHref
-            href="/blog"
-            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm "
-          >
-            Blog
-          </Link>
-          <Link
-            passHref
-            href="/bookmarks"
-            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm "
-          >
-            Bookmarks
-          </Link>
+        
           <Link
             passHref
             href="/temisan"

@@ -2,7 +2,7 @@
 
 import React from "react";
 import Image from "next/image";
-import NavbarImg from "@/public/uploads/navlogo.png";
+import NavbarImg from "@/public/uploads/author.png";
 import Link from "next/link";
 import styles from "@/app/page.module.css";
 

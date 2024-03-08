@@ -45,7 +45,7 @@ const AboutMe: React.FC = () => {
           style={{ marginTop: "150px" }}
         >
           <motion.div
-            className="rounded-circle overflow-hidden border-4 border-gray-600 shadow-md"
+            className="rounded-circle overflow-hidden border-4 border-gray-700 shadow-md"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
@@ -54,12 +54,11 @@ const AboutMe: React.FC = () => {
           </motion.div>
           <div className="flex items-center">
             <h1
-              className="font-bold mt-4 text-gray-300 blog-title"
-              style={{ fontSize: "20px" }}
+              className="mt-4 blog-title"
             >
               Hello, I&apos;m{" "}
               <Link
-                href="https://github.com/0xtemisan"
+                href="https://github.com/temisan0x"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline"
@@ -69,21 +68,19 @@ const AboutMe: React.FC = () => {
             </h1>
           </div>
           <p
-            className="text-gray-400 mt-2 text-center"
-            style={{ fontSize: "16px" }}
+            className="mt-2 text-center"
           >
             A passionate MERN stack developer based in Jos, Nigeria.
           </p>
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-6 text-center">
           <h2
-            className="text-3xl mt-2 font-bold text-gray-300"
-            style={{ fontSize: "20px" }}
+            className="text-3xl"
           >
             My Expertise
           </h2>
-          <div className="flex justify-between mt-4 text-gray-400 about mx-auto"
+          <div className="flex justify-between mt-2 about mx-auto"
             style={{ fontSize: "17px" }}
           >
             <div className="mx-4">
@@ -101,14 +98,13 @@ const AboutMe: React.FC = () => {
           </div>
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-6 text-center">
           <h2
-            className="text-xl font-bold text-gray-300 mt-3"
-            style={{ fontSize: "20px" }}
+            className="mt-3 text-3xl"
           >
             Tech Blogging
           </h2>
-          <p className="text-gray-400 mt-2" style={{ fontSize: "16px" }}>
+          <p className="w-[50%] mx-auto mt-2" style={{ fontSize: "16px" }}>
             I&apos;m also a dedicated tech blogger, sharing insights, tutorials,
             and the latest trends in the world of web development and
             programming. Through my blog, I aim to contribute to the developer
@@ -117,10 +113,9 @@ const AboutMe: React.FC = () => {
           </p>
         </div>
 
-        <div className="mt-10 text-center">
+        <div className="mt-6 text-center">
           <h2
-            className="text-xl font-bold text-gray-300 mt-3"
-            style={{ fontSize: "20px" }}
+            className="text-3xl mt-4"
           >
             Connect with Me
           </h2>

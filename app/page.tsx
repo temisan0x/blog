@@ -13,7 +13,7 @@ interface PostProps {
   content: string | "";
   authorName: string | null;
   imageData: string | undefined | { url: string } | any;
-  slug: string
+  slug: string;
 }
 
 export default function Home() {
@@ -32,7 +32,6 @@ export default function Home() {
     fetchPosts();
   }, []);
 
-
   const truncateHTMLContent: (html: string, maxLength: number) => string = (
     html: string,
     maxLength: number
@@ -40,28 +39,28 @@ export default function Home() {
     if (!html) {
       return "";
     }
-  
+
     const truncatedHTML = html.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
-  
+
     if (truncatedHTML.length <= maxLength) {
       return html;
     }
-  
+
     const truncatedText = truncatedHTML.slice(0, maxLength) + "...";
     return truncatedText;
   };
-  
+
   return (
-    <div className={`px-20 mt-[100px] ${styles.main} `}>
-      <h1 className="text-[15px]">Welcome Home!</h1>
+    <div className={`${styles.postContentContainer}`}>
+      <h1 className="text-[15px] mt-40 mb-5">Welcome Home!</h1>
       {posts.map((post: PostProps) => {
         return (
           <Post
             key={post.id}
             id={post.id}
             title={post.title}
-             content={post.content}
-            imageData={{ url: post.imageData }} // Ensure it's passed as an object
+            content={post.content}
+            imageData={{ url: post.imageData }}
             authorName={post.author?.name ?? null}
             truncatedContent={truncateHTMLContent}
             slug={post.slug}

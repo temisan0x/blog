@@ -47,7 +47,7 @@ const Post: React.FC<PostProps> = ({
     }
   }, [imageData]);
 
-  const truncatedContentText = truncatedContent(content, 60);
+  const truncatedContentText = truncatedContent(content, 250);
 
   return (
     <motion.div
@@ -60,7 +60,7 @@ const Post: React.FC<PostProps> = ({
       <h3 className="underline underline-offset-4">{title}</h3>
       <Link href={`/blog/${slug}`}>
         <motion.div
-          whileHover={{ scale: 1.05 }}
+          whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.3 }}
           className="text-sm mb-2 mt-1 hover:underline underline-offset-4"
