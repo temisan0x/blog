@@ -6,6 +6,7 @@ import Link from "next/link";
 import axios from "axios";
 import { useRouter } from "next/navigation";
 import CreatePost from "../components/CreatePost";
+import { TfiDirection } from "react-icons/tfi";
 
 interface Category {
   _id: string;
@@ -15,11 +16,11 @@ interface Category {
 export default function AddPost() {
   const [title, setTitle] = useState<string>("");
   const [content, setContent] = useState<string>("");
-  const [image, setImage] = useState<File| null >(null);
+  const [image, setImage] = useState<File | null>(null);
   const [loading, setLoading] = useState(false);
   const [categories, setCategories] = useState<Category[]>([]);
   const [selectedCategory, setSelectedCategory] = useState<string>("");
-  const [success, setSuccess] = useState<boolean>(false); 
+  const [success, setSuccess] = useState<boolean>(false);
 
   const router = useRouter();
 
@@ -53,7 +54,7 @@ export default function AddPost() {
         setContent("");
         setImage(null);
         setSelectedCategory("");
-        setSuccess(true); 
+        setSuccess(true);
       } else {
         console.error("Failed to submit data:", await response.data);
       }
@@ -70,10 +71,10 @@ export default function AddPost() {
       const formData = new FormData();
       if (image) {
         formData.append("image", image);
-        
+
         const uploadResponse = await axios.post("/api/upload-image", formData);
         const imageUrl = uploadResponse.data.imageUrl;
-        
+
         setLoading(false);
         await handleSubmit(imageUrl);
         router.refresh();
@@ -86,44 +87,49 @@ export default function AddPost() {
     }
   };
 
-    // Function to reset success state after a delay
-    const resetSuccess = () => {
-      setSuccess(false);
-    };
-  
-    // useEffect to reset success state after 3 seconds
-    useEffect(() => {
-      if (success) {
-        const timer = setTimeout(() => {
-          resetSuccess();
-        }, 3000);
-  
-        return () => clearTimeout(timer);
-      }
-    }, [success]);
-  
+  // Function to reset success state after a delay
+  const resetSuccess = () => {
+    setSuccess(false);
+  };
+
+  // useEffect to reset success state after 3 seconds
+  useEffect(() => {
+    if (success) {
+      const timer = setTimeout(() => {
+        resetSuccess();
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    }
+  }, [success]);
 
   return (
-   <>
-     <main className={`px-20 mt-[100px] ${styles.main}`}>
-      <Link href={"/"}>View feed</Link>
-      {success && <p className="text-green-500">Post submitted successfully!</p>}
-      <CreatePost
-        loading={loading}
-        title={title}
-        content={content}
-        onChangeHandler={onChangeHandler}
-        setContent={setContent}
-        handleTitleChange={handleTitleChange}
-        handleContentChange={handleContentChange}
-        handleCombinedSubmit={(e) => handleCombinedSubmit(e)}
-        selectedCategory={selectedCategory}
-        setSelectedCategory={setSelectedCategory}
-        categories={categories}
-        setCategories={setCategories}
-        setLoading={setLoading}
-      />
-    </main>
-   </>
+    <>
+      <main className={`flex flex-col max-w-md mx-auto mt-[70px]`}>
+        <Link href={"/"} className="flex items-center pt-5">
+          <TfiDirection size={20} />
+          <p className="mx-1 hover:underline underline-offset-4 transition duration-700 ease-in-out"> View feed</p>
+        </Link>
+
+        {success && (
+          <p className="text-green-500">Post submitted successfully!</p>
+        )}
+        <CreatePost
+          loading={loading}
+          title={title}
+          content={content}
+          onChangeHandler={onChangeHandler}
+          setContent={setContent}
+          handleTitleChange={handleTitleChange}
+          handleContentChange={handleContentChange}
+          handleCombinedSubmit={(e) => handleCombinedSubmit(e)}
+          selectedCategory={selectedCategory}
+          setSelectedCategory={setSelectedCategory}
+          categories={categories}
+          setCategories={setCategories}
+          setLoading={setLoading}
+        />
+      </main>
+    </>
   );
 }

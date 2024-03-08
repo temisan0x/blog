@@ -41,9 +41,6 @@ const CreateCategories: React.FC<CreateCategoriesProps> = ({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <label htmlFor="category" className="block font-bold mb-2 text-white">
-        Category
-      </label>
       <div className="flex flex-col">
         <input
           type="text"
