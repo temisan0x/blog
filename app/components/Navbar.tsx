@@ -1,14 +1,14 @@
-'use client'
+"use client";
 
 import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import NavbarImg from "@/public/uploads/navlogo.png";
-import { motion, AnimatePresence } from "framer-motion"
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
- 
+
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
   };
@@ -43,17 +43,17 @@ const Navbar: React.FC = () => {
                 </Link>
                 <Link
                   passHref
-                  href="/blog"
-                  className="hover:text-black px-3 py-2 rounded-md text-sm"
-                >
-                  Blog
-                </Link>
-                <Link
-                  passHref
                   href="/temisan"
                   className="hover:text-black px-3 py-2 rounded-md text-sm"
                 >
                   About
+                </Link>
+                <Link
+                  passHref
+                  href="mailto:contact@temycodes.com"
+                  className="block hover:text-white hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm transition-all"
+                >
+                  Hire Me
                 </Link>
               </div>
             </div>
@@ -125,6 +125,13 @@ const Navbar: React.FC = () => {
                 className="block hover:text-white hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm"
               >
                 About
+              </Link>
+              <Link
+                passHref
+                href="mailto:contact@temycodes.com"
+                className="block hover:text-white hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm"
+              >
+                Hire Me
               </Link>
             </div>
           </motion.div>

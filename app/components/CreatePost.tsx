@@ -69,7 +69,7 @@ const CreatePost = ({
   }
 
   return (
-    <form onSubmit={handleCombinedSubmit} className="mt-2">
+    <form onSubmit={handleCombinedSubmit} className="mt-2 mb-40">
       <div>
         <label htmlFor="title" className="blockfont-bold mb-2">
           Title
@@ -104,7 +104,7 @@ const CreatePost = ({
             <div className="tagscats flex flex-col lg:flex-row sm:flex-col md:flex-col event-content blog-card items-center justify-between">
               <CreateCategories fetchCategories={fetchCategories} />
             </div>
-            <div className="tagscats flex blog-card justify-between">
+            <div className="tagscats flex justify-between mb-[50px]">
               {categories && categories.length > 0 && (
                 <motion.div
                   className="mb-4 mr-2"
