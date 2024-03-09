@@ -52,7 +52,7 @@ export default function Home() {
 
   return (
     <div className={`${styles.postContentContainer}`}>
-      <h1 className="text-[15px] mt-40 mb-5">Welcome Home!</h1>
+      <h1 className={`text-[15px] mt-40 mb-5 ${styles.postTitle}`}>Welcome Home!</h1>
       {posts.map((post: PostProps) => {
         return (
           <Post

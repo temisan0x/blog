@@ -6,14 +6,13 @@
  }
 
  .postTitle {
-  font-size: 40px;
-  font-weight: 700;
+  font-size: 20px;
+  font-weight: 600;
  }
 
  .postHeader {
   max-width: 42rem;
-  margin-top: 20px;
-  font-family: Polysans median, sans-serif;
+  margin-top: 40px;
   font-size: 3rem;
   font-weight: 600;
  }
@@ -26,6 +25,7 @@
   word-break: break-word;
   width: 100%;
   margin: 60px auto 10px auto;
+  padding: 0 24px;
  }
 
  .postContainer {

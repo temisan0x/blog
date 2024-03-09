@@ -85,7 +85,7 @@ const ViewPosts: React.FC<PostProps> = ({
         )}
       </div>
       <DeletePostButton postId={id} />
-      <Link href={`/blog/${slug}`}>Edit...</Link>
+      <Link href={`/tm-admin/${slug}`}>Edit...</Link>
     </motion.div>
   );
 };
