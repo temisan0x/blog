@@ -63,28 +63,11 @@ const Post: React.FC<PostProps> = ({
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.95 }}
           transition={{ duration: 0.3 }}
-          className="text-sm mb-2 mt-1 hover:underline underline-offset-4"
+          className="text-sm mt-3 hover:underline underline-offset-4"
         >
           <div dangerouslySetInnerHTML={{ __html: truncatedContentText }} />
         </motion.div>
       </Link>
-
-      {/* <p className="text-gray-500">Author: {authorName}</p> */}
-      {/* <div className={`mx-auto ${styles.imageContainer}`}>
-        {imageUrl && (
-          <motion.img
-            src={imageUrl}
-            alt={`Image for ${title}`}
-            width={800}
-            height={600}
-            loading="lazy"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-          />
-        )}
-      </div> */}
-      {/* <DeletePostButton postId={id} /> */}
     </motion.div>
   );
 };
