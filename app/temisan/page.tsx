@@ -38,7 +38,7 @@ const AboutMe: React.FC = () => {
   ];
 
   return (
-     <div className="container mx-auto px-6 max-w-7xl lg:max-w-full min-h-screen">
+     <div className="">
        <div className="about-container mx-auto mt-20">
         <div
           className="flex flex-col items-center"
@@ -50,7 +50,7 @@ const AboutMe: React.FC = () => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1 }}
           >
-            <Image src={AvatarLogo} alt="temycodes" width={150} height={200} />
+            <Image src={AvatarLogo} alt="temycodes" width={100} height={100} />
           </motion.div>
           <div className="flex items-center">
             <h1
@@ -104,7 +104,7 @@ const AboutMe: React.FC = () => {
           >
             Tech Blogging
           </h2>
-          <p className="w-[50%] mx-auto mt-2" style={{ fontSize: "16px" }}>
+          <p className="mx-auto mt-2 mb-10" style={{ fontSize: "16px" }}>
             I&apos;m also a dedicated tech blogger, sharing insights, tutorials,
             and the latest trends in the world of web development and
             programming. Through my blog, I aim to contribute to the developer
@@ -113,7 +113,7 @@ const AboutMe: React.FC = () => {
           </p>
         </div>
 
-        <div className="mt-6 text-center">
+        <div className="mt-6 text-center mb-56">
           <h2
             className="text-3xl mt-4"
           >

@@ -62,3 +62,7 @@ h6 {
 .about {
   max-width: 300px;
 }
+
+.about-container {
+  max-width: 800px;
+}
