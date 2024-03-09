@@ -10,9 +10,9 @@ export async function GET() {
         author: {
           select: { name: true },
         },
-        category: { // Add this line
-          select: { name: true }, // Add this line
-        }, // Add this line
+        category: { 
+          select: { name: true }, 
+        }, 
       },
     });
 

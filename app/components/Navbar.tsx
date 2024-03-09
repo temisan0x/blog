@@ -2,65 +2,19 @@
 
 import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
-import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import NavbarImg from "@/public/uploads/navlogo.png";
-import { BsSearch } from "react-icons/bs";
-import { motion, AnimatePresence } from "framer-motion";
-import ProfileToggler from "./ProfileToggle";
-import axios from "axios";
+import { motion, AnimatePresence } from "framer-motion"
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [searchQuery, setSearchQuery] = useState("");
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const [usernameData, setUsernameData] = useState<any>(null);
-
-  const router = useRouter();
-  const { data: session } = useSession();
-
-  const fetchUsername = useCallback(async () => {
-    try {
-      if (session) {
-        const response = await axios.get("/api/user-email", {
-          params: { userId: session.user.id }, // Use 'params' instead of 'data'
-        });
-        setUsernameData(response.data.email);
-      }
-    } catch (error) {
-      console.error("Error fetching username:", error);
-    }
-  }, [session]);
-
-  useEffect(() => {
-    fetchUsername();
-  }, [fetchUsername]);
-
+ 
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
   };
 
   const closeMenu = () => {
     setIsMenuOpen(false);
-  };
-
-  const handleSearch = async (e: React.FormEvent) => {
-    e.preventDefault();
-    try {
-      if (searchQuery.trim() !== "") {
-        router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
-        setSearchQuery("");
-        closeMenu(); // Close the menu when search is initiated
-      }
-    } catch (error) {
-      console.error("Error fetching search results:", error);
-    }
-  };
-
-  const handleSignOut = async () => {
-    await signOut();
-    router.push("/");
   };
 
   return (
@@ -101,20 +55,6 @@ const Navbar: React.FC = () => {
                 >
                   About
                 </Link>
-                <form
-                  onSubmit={handleSearch}
-                  style={{ backgroundColor: 'transparent', outline: 'none' }}
-                  className="px-3 py-2 rounded-md text-sm border border-gray-400 flex items-center w-full"
-                >
-                  <BsSearch />
-                  <input
-                    type="text"
-                    placeholder="Search"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                    className="bg-transparent ml-2 outline-none"
-                  />
-                </form>
               </div>
             </div>
           </div>
@@ -174,7 +114,7 @@ const Navbar: React.FC = () => {
                 passHref
                 href="/"
                 onClick={closeMenu}
-                className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm"
+                className="block hover:text-white hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm"
               >
                 Home
               </Link>
@@ -182,25 +122,10 @@ const Navbar: React.FC = () => {
                 passHref
                 href="/temisan"
                 onClick={closeMenu}
-                className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm"
+                className="block hover:text-white hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm"
               >
                 About
               </Link>
-              <form
-                onSubmit={handleSearch}
-                onClick={closeMenu}
-                className="px-3 py-2 rounded-md text-sm border flex items-center w-full mb-3"
-                style={{ backgroundColor: "transparent", outline: "none" }}
-              >
-                <BsSearch />
-                <input
-                  type="text"
-                  placeholder="Search"
-                  value={searchQuery}
-                  onChange={(e) => setSearchQuery(e.target.value)}
-                  className="ml-2 w-11/12 outline-none bg-transparent border-none"
-                />
-              </form>
             </div>
           </motion.div>
         )}

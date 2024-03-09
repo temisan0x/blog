@@ -14,6 +14,7 @@ interface PostProps {
   authorName: string | null;
   imageData: string | undefined | { url: string } | any;
   slug: string;
+  category: string ;
 }
 
 export default function Home() {
@@ -64,6 +65,7 @@ export default function Home() {
             authorName={post.author?.name ?? null}
             truncatedContent={truncateHTMLContent}
             slug={post.slug}
+            category={post.category}
           />
         );
       })}

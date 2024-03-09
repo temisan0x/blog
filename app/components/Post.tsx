@@ -16,6 +16,7 @@ interface PostProps {
   truncatedContent: (html: string, maxLength: number) => string;
   content: string | "";
   slug: string;
+  category: any;
 }
 
 const Post: React.FC<PostProps> = ({
@@ -26,6 +27,7 @@ const Post: React.FC<PostProps> = ({
   truncatedContent,
   content,
   slug,
+  category
 }) => {
   const [imageUrl, setImageUrl] = useState<string | null>(null);
 
@@ -68,6 +70,8 @@ const Post: React.FC<PostProps> = ({
           <div dangerouslySetInnerHTML={{ __html: truncatedContentText }} />
         </motion.div>
       </Link>
+      <p className="mt-1 italic">{typeof category === 'string' ? category : category?.name || "No category"}</p>
+ 
     </motion.div>
   );
 };
