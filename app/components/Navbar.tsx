@@ -1,4 +1,4 @@
-"use client";
+'use client'
 
 import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import { signOut, useSession } from "next-auth/react";
 import Image from "next/image";
 import NavbarImg from "@/public/uploads/navlogo.png";
 import { BsSearch } from "react-icons/bs";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import ProfileToggler from "./ProfileToggle";
 import axios from "axios";
 
@@ -26,7 +26,6 @@ const Navbar: React.FC = () => {
         const response = await axios.get("/api/user-email", {
           params: { userId: session.user.id }, // Use 'params' instead of 'data'
         });
-        console.log(response.data);
         setUsernameData(response.data.email);
       }
     } catch (error) {
@@ -41,12 +40,18 @@ const Navbar: React.FC = () => {
   const toggleMenu = () => {
     setIsMenuOpen((prevState) => !prevState);
   };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     try {
       if (searchQuery.trim() !== "") {
         router.push(`/search?q=${encodeURIComponent(searchQuery.trim())}`);
         setSearchQuery("");
+        closeMenu(); // Close the menu when search is initiated
       }
     } catch (error) {
       console.error("Error fetching search results:", error);
@@ -84,42 +89,18 @@ const Navbar: React.FC = () => {
                 </Link>
                 <Link
                   passHref
+                  href="/blog"
+                  className="hover:text-black px-3 py-2 rounded-md text-sm"
+                >
+                  Blog
+                </Link>
+                <Link
+                  passHref
                   href="/temisan"
                   className="hover:text-black px-3 py-2 rounded-md text-sm"
                 >
                   About
                 </Link>
-                {/* {session ? (
-                  <>
-                    <Link href={isAdmin ? "/admin" : "/profile"} passHref title={isAdmin ? "Admin Page" : "Profile Page"}>
-                      <div className="relative">
-                        <Image
-                          src={session?.user?.image}
-                          width={40}
-                          height={50}
-                          alt={`${session?.user?.name} image`}
-                          onMouseEnter={() => handleDropdownToggle(true)}
-                        />
-                        {isDropdownOpen && (
-                          <ProfileToggler
-                            handleDropdownToggle={handleDropdownToggle}
-                            session={session}
-                            handleSignOut={handleSignOut}
-                            usernameData={usernameData}
-                          />
-                        )}
-                      </div>
-                    </Link>
-                  </>
-                ) : (
-                  <Link
-                    passHref
-                    href="/login"
-                    className="text-gray-400   hover:text-white px-3 py-2 rounded-md text-sm"
-                  >
-                    Login
-                  </Link>
-                )} */}
                 <form
                   onSubmit={handleSearch}
                   style={{ backgroundColor: 'transparent', outline: 'none' }}
@@ -179,67 +160,51 @@ const Navbar: React.FC = () => {
           </div>
         </div>
       </div>
-      <div className={`${isMenuOpen ? "block" : "hidden"} lg:hidden`}>
-        <div className="px-2 pt-2 pb-3 sm:px-3 w-[95%] m-auto">
-          <Link
-            passHref
-            href="/"
-            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm "
+      <AnimatePresence>
+        {isMenuOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: "-100%" }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: "-100%" }}
+            transition={{ type: "tween" }}
+            className={`${isMenuOpen ? "block" : "hidden"} lg:hidden`}
           >
-            Home
-          </Link>
-        
-          <Link
-            passHref
-            href="/temisan"
-            className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm"
-          >
-            About
-          </Link>
-          <form
-            onSubmit={handleSearch}
-            className="px-3 py-2 rounded-md text-sm border flex items-center w-full mb-3"
-            style={{ backgroundColor: "transparent", outline: "none" }}
-          >
-            <BsSearch />
-            <input
-              type="text"
-              placeholder="Search"
-              value={searchQuery}
-              onChange={(e) => setSearchQuery(e.target.value)}
-              className="ml-2 w-11/12 outline-none bg-transparent border-none"
-            />
-          </form>
-
-          {/* {session ? (
-            <>
+            <div className="px-2 pt-2 pb-3 sm:px-3 w-[95%] m-auto">
               <Link
                 passHref
-                href="/admin"
-                className="block text-gray-400  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm "
+                href="/"
+                onClick={closeMenu}
+                className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm"
               >
-                Admin
+                Home
               </Link>
               <Link
-                href={"#"}
-                type="submit"
-                className="block text-gray-400  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm "
-                onClick={handleSignOut}
+                passHref
+                href="/temisan"
+                onClick={closeMenu}
+                className="block text-gray-400  hover:bg-gray-700 hover:text-white hover:px-4 py-2 rounded-md text-sm"
               >
-                Logout
+                About
               </Link>
-            </>
-          ) : (
-            <Link
-              passHref
-              href="/login"
-              className="block text-gray-400  hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm "
-            >
-              Login
-            </Link>
-          )} */}
-        </div>
-      </div>
+              <form
+                onSubmit={handleSearch}
+                onClick={closeMenu}
+                className="px-3 py-2 rounded-md text-sm border flex items-center w-full mb-3"
+                style={{ backgroundColor: "transparent", outline: "none" }}
+              >
+                <BsSearch />
+                <input
+                  type="text"
+                  placeholder="Search"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  className="ml-2 w-11/12 outline-none bg-transparent border-none"
+                />
+              </form>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 };
