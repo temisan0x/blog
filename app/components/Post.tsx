@@ -39,7 +39,6 @@ const Post: React.FC<PostProps> = ({
         setImageUrl(URL.createObjectURL(blob));
       } catch (error) {
         console.error("Error fetching image:", error);
-        // Handle the error, e.g., provide a fallback image URL
         setImageUrl("fallback-image-url");
       }
     };

@@ -25,6 +25,7 @@ export default function Home() {
       try {
         const response = await axios.get("/api/posts");
         setPosts(response.data.posts);
+        console.log(response.data.posts)
       } catch (error) {
         console.error("Error fetching posts:", error);
       }
