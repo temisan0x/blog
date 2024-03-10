@@ -69,8 +69,8 @@ const Post: React.FC<PostProps> = ({
           <div dangerouslySetInnerHTML={{ __html: truncatedContentText }} />
         </motion.div>
       </Link>
-      <p className="mt-1 italic">{typeof category === 'string' ? category : category?.name || "No category"}</p>
- 
+      {/* <p className="mt-1 italic">{typeof category === 'string' ? category : category?.name || "No category"}</p>
+  */}
     </motion.div>
   );
 };
