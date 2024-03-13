@@ -28,7 +28,7 @@ const CreateCategories: React.FC<CreateCategoriesProps> = ({
         }
       );
       setCategoryName("");
-      fetchCategories(); // Fetch updated categories
+      fetchCategories(); 
     } catch (error) {
       console.error(error);
     }
