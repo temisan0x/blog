@@ -12,11 +12,11 @@ const Footer: React.FC = () => {
   return (
     <footer className={`${styles.footer}  px-6 py-12 text-white sm:px-8`}>
       <div className="flex justify-center flex-col items-center">
-        <Link href="/" className="text-white text-2xl mb-2" passHref>
+        {/* <Link href="/" className="text-white text-2xl mb-2" passHref>
           <Image src={NavbarImg} alt={"temycodes"} width={80} height={100} />
-        </Link>
+        </Link> */}
         <div className="flex gap-3">
-          <Link
+          {/* <Link
             passHref
             href="/temisan"
             className="text-white hover:text-white text-sm"
@@ -29,11 +29,11 @@ const Footer: React.FC = () => {
             className="text-white hover:text-white text-sm"
           >
             Hire Me
-          </Link>
+          </Link> */}
         </div>
 
         <div className="mt-2 text-white text-sm">
-          <p>Created with ❤️ by TemyCodes &copy;&lt;{currentYear}/&gt;</p>
+          <p>Created for Halycion &copy;&lt;{currentYear}/&gt;</p>
         </div>
       </div>
     </footer>

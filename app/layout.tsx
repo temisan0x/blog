@@ -6,7 +6,7 @@ import NextAuthProvider from "./components/NextAuthProvider";
 import { Schibsted_Grotesk } from 'next/font/google'
 
 export const metadata: Metadata = {
-  title: "Temisan0x",
+  title: "",
   description: "A personal blog from yours sincerly Temisan0x.",
 };
 

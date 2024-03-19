@@ -23,14 +23,15 @@ const Navbar: React.FC = () => {
         <div className="flex items-center justify-between h-16 w-full">
           <div className="flex w-full">
             <div className="flex-shrink-0 mx-5">
-              <Link href="/" className="text-white relative text-2xl" passHref>
+              {/* <Link href="/" className="text-white relative text-2xl" passHref>
                 <Image
                   src={NavbarImg}
                   alt={"temycodes"}
                   width={100}
                   height={100}
                 />
-              </Link>
+              </Link> */}
+              <p className="text-[30px]">Halycion</p>
             </div>
             <div className="hidden lg:flex justify-end mr-10 w-full items-center">
               <div className="flex space-x-4">
