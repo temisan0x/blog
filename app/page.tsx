@@ -42,8 +42,7 @@ export default function Home() {
       return "";
     }
 
-    const truncatedHTML = html.replace(/(<([^>]+)>)/gi, ""); // Remove HTML tags
-
+    const truncatedHTML = html.replace(/(<([^>]+)>)/gi, "");
     if (truncatedHTML.length <= maxLength) {
       return html;
     }
@@ -63,7 +62,7 @@ export default function Home() {
             title={post.title}
             content={post.content}
             imageData={{ url: post.imageData }}
-            authorName={post.author?.name ?? null}
+            authorName={post.author?.name ? post.author?.name : "richies"}
             truncatedContent={truncateHTMLContent}
             slug={post.slug}
             category={post.category}
