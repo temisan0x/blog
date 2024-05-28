@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from "react";
 import Post from "./components/Post";
-import Link from "next/link";
 import styles from "@/app/page.module.css";
 import axios from "axios";
 
