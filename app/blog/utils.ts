@@ -12,8 +12,9 @@ type Metadata = {
 
 //funtion to pass the frontmatter from file content
 function parseFrontmatter(fileContent: string) {
-    
+
     let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
+    console.log("checking regex",frontmatterRegex);
     let match = frontmatterRegex.exec(fileContent);
     let frontMatterBlock = match![1]
     let content = fileContent.replace(frontmatterRegex, '').trim()
