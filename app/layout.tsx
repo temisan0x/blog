@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import NextAuthProvider from "./components/NextAuthProvider";
 import {GeistSans} from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import 
+import { baseUrl } from "./sitemaps";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
