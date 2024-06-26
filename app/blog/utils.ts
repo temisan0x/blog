@@ -12,17 +12,24 @@ type Metadata = {
 
 //funtion to pass the frontmatter from file content
 function parseFrontmatter(fileContent: string) {
-
-    let frontmatterRegex = /---\s*([\s\S]*?)\s*---/
-    console.log("checking regex",frontmatterRegex);
+    //regex to match the frontmatter block content ('---' ~ markers) 
+    let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
+    //execute the file content to extract the frontmatter block
     let match = frontmatterRegex.exec(fileContent);
-    let frontMatterBlock = match![1]
-    let content = fileContent.replace(frontmatterRegex, '').trim()
-    let frontMatterLines = frontMatterBlock.trim().split('\n')
-    let metadata: Partial<Metadata> = {}
+    //extract the frontmatter block
+    let frontMatterBlock = match![1];
+    //remove any hidden trail of white spaces from the frontmatter block
+    let content = fileContent.replace(frontmatterRegex, '').trim();
+    //Split the frontmatter block into individual lines
+    let frontMatterLines = frontMatterBlock.trim().split('\n');
 
+    //initialize an empty list of lines
+    let metadata: Partial<Metadata> = {}; //assign the metadata to hold key value pairs
+
+    //We process each line of the frontmatter block by iterating over each line in the metadata
     frontMatterLines.forEach((line) => {
-        let [key, ...valueArr] = line.split(': ')
+        //split each line into keys and values pairs
+        let [key, ...valueArr] = line.split(': ');
         let value = valueArr.join(': ').trim()
         value = value.replace(/^['"](.*)['"]$/, '$1') // Remove quotes
         metadata[key.trim() as keyof Metadata] = value
@@ -45,7 +52,7 @@ function getMDXData(dir: string) {
     return mdxFiles.map((file) => {
         let { metadata, content } = readMDXFile(path.join(dir, file))
         let slug = path.basename(file, path.extname(file))
-
+                                                    
         return {
             metadata,
             slug,

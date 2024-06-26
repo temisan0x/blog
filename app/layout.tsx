@@ -10,8 +10,8 @@ import { baseUrl } from "./sitemaps";
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
   title: {
-      default: '.dir-diare',
-      template: '%s | .dir-diare',
+      default: '.Temisan',
+      template: '%s | .Temisan',
   },
   description: 'This is my dir.',
   openGraph: {
