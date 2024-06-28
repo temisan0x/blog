@@ -1,5 +1,5 @@
-import fs from 'fs'
-import path from 'path'
+import fs from 'fs';
+import path from 'path';
 
 //define the structure of the metadata we expect in the frontmatter file
 type Metadata = {

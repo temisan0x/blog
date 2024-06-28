@@ -5,7 +5,7 @@ import Footer from "./components/Footer";
 import NextAuthProvider from "./components/NextAuthProvider";
 import {GeistSans} from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
-import { baseUrl } from "./sitemaps";
+import { baseUrl } from "./sitemap";
 
 export const metadata: Metadata = {
   metadataBase: new URL(baseUrl),
@@ -42,13 +42,11 @@ export default async function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body suppressHydrationWarning={true}>
-        <NextAuthProvider>
           <main className={`container-main`}>
               <Navbar />
               {children}
               <Footer />
           </main>
-        </NextAuthProvider>
       </body>
     </html>
   );
