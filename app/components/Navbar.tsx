@@ -3,7 +3,7 @@
 import React, { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import NavbarImg from "@/public/uploads/navlogo.png";
+import NavbarImg from "@/public/uploads/author.png";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar: React.FC = () => {
@@ -18,7 +18,8 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-[#F5F5F4] nav-font flex justify-between items-center h-16 mx-auto fixed top-0 z-50 border-b border-gray-300 bg-bg/75 w-full">
+    <nav className="nav-font flex justify-between items-center h-16 mx-auto fixed top-0 border-b-[0.1px] 
+            border-zinc-800  w-full  bg-neutral-900 dark:bg-neutral-900">
       <div className="mx-auto nav container">
         <div className="flex items-center justify-between h-16 w-full">
           <div className="flex w-full">

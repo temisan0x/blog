@@ -34,15 +34,22 @@ export const metadata: Metadata = {
       },
   },
 }
+
+const cx = (...classes: any[]) => classes.filter(Boolean).join(' ');
+
 export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning={true}>
-      <body suppressHydrationWarning={true}>
-          <main className={`container-main`}>
+    <html lang="en" suppressHydrationWarning={true}
+      className={cx('dark: text-white scroll-smooth [color-scheme:dark]', GeistSans.variable, GeistSans.variable)}
+    >
+      <body suppressHydrationWarning={true}
+        className="antialiased max-w-2xl mb-40 flex flex-col"
+      >
+          <main className="flex-auto px-2 md:px-0 min-w-0">
               <Navbar />
               {children}
               <Footer />
