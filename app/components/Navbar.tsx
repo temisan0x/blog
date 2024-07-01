@@ -38,21 +38,21 @@ const Navbar: React.FC = () => {
                 <Link
                   passHref
                   href="/"
-                  className="hover:text-black px-3 py-2 rounded-md text-sm"
+                  className="hover:text-#94a3b8 px-3 py-2 rounded-md text-sm"
                 >
                   Home
                 </Link>
                 <Link
                   passHref
                   href="/temisan"
-                  className="hover:text-black px-3 py-2 rounded-md text-sm"
+                  className="hover:text-#94a3b8 px-3 py-2 rounded-md text-sm"
                 >
                   About
                 </Link>
                 <Link
                   passHref
                   href="mailto:contact@temycodes.com"
-                  className="block hover:text-white hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm transition-all"
+                  className="block hover:text-#94a3b8 hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm transition-all"
                 >
                   Hire Me
                 </Link>
