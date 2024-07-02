@@ -37,7 +37,6 @@ export const metadata: Metadata = {
     },
 }
 
-
 export default async function RootLayout({
     children,
 }: {
@@ -51,10 +50,10 @@ export default async function RootLayout({
         >
             <body
                 suppressHydrationWarning={true}
-                className="antialiased max-w-2xl mb-60 flex flex-col"
+                className="antialiased mb-60 flex flex-col"
             >
                 <Navbar />
-                <main className="flex-auto px-2 md:px-0 min-w-0 mt-40 mx-auto">
+                <main className="flex-auto px-2 md:px-0 min-w-0 mt-40 mx-auto max-w-4xl w-full">
                     {children}
                 </main>
                 <Footer />
