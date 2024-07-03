@@ -5,7 +5,7 @@ import Uq from './components/tems'
 
 export default function Home() {
     return (
-        <div className="flex items-start justify-start space-x-8">
+        <div>
             <Uq />
         </div>
     )
