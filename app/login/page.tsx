@@ -1,12 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { useSession, signIn } from "next-auth/react";
 import { useRouter } from "next/navigation";
-import axios from "axios";
 
 export default function LoginForm() {
-  const { data: session } = useSession();
   const router = useRouter();
   const [userData, setUserData] = useState<string | null>(null);
 
@@ -46,7 +43,7 @@ export default function LoginForm() {
           Welcome
         </h1>
         <p className="text-gray-600 text-center mb-4">
-          {session
+          {"hey"
             ? userData
               ? `Welcome back, ${userData}!`
               : "Username not created. Please create one below."

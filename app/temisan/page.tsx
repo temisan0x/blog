@@ -42,7 +42,6 @@ const AboutMe: React.FC = () => {
        <div className="about-container mt-20">
         <div
           className="flex flex-col items-center"
-          style={{ marginTop: "150px" }}
         >
           <motion.div
             className="rounded-circle overflow-hidden border-4 border-gray-700 shadow-md"

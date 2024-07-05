@@ -1,30 +1,18 @@
 "use client";
 
-import React, { useCallback, useEffect, useState } from "react";
-import Link from "next/link";
+import React, { useState } from 'react';
+import Link from 'next/link';
 import Image from "next/image";
 import NavbarImg from "@/public/uploads/author.png";
-import { motion, AnimatePresence } from "framer-motion";
 
-const Navbar: React.FC = () => {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const toggleMenu = () => {
-    setIsMenuOpen((prevState) => !prevState);
-  };
-
-  const closeMenu = () => {
-    setIsMenuOpen(false);
-  };
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <nav className="nav-font flex justify-between items-center h-16 mx-auto fixed top-0 border-b-[0.1px] 
-            border-zinc-800  w-full  bg-neutral-900 dark:bg-neutral-900">
-      <div className="mx-auto nav container">
-        <div className="flex items-center justify-between h-16 w-full">
-          <div className="flex w-full">
-            <div className="flex-shrink-0 mx-5">
-              <Link href="/" className="text-white relative text-2xl" passHref>
+    <nav className=" border-zinc-800 w-full bg-neutral-900 dark:bg-neutral-900">
+      <div className="container mx-auto px-6">
+        <div className="flex items-center justify-between py-4">
+        <Link href="/" className="text-white relative text-2xl" passHref>
                 <Image
                   src={NavbarImg}
                   alt={"temycodes"}
@@ -32,112 +20,29 @@ const Navbar: React.FC = () => {
                   height={100}
                 />
               </Link>
-            </div>
-            <div className="hidden lg:flex justify-end mr-10 w-full items-center">
-              <div className="flex space-x-4">
-                <Link
-                  passHref
-                  href="/"
-                  className="hover:text-#94a3b8 px-3 py-2 rounded-md text-sm"
-                >
-                  Home
-                </Link>
-                <Link
-                  passHref
-                  href="/temisan"
-                  className="hover:text-#94a3b8 px-3 py-2 rounded-md text-sm"
-                >
-                  About
-                </Link>
-                <Link
-                  passHref
-                  href="mailto:contact@temycodes.com"
-                  className="block hover:text-#94a3b8 hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm transition-all"
-                >
-                  Hire Me
-                </Link>
-              </div>
-            </div>
+          <div className="hidden md:flex space-x-10">
+            <Link href="/" className="text-gray-300 hover:text-white">Home</Link>
+            <Link href="/about" className="text-gray-300 hover:text-white">About</Link>
+            <Link href="/contact" className="text-gray-300 hover:text-white">Contact</Link>
           </div>
-          <div className="mr-4 flex lg:hidden">
-            <button
-              type="button"
-              onClick={toggleMenu}
-              className="inline-flex items-center justify-center p-2 rounded-md text-[#4F4F4F] hover:text-[#4F4F4F]  focus:outline-none focus:bg-[#4F4F4F] focus:text-white transition duration-150 ease-in-out"
-              aria-label="Menu"
-              aria-expanded={isMenuOpen}
-            >
-              <svg
-                className={`${isMenuOpen ? "hidden" : "block"} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              </svg>
-              <svg
-                className={`${isMenuOpen ? "block" : "hidden"} h-6 w-6`}
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth="2"
-                  d="M6 18L18 6M6 6l12 12"
-                />
+          <div className="md:hidden">
+            <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
+              <svg className="h-6 w-6 text-gray-300 hover:text-white" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+                <path d="M4 6h16M4 12h16M4 18h16"></path>
               </svg>
             </button>
           </div>
         </div>
-      </div>
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, x: "-100%" }}
-            animate={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: "-100%" }}
-            transition={{ type: "tween" }}
-            className={`${isMenuOpen ? "block" : "hidden"} lg:hidden`}
-          >
-            <div className="px-2 pt-2 pb-3 sm:px-3 w-[95%] m-auto">
-              <Link
-                passHref
-                href="/"
-                onClick={closeMenu}
-                className="block hover:text-white hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm"
-              >
-                Home
-              </Link>
-              <Link
-                passHref
-                href="/temisan"
-                onClick={closeMenu}
-                className="block hover:text-white hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm"
-              >
-                About
-              </Link>
-              <Link
-                passHref
-                href="mailto:contact@temycodes.com"
-                className="block hover:text-white hover:bg-[#252222] hover:px-4 py-2 rounded-md text-sm"
-              >
-                Hire Me
-              </Link>
+        {isOpen && (
+          <div className="md:hidden">
+            <div className="px-2 pt-2 pb-3 space-y-1">
+              <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Home</Link>
+              <Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">About</Link>
+              <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Contact</Link>
             </div>
-          </motion.div>
+          </div>
         )}
-      </AnimatePresence>
+      </div>
     </nav>
   );
 };
