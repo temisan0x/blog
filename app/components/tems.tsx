@@ -3,7 +3,7 @@ import { ProfileImageLarge } from '../ui/adminImg'
 
 export default function Uq() {
     return (
-        <div>
+        <div className='py-12'>
             <div className="flex items-center justify-start space-x-8">
                 <div className="flex items-center space-x-5">
                         <a href="/about">
@@ -15,10 +15,10 @@ export default function Uq() {
                         <h2 className="text-xl font-medium leading-none">
                             Temisan Momodu
                         </h2>
-                        <p className="text-gray-400 leading-none">
+                        <p className="text-gray-400 mt-1 leading-none">
                             Jos, Nigeria
                         </p>
-                        <p className="text-3xl text-slate-300 leading-none">
+                        <p className="text-3xl text-slate-300 mt-1 leading-none">
                             ❖
                         </p>
                     </div>

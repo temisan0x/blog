@@ -52,7 +52,7 @@ export default async function RootLayout({
                 className="antialiased flex flex-col"
             >
                 <Navbar />
-                <main className="md:px-6 px-2 mx-auto max-w-4xl w-full md:max-w-2xl lg:max-w-3xl bg-slate-900 pt-10 h-auto flex-grow">
+                <main className="md:px-6 px-2 mx-auto max-w-4xl w-full md:max-w-2xl lg:max-w-3xl pt-10 h-auto flex-grow">
                     {children}
                 </main>
                 <Footer />
