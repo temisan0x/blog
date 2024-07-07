@@ -8,8 +8,6 @@ import { CaretRightIcon } from '@radix-ui/react-icons'
 export default function Home() {
     return (
         <div className="min-h-screen">
-            {' '}
-            {/* Set a minimum height */}
             <Uq />
             <div className="flex justify-between mb-4">
                 <div className='place-self-center text-xl font-bold'>
