@@ -38,8 +38,8 @@ const AboutMe: React.FC = () => {
   ];
 
   return (
-     <div style={{margin: "0 auto"}}>
-       <div className="about-container mt-20">
+     <div>
+       <div>
         <div
           className="flex flex-col items-center"
         >

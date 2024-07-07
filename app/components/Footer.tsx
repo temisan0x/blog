@@ -4,13 +4,12 @@ import React from "react";
 import Image from "next/image";
 import NavbarImg from "@/public/uploads/author.png";
 import Link from "next/link";
-import styles from "@/app/page.module.css";
 
 const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className={`${styles.footer}  px-6 py-12 text-white sm:px-8`}>
+    <footer className="bg-[#1A1A1A] py-3 text-white">
       <div className="flex justify-center flex-col items-center">
         <Link href="/" className="text-white text-2xl mb-2" passHref>
           <Image src={NavbarImg} alt={"temycodes"} width={80} height={100} />

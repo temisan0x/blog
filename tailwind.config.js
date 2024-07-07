@@ -11,6 +11,10 @@ module.exports = {
         "3xl": "17px",
         "4xl": "30px",
       },
+      fontFamily : {
+        sans: ['var(--font-geist-sans)'],
+        mono: ['var(--font-geist-mono)'],
+      }
     },
   },
   plugins: [],

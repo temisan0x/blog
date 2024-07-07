@@ -20,7 +20,7 @@ const Navbar = () => {
                   height={100}
                 />
               </Link>
-          <div className="hidden md:flex space-x-10">
+          <div className="hidden md:flex space-x-10 font-san">
             <Link href="/" className="text-gray-300 hover:text-white">Home</Link>
             <Link href="/about" className="text-gray-300 hover:text-white">About</Link>
             <Link href="/contact" className="text-gray-300 hover:text-white">Contact</Link>
@@ -35,7 +35,7 @@ const Navbar = () => {
         </div>
         {isOpen && (
           <div className="md:hidden">
-            <div className="px-2 pt-2 pb-3 space-y-1">
+            <div className="px-2 pt-2 pb-3 space-y-1 font-san">
               <Link href="/" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Home</Link>
               <Link href="/about" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">About</Link>
               <Link href="/contact" className="block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700">Contact</Link>

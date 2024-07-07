@@ -45,17 +45,16 @@ export default async function RootLayout({
         <html
             lang="en"
             suppressHydrationWarning={true}
-            className={`dark:text-white scroll-smooth [color-scheme:dark] ${GeistSans.variable} ${GeistSans.variable}`}
+            className={`dark:text-white scroll-smooth [color-scheme:dark] ${GeistSans.variable} ${GeistMono.variable}`}
         >
             <body
                 suppressHydrationWarning={true}
                 className="antialiased flex flex-col"
             >
                 <Navbar />
-                <main className="md:px-6 px-2 mx-auto max-w-4xl w-full md:max-w-2xl lg:max-w-screen-lg xl:max-w-screen-xl">
+                <main className="md:px-6 px-2 mx-auto max-w-4xl w-full md:max-w-2xl lg:max-w-3xl bg-slate-900 pt-10 h-auto flex-grow">
                     {children}
                 </main>
-
                 <Footer />
             </body>
         </html>
