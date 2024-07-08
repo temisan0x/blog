@@ -1,5 +1,5 @@
 import { MagicWandIcon } from '@radix-ui/react-icons'
-import { ProfileImageLarge } from '../ui/adminImg'
+import { ProfileImageLarge } from './ui/adminImg'
 
 export default function Uq() {
     return (
