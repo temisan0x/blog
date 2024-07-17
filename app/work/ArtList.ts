@@ -4,7 +4,7 @@ interface ArtList {
     description: string;
     thumbnail: string;
     href?: string;
-    imgScr: string;
+    imgSrc: string;
 }
 
 const ProjectsData: ArtList[] = [
@@ -12,9 +12,9 @@ const ProjectsData: ArtList[] = [
         title: "Temycodes Tech Studio",
         tags: "blog",
         description: "Exploring The World Of Technology And Coding",
-        thumbnail: "/uploads/author.png",
+        thumbnail: "/uploads/TDTB.jpg",
         href: "https://temycodes.vercel.app/",
-        imgScr: "/uploads/author.png",
+        imgSrc: "/uploads/TDTB.jpg",
     },
     {
         title: 'Sign Up Form For Code Review',
@@ -22,6 +22,8 @@ const ProjectsData: ArtList[] = [
         description: `Signup using Nexjs to Code Review`,
         thumbnail: '/images/art/hopplatemplate.png',
         href: 'work/hoppla',
-        imgScr: "/uploads/author.png",
+        imgSrc: "/uploads/author.png",
       },
 ];
+
+export default ProjectsData;

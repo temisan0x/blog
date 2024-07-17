@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { CaretRightIcon } from '@radix-ui/react-icons'
 import { getBlogPosts } from './blog/utils'
 import Image from 'next/image'
+import ArtList from './work/ArtList'
 // import FeaturedBlogPostsList from './components/FeaturedBlogPostsList'
 
 export default function Home() {
@@ -22,7 +23,7 @@ export default function Home() {
                 </div>
             </div>
             <FeaturedBlogPostsList />
-            <div className='flex justify-between my-4'>
+            <div className="flex justify-between my-4">
                 <div className="place-self-center text-xl font-bold">
                     <h2 className="text-gray-200 ">Recent Work:</h2>
                 </div>
@@ -34,6 +35,7 @@ export default function Home() {
                     </Link>
                 </div>
             </div>
+            <RecentWork />
         </div>
     )
 }
@@ -52,7 +54,7 @@ const FeaturedBlogPostsList = async () => {
                     }
                     return 1
                 })
-                .slice(0, 2)
+                .slice(0, 3)
                 .map((post) => (
                     <Link
                         key={post.slug}
@@ -85,5 +87,27 @@ const FeaturedBlogPostsList = async () => {
                     </Link>
                 ))}
         </>
+    )
+}
+
+const RecentWork = () => {
+    return (
+        <figure>
+            {ArtList.slice(0, 1).map((id) => (
+                <Link href="/work" key={id.title} className="group">
+                    <div className="flex bg-zinc-800 opacity-80 group-hover:opacity-100 mb-4 rounded-md">
+                        <div className='w-full relative h-[240px] min-h-[240px] overflow-hidden place-self-center'>
+                            <div className='absolute left-8 bottom-4 z-10 py-2 px-4 font-semibold block'>{id.title}</div>
+                            <Image
+                                src={id.thumbnail || '/images/'}
+                                alt={id.title}
+                                className="object-center object-cover grayscale group-hover:grayscale-0 rounded group-hover:scale-125 duration-300"
+                                fill={true}
+                            />
+                        </div>
+                    </div>
+                </Link>
+            ))}
+        </figure>
     )
 }
