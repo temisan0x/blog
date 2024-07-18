@@ -9,7 +9,11 @@ import { BlogPosts } from "@/app/components/posts";
 const FetchPost = ({ params }: { params: { slug: string } }) => {
 
   return (
-    <BlogPosts/>
+   
+    <div>
+      {/* <h1>hello {params.slug}</h1> */}
+       <BlogPosts/>
+    </div>
   );
 };
 
