@@ -15,7 +15,7 @@ export function Breadcrumbs({ post }: BreadcrumbsProps) {
 
     return (
         <div className="flex relative items-center font-mono rounded bg-black/30 backdrop-blur-lg backdrop-saturate-50 mb-4 p-2 border border-zinc-800">
-            <a href="/blog" className='text-teal-600 underline whitespace-nowrap'>dir ..</a>
+            <a href="/blog" className='text-teal-400 underline whitespace-nowrap'>dir ..</a>
             <span className="mx-2 text-yellow-400">
                 <CaretRightIcon />
             </span>
