@@ -37,6 +37,14 @@ function Table({ data }: { data: TableData }) {
     )
 }
 
+function Imgfull({prop}:any){
+    return (
+        <div>
+            <Image alt={prop} {...prop}/>
+        </div>
+    )
+}
+
 function PinnedMessage({ href, source, children }:PinnedMessageData) {
     return (
         <div className="relative border tracking-tight text-pretty rounded-md border-zinc-800 my-8">
@@ -64,6 +72,7 @@ let components = {
     Table,
     PinnedMessage,
     ImgLg,
+    Image:Imgfull,
     Relatepost,
     blueHighlighter,
 }
