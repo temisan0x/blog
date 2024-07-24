@@ -36,7 +36,7 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
             <h1 className="font-medium text-2xl tracking-tighter ">
                 {post.metadata.title}
             </h1>
-            <p>{post.metadata.summary}</p>
+            <p className='my-4 italic'>{post.metadata.summary} Okay Okay</p>
 
             <article>
                 <CustomMdx source={post.content}/>
