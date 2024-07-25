@@ -156,8 +156,8 @@ function FNlist(props: any) {
 
 function Footarea({ children }: ChildProps) {
     return (
-        <div className="p-8 border-t border-b border-t-zinc-600 italic overflow-hidden tracking-tight">
-            <h2>Footnotes: </h2>
+        <div className="px-8 border-t border-b border-t-zinc-600 italic overflow-hidden tracking-tight">
+            <h2 className='footnote invisible'> Footnotes: </h2>
             <ul>{children}</ul>
         </div>
     )
