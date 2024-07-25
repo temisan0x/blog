@@ -1,7 +1,7 @@
 import { MDXRemote } from 'next-mdx-remote/rsc'
 import Link from 'next/link'
 import Image from 'next/image'
-import { DrawingPinFilledIcon } from '@radix-ui/react-icons'
+import { DrawingPinFilledIcon, Link2Icon } from '@radix-ui/react-icons'
 
 interface TableData {
     headers: string[]
@@ -69,7 +69,12 @@ function PinnedMessage({ href, source, children }: PinnedMessageData) {
                 </span>
             </span>
             <div className="p-8">{children}</div>
-            <div></div>
+            <div className='flex px-8 py-2 bg-neutral-900 border-t border-zinc-700'>        
+                <a href={href}>
+                    <Link2Icon className='inline mr-1'/>
+                    {source}
+                </a>
+            </div>
         </div>
     )
 }
