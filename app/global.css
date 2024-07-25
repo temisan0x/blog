@@ -14,3 +14,10 @@ p {
   font-size: 14px;
 }
 
+ol,
+ul,
+menu {
+  list-style: circle;
+  margin: 0;
+  padding: 0;
+}

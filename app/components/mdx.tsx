@@ -28,8 +28,15 @@ interface RelatePostProps {
     date: string
 }
 
-interface BlueHighlightProps {
-   children: React.ReactNode 
+interface ChildProps {
+    children: React.ReactNode
+}
+
+interface ImgfullProps {
+    alt: string
+    src: string
+    width: number
+    height: number
 }
 
 function Table({ data }: { data: TableData }) {
@@ -55,10 +62,10 @@ function Table({ data }: { data: TableData }) {
     )
 }
 
-function Imgfull({ prop }: any) {
+function Imgfull({ src, alt, height, width }: ImgfullProps) {
     return (
         <div>
-            <Image alt={prop} {...prop} />
+            <Image alt={alt} src={src} width={width} height={height} />
         </div>
     )
 }
@@ -122,11 +129,37 @@ function Relatepost({ title, href, desc, img, date }: RelatePostProps) {
     )
 }
 
-function BlueHighlighter({ children }:BlueHighlightProps) {
+function BlueHighlighter({ children }: ChildProps) {
     return (
         <span className="bg-gray-500 italic text-black font-semibold border-b-2 border-sky-600">
             {children}
         </span>
+    )
+}
+
+function FN() {
+    return <></>
+}
+
+function MiddleQuote() {
+    return <div></div>
+}
+
+function FNlist(props: any) {
+    return (
+        <li id={props.id}>
+            {props.children}
+            <a href={props.href}>↩</a>
+        </li>
+    )
+}
+
+function Footarea({ children }: ChildProps) {
+    return (
+        <div className="p-8 border-t border-b border-t-zinc-600 italic overflow-hidden tracking-tight">
+            <h2>Footnotes: </h2>
+            <ul>{children}</ul>
+        </div>
     )
 }
 
@@ -137,6 +170,10 @@ let components = {
     Image: Imgfull,
     Relatepost,
     BlueHighlighter,
+    MiddleQuote,
+    FN,
+    FNlist,
+    Footarea,
 }
 
 export function CustomMdx(props: any) {
