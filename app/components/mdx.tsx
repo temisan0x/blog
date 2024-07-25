@@ -39,6 +39,12 @@ interface ImgfullProps {
     height: number
 }
 
+interface FNProps {
+    href: string
+    id: string
+    children: React.ReactNode
+}
+
 function Table({ data }: { data: TableData }) {
     let headers = data.headers.map((header, index) => (
         <th key={index}>{header}</th>
@@ -137,8 +143,12 @@ function BlueHighlighter({ children }: ChildProps) {
     )
 }
 
-function FN() {
-    return <></>
+function FN({ id, href, children }: FNProps) {
+    return (
+        <a href={href} id={id}>
+            {children}
+        </a>
+    )
 }
 
 function MiddleQuote() {
@@ -157,7 +167,7 @@ function FNlist(props: any) {
 function Footarea({ children }: ChildProps) {
     return (
         <div className="px-8 border-t border-b border-t-zinc-600 italic overflow-hidden tracking-tight">
-            <h2 className='footnote invisible'> Footnotes: </h2>
+            <h2 className="footnote invisible"> Footnotes: </h2>
             <ul>{children}</ul>
         </div>
     )
