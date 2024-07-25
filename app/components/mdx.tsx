@@ -28,6 +28,10 @@ interface RelatePostProps {
     date: string
 }
 
+interface BlueHighlightProps {
+   children: React.ReactNode 
+}
+
 function Table({ data }: { data: TableData }) {
     let headers = data.headers.map((header, index) => (
         <th key={index}>{header}</th>
@@ -69,9 +73,9 @@ function PinnedMessage({ href, source, children }: PinnedMessageData) {
                 </span>
             </span>
             <div className="p-8">{children}</div>
-            <div className='flex px-8 py-2 bg-neutral-900 border-t border-zinc-700'>        
+            <div className="flex px-8 py-2 bg-neutral-900 border-t border-zinc-700">
                 <a href={href}>
-                    <Link2Icon className='inline mr-1'/>
+                    <Link2Icon className="inline mr-1" />
                     {source}
                 </a>
             </div>
@@ -101,19 +105,30 @@ function Relatepost({ title, href, desc, img, date }: RelatePostProps) {
         <Link href={href} className="no-prose">
             <div className="flex items-center border border-zinc-800 m-auto w-full overflow-hidden rounded-md">
                 <div className="flex-none w-48 h-32 relative">
-                    <img src={img} alt={title} className="w-full h-full object-fit inset-0 absolute" loading='lazy'/>
+                    <img
+                        src={img}
+                        alt={title}
+                        className="w-full h-full object-fit inset-0 absolute"
+                        loading="lazy"
+                    />
                 </div>
-                <div className='flex flex-col ml-4'>
-                    <span className='font-semibold underline'>{title}</span>
-                    <span className='text-sm'>{desc}</span>
-                    <time className='text-sm dark:text-gray-500'>{date}</time>
+                <div className="flex flex-col ml-4">
+                    <span className="font-semibold underline">{title}</span>
+                    <span className="text-sm">{desc}</span>
+                    <time className="text-sm dark:text-gray-500">{date}</time>
                 </div>
             </div>
         </Link>
     )
 }
 
-function blueHighlighter() {}
+function BlueHighlighter({ children }:BlueHighlightProps) {
+    return (
+        <span className="bg-gray-500 italic text-black font-semibold border-b-2 border-sky-600">
+            {children}
+        </span>
+    )
+}
 
 let components = {
     Table,
@@ -121,7 +136,7 @@ let components = {
     ImgLg,
     Image: Imgfull,
     Relatepost,
-    blueHighlighter,
+    BlueHighlighter,
 }
 
 export function CustomMdx(props: any) {
