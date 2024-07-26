@@ -2,6 +2,7 @@ import { MDXRemote } from 'next-mdx-remote/rsc'
 import Link from 'next/link'
 import Image from 'next/image'
 import { DrawingPinFilledIcon, Link2Icon } from '@radix-ui/react-icons'
+import React from 'react'
 
 interface TableData {
     headers: string[]
@@ -143,9 +144,11 @@ function BlueHighlighter({ children }: ChildProps) {
     )
 }
 
+
+
 function FN({ id, href, children }: FNProps) {
     return (
-        <a href={href} id={id}>
+        <a href={href} id={id} aria-describedby="footnote-label">
             {children}
         </a>
     )
@@ -155,20 +158,24 @@ function MiddleQuote() {
     return <div></div>
 }
 
-function FNlist(props: any) {
+function FNlist({ id, href, children }: FNProps) {
     return (
-        <li id={props.id}>
-            {props.children}
-            <a href={props.href}>↩</a>
+        <li id={id}>
+            {children}
+            <a href={href}>↩</a>
         </li>
     )
 }
 
-function Footarea({ children }: ChildProps) {
+function Footarea({ children, id }: FNProps) {
     return (
-        <div className="px-8 border-t border-b border-t-zinc-600 italic overflow-hidden tracking-tight">
-            <h2 className="footnote invisible"> Footnotes: </h2>
-            <ul>{children}</ul>
+        <div className="px-8 border-t border-b border-t-zinc-600 italic overflow-hidden tracking-tight footnote relative">
+            
+            <h2 id={id} className="footnote hidden invisible">
+                {' '}
+                Footnotes:{' '}
+            </h2>
+            <ol className="list-decimal italic">{children}</ol>
         </div>
     )
 }
