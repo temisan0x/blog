@@ -1,24 +1,25 @@
-import { motion } from 'framer-motion'
-import styles from '@/app/page.module.css'
-import { BlogPosts } from '@/app/components/posts'
-import { formatDate, getBlogPosts } from '../utils'
-import { notFound } from 'next/navigation'
-import { Breadcrumbs } from '@/app/components/breadcrumbs'
-import { CalendarIcon, ChatBubbleIcon } from '@radix-ui/react-icons'
-import { CustomMdx } from '@/app/components/mdx'
-import Comments from '@/app/components/Comment'
+import { motion } from 'framer-motion';
+import styles from '@/app/page.module.css';
+import { BlogPosts } from '@/app/components/posts';
+import { formatDate, getBlogPosts } from '../utils';
+import { notFound } from 'next/navigation';
+import { Breadcrumbs } from '@/app/components/breadcrumbs';
+import { CalendarIcon, ChatBubbleIcon } from '@radix-ui/react-icons';
+import { CustomMdx } from '@/app/components/mdx';
+import Comments from '@/app/components/Comment';
+import Link from 'next/link';
 
 export async function generateStaticParams() {
-    let posts = getBlogPosts()
+    let posts = getBlogPosts();
     return posts.map((post) => ({
         slug: post.slug,
-    }))
+    }));
 }
 
 const FetchPost = ({ params }: { params: { slug: string } }) => {
-    let post = getBlogPosts().find((post) => post.slug === params.slug)
+    let post = getBlogPosts().find((post) => post.slug === params.slug);
     if (!post) {
-        notFound()
+        notFound();
     }
     return (
         <div>
@@ -32,20 +33,24 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
                     {formatDate(post.metadata.publishedAt)}
                 </time>
                 <ChatBubbleIcon />
-                <p className="text-teal-400">Comment</p>
+                <Link href="#comments">
+                    <p className="text-teal-400">
+                        Comments
+                    </p>
+                </Link>
             </div>
             <h1 className="font-medium text-2xl tracking-tighter ">
                 {post.metadata.title}
             </h1>
-            <p className='my-4 italic'>{post.metadata.summary} Okay Okay</p>
+            <p className="my-4 italic">{post.metadata.summary} Okay Okay</p>
 
             <article className="prose prose-quoteless prose-neutral dark:prose-invert">
-                <CustomMdx source={post.content}/>
+                <CustomMdx source={post.content} />
                 <hr className="mb-4" />
-                <Comments/>
             </article>
+            <Comments />
         </div>
-    )
+    );
 }
 
-export default FetchPost
+export default FetchPost;

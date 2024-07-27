@@ -4,7 +4,6 @@ import { CaretRightIcon } from '@radix-ui/react-icons'
 import { getBlogPosts } from './blog/utils'
 import Image from 'next/image'
 import ArtList from './work/ArtList'
-// import FeaturedBlogPostsList from './components/FeaturedBlogPostsList'
 
 export default function Home() {
     return (
