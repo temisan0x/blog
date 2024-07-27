@@ -46,6 +46,11 @@ interface FNProps {
     children: React.ReactNode
 }
 
+interface MiddleQuoteProps {
+    children: React.ReactNode
+    cite: string
+}
+
 function Table({ data }: { data: TableData }) {
     let headers = data.headers.map((header, index) => (
         <th key={index}>{header}</th>
@@ -144,8 +149,6 @@ function BlueHighlighter({ children }: ChildProps) {
     )
 }
 
-
-
 function FN({ id, href, children }: FNProps) {
     return (
         <a href={href} id={id} aria-describedby="footnote-label">
@@ -154,8 +157,13 @@ function FN({ id, href, children }: FNProps) {
     )
 }
 
-function MiddleQuote() {
-    return <div></div>
+function MiddleQuote({ children, cite }: MiddleQuoteProps) {
+    return (
+        <blockquote className="italic font-semibold text-center mb-4 text-gray-900 dark:text-white">
+            {children}
+            <cite className="text-sm">-{cite}</cite>
+        </blockquote>
+    )
 }
 
 function FNlist({ id, href, children }: FNProps) {
@@ -170,7 +178,6 @@ function FNlist({ id, href, children }: FNProps) {
 function Footarea({ children, id }: FNProps) {
     return (
         <div className="px-8 border-t border-b border-t-zinc-600 italic overflow-hidden tracking-tight footnote relative">
-            
             <h2 id={id} className="footnote hidden invisible">
                 {' '}
                 Footnotes:{' '}

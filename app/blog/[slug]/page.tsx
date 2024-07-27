@@ -6,6 +6,7 @@ import { notFound } from 'next/navigation'
 import { Breadcrumbs } from '@/app/components/breadcrumbs'
 import { CalendarIcon, ChatBubbleIcon } from '@radix-ui/react-icons'
 import { CustomMdx } from '@/app/components/mdx'
+import Comments from '@/app/components/Comment'
 
 export async function generateStaticParams() {
     let posts = getBlogPosts()
@@ -38,9 +39,10 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
             </h1>
             <p className='my-4 italic'>{post.metadata.summary} Okay Okay</p>
 
-            <article>
+            <article className="prose prose-quoteless prose-neutral dark:prose-invert">
                 <CustomMdx source={post.content}/>
                 <hr className="mb-4" />
+                <Comments/>
             </article>
         </div>
     )

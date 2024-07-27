@@ -14,8 +14,8 @@ html {
     color-scheme: dark;
 }
 
-p {
-    font-size: 14px;
+.prose blockquote {
+    font-size: 25px;
 }
 
 ol,
