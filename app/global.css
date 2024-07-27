@@ -29,10 +29,6 @@ p {
     margin: 10px 0;
 }
 
-/* sup::after {
-  counter-increment: footnote-counter;
-} */
-
 [aria-describedby='footnote-label'] {
     counter-increment: footnote-counter;
 }
