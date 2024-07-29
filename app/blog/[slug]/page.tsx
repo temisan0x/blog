@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import styles from '@/app/page.module.css';
-import { BlogPosts } from '@/app/components/posts';
+import { BlogPosts } from '@/app/components/Posts';
 import { formatDate, getBlogPosts } from '../utils';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/app/components/breadcrumbs';

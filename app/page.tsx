@@ -1,4 +1,4 @@
-import Uq from './components/tems'
+import Uq from './components/Tems'
 import Link from 'next/link'
 import { CaretRightIcon } from '@radix-ui/react-icons'
 import { getBlogPosts } from './blog/utils'
