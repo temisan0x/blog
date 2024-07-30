@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { CaretRightIcon } from '@radix-ui/react-icons'
 import { getBlogPosts } from './blog/utils'
 import Image from 'next/image'
-import ArtList from './work/ArtList'
+import ArtList from './works/ArtList'
 
 export default function Home() {
     return (
@@ -27,7 +27,7 @@ export default function Home() {
                     <h2 className="text-gray-200 ">Recent Work:</h2>
                 </div>
                 <div>
-                    <Link href="/blog">
+                    <Link href="/works">
                         <button className="dark:bg-neutral-900 px-5 py-2 hover:dark:border-neutral-600/5 border border-transparent transition duration-300 ease-in-out rounded-sm">
                             <CaretRightIcon />
                         </button>
@@ -93,7 +93,7 @@ const RecentWork = () => {
     return (
         <figure>
             {ArtList.slice(0, 1).map((id) => (
-                <Link href="/work" key={id.title} className="group">
+                <Link href="/works" key={id.title} className="group">
                     <div className="flex bg-zinc-800 opacity-80 group-hover:opacity-100 mb-4 rounded-md">
                         <div className='w-full relative h-[240px] min-h-[240px] overflow-hidden place-self-center'>
                             <div className='absolute left-8 bottom-4 z-10 py-2 px-4 font-semibold block rounded bg-black/70'>{id.title}</div>

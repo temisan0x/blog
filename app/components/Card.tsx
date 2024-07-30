@@ -10,6 +10,7 @@ interface Card {
     projectType: string
     projectImg: string
     href?: string
+    tooltip?: string
 }
 
 export default function Card({
@@ -36,8 +37,8 @@ export default function Card({
                     />
                 </div>
                 <div className="flex flex-col justify-center">
-                    <h4 className="text-sm font-semibold mb-2">{title}</h4>
-                    <p className='text-sm prose tracking-tighter'>{description}</p>
+                    <h4 className="text-sm tracking-tighter prose font-semibold">{title}</h4>
+                    <p className='text-sm prose truncate tracking-tighter'>{description}</p>
                     <div className='text-sm'>
                         <p className='bg-slate-700 p-1 rounded-sm inline'>{projectType}</p>
                     </div>
@@ -45,5 +46,5 @@ export default function Card({
             </div>
         </motion.div>
     )
-    return href ? <a href={href}>{content}</a> : content
+    return href ? <a href={href} title={description}>{content}</a> : content
 }

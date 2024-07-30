@@ -5,6 +5,7 @@ interface ArtList {
     thumbnail: string;
     href?: string;
     imgSrc: string;
+    tooltip: string;
 }
 
 const ProjectsData: ArtList[] = [
@@ -15,6 +16,7 @@ const ProjectsData: ArtList[] = [
         thumbnail: "/uploads/TDTB.jpg",
         href: "https://temycodes.vercel.app/",
         imgSrc: "/uploads/TDTB.jpg",
+        tooltip: "xploring The World Of Technology And Coding",
     },
     {
         title: 'Sign Up Form For Code Review',
@@ -23,30 +25,37 @@ const ProjectsData: ArtList[] = [
         thumbnail: '/images/art/hopplatemplate.png',
         href: 'work/hoppla',
         imgSrc: "/uploads/author.png",
+        tooltip: "xploring The World Of Technology And Coding",
+
       },
       {
         title: 'Sign Up Form For Code Review',
-        tags: 'sol',
+        tags: 'wordpress',
         description: `Signup using Nexjs to Code Review`,
         thumbnail: '/images/art/hopplatemplate.png',
         href: 'work/hoppla',
         imgSrc: "/uploads/author.png",
+        tooltip: "xploring The World Of Technology And Coding",
+
       },
       {
         title: 'Sign Up Form For Code Review',
-        tags: 'jonz',
+        tags: 'wordpress',
         description: `Signup using Nexjs to Code Review`,
         thumbnail: '/images/art/hopplatemplate.png',
         href: 'work/hoppla',
         imgSrc: "/uploads/author.png",
+        tooltip: "xploring The World Of Technology And Coding",
+
       },
       {
         title: 'Sign Up Form For Code Review',
-        tags: 'jonz',
+        tags: 'wordpress',
         description: `Signup using Nexjs to Code Review`,
         thumbnail: '/images/art/hopplatemplate.png',
         href: 'work/hoppla',
         imgSrc: "/uploads/author.png",
+        tooltip: "xploring The World Of Technology And Coding",
       },
 ];
 

@@ -10,10 +10,11 @@ export default function WorkPage() {
                     <Card
                         key={index}
                         title={p.title}
-                        description={p.tags}
+                        description={p.description}
                         projectType={p.tags}
                         projectImg={p.thumbnail}
                         href={p.href}
+                        tooltip={p.description}
                     />
                 ))}
             </div>
