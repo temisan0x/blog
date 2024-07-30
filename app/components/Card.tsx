@@ -1,8 +1,8 @@
-'use client';
+'use client'
 
 import Image from 'next/image'
 import React from 'react'
-import { motion } from 'framer-motion';
+import { motion } from 'framer-motion'
 
 interface Card {
     title: string
@@ -22,29 +22,40 @@ export default function Card({
 }: Card) {
     const content = (
         <motion.div
-        whileHover={{ scale: 1.05 }}
-        animate={{ opacity: 1 }}
-        initial={{ opacity: 0 }}
-      >
+            whileHover={{ scale: 1.05 }}
+            animate={{ opacity: 1 }}
+            initial={{ opacity: 0 }}
+        >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border border-slate-800 p-4 rounded-md shadow-md transition-shadow duration-300 hover:bg-gray-500/5 ease-in-out">
-                <div className="flex justify-center items-center relative">
+                <div className="flex justify-center items-center relative overflow-clip h-20 ">
                     <Image
                         alt={title}
                         src={projectImg}
-                        className="inset-0 object-cover bg-clip-border bg-black shadow-lg absolute h-full w-full"
-                        width={544}
-                        height={506}
+                        className="inset-0 object-cover bg-clip-border bg-black shadow-lg absolute h-full w-full group-hover:scale-125 duration-300"
+                        fill={true}
                     />
                 </div>
                 <div className="flex flex-col justify-center">
-                    <h4 className="text-sm tracking-tighter prose font-semibold">{title}</h4>
-                    <p className='text-sm prose truncate tracking-tighter'>{description}</p>
-                    <div className='text-sm'>
-                        <p className='bg-slate-700 p-1 rounded-sm inline'>{projectType}</p>
+                    <h4 className="text-sm tracking-tighter prose font-semibold">
+                        {title}
+                    </h4>
+                    <p className="text-sm prose truncate tracking-tighter">
+                        {description}
+                    </p>
+                    <div className="text-sm">
+                        <p className="bg-slate-700 p-1 rounded-sm inline">
+                            {projectType}
+                        </p>
                     </div>
                 </div>
             </div>
         </motion.div>
     )
-    return href ? <a href={href} title={description}>{content}</a> : content
+    return href ? (
+        <a href={href} title={description}>
+            {content}
+        </a>
+    ) : (
+        content
+    )
 }
