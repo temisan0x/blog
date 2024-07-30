@@ -19,8 +19,8 @@ const ProjectsData: ArtList[] = [
         tooltip: "xploring The World Of Technology And Coding",
     },
     {
-        title: 'Sign Up Form For Code Review',
-        tags: 'Temr',
+        title: 'Sign Up Form using Next js, Tailwindcss',
+        tags: '',
         description: `Signup using Nexjs to Code Review`,
         thumbnail: '/images/art/hopplatemplate.png',
         href: 'work/hoppla',
@@ -29,11 +29,11 @@ const ProjectsData: ArtList[] = [
 
       },
       {
-        title: 'Sign Up Form For Code Review',
-        tags: 'wordpress',
+        title: 'Starwars characters ~ Api',
+        tags: 'Reactjs, Typescript, react-lottie, react-redux and styled-components',
         description: `Signup using Nexjs to Code Review`,
-        thumbnail: '/images/art/hopplatemplate.png',
-        href: 'work/hoppla',
+        thumbnail: '/images/art/starwars.png',
+        href: 'https://starwars-topaz.vercel.app/',
         imgSrc: "/uploads/author.png",
         tooltip: "xploring The World Of Technology And Coding",
 

@@ -27,11 +27,11 @@ export default function Card({
             initial={{ opacity: 0 }}
         >
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4 border border-slate-800 p-4 rounded-md shadow-md transition-shadow duration-300 hover:bg-gray-500/5 ease-in-out">
-                <div className="flex justify-center items-center relative overflow-clip h-20 ">
+                <div className="flex justify-center items-center relative overflow-clip">
                     <Image
                         alt={title}
                         src={projectImg}
-                        className="inset-0 object-cover bg-clip-border bg-black shadow-lg absolute h-full w-full group-hover:scale-125 duration-300"
+                        className="inset-0  object-cover bg-clip-border bg-black shadow-lg absolute h-full w-full group-hover:scale-125 duration-300"       
                         fill={true}
                     />
                 </div>
@@ -42,8 +42,8 @@ export default function Card({
                     <p className="text-sm prose truncate tracking-tighter">
                         {description}
                     </p>
-                    <div className="text-sm">
-                        <p className="bg-slate-700 p-1 rounded-sm inline">
+                    <div className="text-sm  overflow-hidden" title={projectImg}>
+                        <p className="bg-slate-700 p-1 rounded-sm inline truncate">
                             {projectType}
                         </p>
                     </div>
