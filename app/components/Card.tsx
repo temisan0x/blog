@@ -31,7 +31,7 @@ export default function Card({
                     <Image
                         alt={title}
                         src={projectImg}
-                        className="inset-0  object-cover bg-clip-border bg-black shadow-lg absolute h-full w-full group-hover:scale-125 duration-300"       
+                        className="inset-0  object-cover bg-clip-border bg-black shadow-lg absolute h-full w-full group-hover:scale-125 duration-300"
                         fill={true}
                     />
                 </div>
@@ -39,10 +39,16 @@ export default function Card({
                     <h4 className="text-sm tracking-tighter prose font-semibold">
                         {title}
                     </h4>
-                    <p className="text-sm prose truncate tracking-tighter">
+                    <p
+                        className="text-sm prose truncate tracking-tighter"
+                        title={description}
+                    >
                         {description}
                     </p>
-                    <div className="text-sm  overflow-hidden" title={projectImg}>
+                    <div
+                        className="text-sm  overflow-hidden"
+                        title={projectType}
+                    >
                         <p className="bg-slate-700 p-1 rounded-sm inline truncate">
                             {projectType}
                         </p>
@@ -51,11 +57,5 @@ export default function Card({
             </div>
         </motion.div>
     )
-    return href ? (
-        <a href={href} title={description}>
-            {content}
-        </a>
-    ) : (
-        content
-    )
+    return href ? <a href={href}>{content}</a> : content
 }
