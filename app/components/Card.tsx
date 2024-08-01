@@ -32,9 +32,9 @@ export default function Card({
                         alt={title}
                         src={projectImg}
                         className="inset-0 object-cover bg-clip-border bg-black shadow-lg absolute h-full w-full group-hover:scale-125 duration-300"
-                        // width={544}
-                        // height={306}
-                        fill={true}
+                        width={544}
+                        height={306}
+                        // fill={true}
                     />
                 </div>
                 <div className="flex flex-col justify-center">
@@ -48,10 +48,10 @@ export default function Card({
                         {description}
                     </p>
                     <div
-                        className="text-sm truncate w-80 overflow-hidden"
+                        className="text-sm truncate w-full md:w-28 overflow-hidden tags"
                         title={projectType}
                     >
-                        <p className="bg-slate-700 p-1 rounded-sm inline">
+                        <p className="bg-slate-700 p-1 rounded-sm inline max-w-3">
                             {projectType}
                         </p>
                     </div>
