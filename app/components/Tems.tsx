@@ -1,5 +1,7 @@
 import { MagicWandIcon } from '@radix-ui/react-icons'
 import { ProfileImageLarge } from './ui/adminImg'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Uq() {
     return (
@@ -18,9 +20,9 @@ export default function Uq() {
                         <p className="text-gray-400 mt-1 leading-none">
                             Jos, Nigeria
                         </p>
-                        <p className="text-3xl text-slate-300 mt-1 leading-none">
-                            ❖
-                        </p>
+                       <Link href="https://github.com/temisan0x" className='rounded-full overflow-clip inline-block relative leading-none'>
+                        <Image src={'/images/github.png'} alt='' width={20} height={20} className='bg-white overflow-hidden'/>
+                       </Link>
                     </div>
                 </div>
 
