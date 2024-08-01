@@ -22,8 +22,8 @@ const Navbar = () => {
               </Link>
           <div className="hidden md:flex space-x-10 font-san">
             <Link href="/" className="text-gray-300 text-sm hover:text-white">Home</Link>
+            <Link href="/blog" className="text-gray-300 text-sm hover:text-white">Blog</Link>
             <Link href="/about" className="text-gray-300 text-sm hover:text-white">About</Link>
-            <Link href="/contact" className="text-gray-300 text-sm hover:text-white">Contact</Link>
           </div>
           <div className="md:hidden">
             <button onClick={() => setIsOpen(!isOpen)} className="focus:outline-none">
@@ -37,8 +37,8 @@ const Navbar = () => {
           <div className="md:hidden">
             <div className="px-2 pt-2 pb-3 space-y-1 font-san">
               <Link href="/" className="block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 ">Home</Link>
+              <Link href="/blog" className="block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">Blog</Link>
               <Link href="/about" className="block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">About</Link>
-              <Link href="/contact" className="block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700">Contact</Link>
             </div>
           </div>
         )}
