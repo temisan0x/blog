@@ -1,5 +1,8 @@
-import React from 'react';
-import Uq from '../components/Tems';
+import React from 'react'
+import Uq from '../components/Tems'
+import ProjectsData from '../work/ArtList'
+import Image from 'next/image'
+import Link from 'next/link'
 
 export default function AboutPage() {
     return (
@@ -8,9 +11,10 @@ export default function AboutPage() {
             <About />
             <div className="p-4">
                 <EduTL />
+                <WorkList />
             </div>
         </div>
-    );
+    )
 }
 
 function About() {
@@ -24,7 +28,7 @@ function About() {
                 repellendus iure ad provident.
             </p>
         </div>
-    );
+    )
 }
 
 const eduData = [
@@ -34,7 +38,7 @@ const eduData = [
         year: '2020 - 2021',
         place: 'Nigeria',
     },
-];
+]
 
 function EduTL() {
     return (
@@ -63,5 +67,49 @@ function EduTL() {
                 </div>
             </div>
         </div>
-    );
+    )
+}
+
+function WorkList() {
+    return (
+        <div className="grid gap-4 grid-cols-12">
+            <div className="col-span-3">
+                <div className="text-center text-left">
+                    <h3 className="text-lg font-semibold">Projects</h3>
+                </div>
+            </div>
+            <div className="relative col-span-9 space-y-12">
+                <div className="space-y-12 relative px-4 col-span-8 space-y-8 before:absolute before:top-2 before:bottom-0 before:w-0.5 before:-left-3 before:dark:bg-neutral-800">
+                    {ProjectsData.slice(0, 3).map(
+                        ({ title, href, imgSrc, description }: any) => (
+                            <div
+                                key={title}
+                                className="flex flex-col relative before:absolute before:top-[3px] before:w-4 before:h-4 before:rounded-full before:left-[-35px] before:z-[1] before:dark:bg-neutral-600"
+                            >
+                                <Link href={href}>
+                                    <h3 className="text-white hover:text-zinc-400 transition ease-in-out delay-100 inline-block">
+                                        {title || 'undefined'}
+                                    </h3>
+                                </Link>
+                                <p className="text-zinc-400 text-sm">
+                                    {description}
+                                </p>
+                                <div className="h-24 w-full overflow-hidden rounded-md">
+                                    <Image
+                                        src={imgSrc || ''}
+                                        alt=""
+                                        width={400}
+                                        height={400}
+                                    />
+                                </div>
+                            </div>
+                        )
+                    )}
+                     <div className="flex flex-col relative before:animate-pulse before:absolute before:top-4 before:w-4 before:h-4 before:rounded-full before:left-[-35px] before:z-[1] before:dark:bg-neutral-600">
+                     <Link href='/work' className='border border-neutral-700 hover:bg-neutral-700/10 transition ease-in-out delay-100 rounded-md w-full text-center'><h3 className="text-md p-2 font-semibold ">See more</h3></Link>
+                     </div>
+                </div>
+            </div>
+        </div>
+    )
 }

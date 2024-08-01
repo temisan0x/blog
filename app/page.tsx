@@ -3,7 +3,7 @@ import Link from 'next/link'
 import { CaretRightIcon } from '@radix-ui/react-icons'
 import { getBlogPosts } from './blog/utils'
 import Image from 'next/image'
-import ArtList from './works/ArtList'
+import ArtList from './work/ArtList'
 
 export default function Home() {
     return (
