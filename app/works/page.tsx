@@ -12,7 +12,7 @@ export default function WorkPage() {
                         title={p.title}
                         description={p.description}
                         projectType={p.tags}
-                        projectImg={p.thumbnail}
+                        projectImg={p.imgSrc}
                         href={p.href}
                         tooltip={p.description}
                     />
