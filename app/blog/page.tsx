@@ -6,7 +6,7 @@ import { getBlogPosts } from './utils';
 function page() {
   return (
     <section className='min-h-screen'>
-      <p className='py-12'>Displays all blog posts</p>
+      <p className='pt-12'>Displays all blog posts</p>
       <BlogPosts/>
     </section>
   )

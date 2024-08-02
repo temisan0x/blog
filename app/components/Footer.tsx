@@ -17,7 +17,7 @@ const Footer: React.FC = () => {
         <div className="flex gap-3">
           <Link
             passHref
-            href="/temisan"
+            href="/about"
             className="text-white hover:text-white text-sm"
           >
             About

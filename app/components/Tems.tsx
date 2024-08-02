@@ -1,42 +1,74 @@
+'use client'
 import { MagicWandIcon } from '@radix-ui/react-icons'
 import { ProfileImageLarge } from './ui/adminImg'
 import Image from 'next/image'
 import Link from 'next/link'
+import { motion } from 'framer-motion'
 
 export default function Uq() {
     return (
-        <div className='py-12'>
-            <div className="flex items-center justify-start space-x-8">
+        <div className="py-12">
+            <motion.div
+                initial={{ opacity: 0, y: -50 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5 }}
+                className="flex items-center justify-start space-x-8"
+            >
                 <div className="flex items-center space-x-5">
-                        <a href="/about">
-                            <div>
+                    <motion.a
+                        href="https://github.com/temisan0x"
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                    >
+                        <div className="group">
+                            <div className="relative">
                                 <ProfileImageLarge />
+                                <div className="z-20 absolute h-8 w-8 -bottom-2 -right-0">
+                                    <Image
+                                        src={'/images/github.png'}
+                                        alt=""
+                                        width={200}
+                                        height={200}
+                                        className="bg-white overflow-hidden rounded-full"
+                                    />
+                                </div>
                             </div>
-                        </a>
-                    <div className="">
+                            <div>
+                                <div></div>
+                            </div>
+                        </div>
+                    </motion.a>
+                    <div>
                         <h2 className="text-xl font-medium leading-none">
                             Temisan Momodu
                         </h2>
-                        <p className="text-gray-400 mt-1 leading-none">
+                        <p className="text-gray-400 leading-none">
                             Jos, Nigeria
                         </p>
-                       <Link href="https://github.com/temisan0x" className='rounded-full overflow-clip inline-block relative leading-none'>
-                        <Image src={'/images/github.png'} alt='' width={20} height={20} className='bg-white overflow-hidden'/>
-                       </Link>
                     </div>
                 </div>
 
-                <div className="">
-                    <span className="flex text-xs space-x-2.5 items-center leading-none text-fuchsia-400 border px-2.5 py-0.5 bg-fuchsia-900/50 rounded-full border-fuchsia-800 mb-3">
+                <div>
+                    <motion.span
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                        className="flex text-xs space-x-2.5 items-center leading-none text-fuchsia-400 border px-2.5 py-0.5 bg-fuchsia-900/50 rounded-full border-fuchsia-800 mb-3"
+                    >
                         <MagicWandIcon />
                         <p>Front-end web developer</p>
-                    </span>
-                    <span className="flex space-x-2.5 text-xs items-center leading-none text-emerald-400 border px-2.5 py-0.5 bg-emerald-900/50 rounded-full border-emerald-800">
+                    </motion.span>
+                    <motion.span
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.4 }}
+                        className="flex space-x-2.5 text-xs items-center leading-none text-emerald-400 border px-2.5 py-0.5 bg-emerald-900/50 rounded-full border-emerald-800"
+                    >
                         <MagicWandIcon />
                         <p>Junior Back-end developer</p>
-                    </span>
+                    </motion.span>
                 </div>
-            </div>
+            </motion.div>
         </div>
     )
 }
