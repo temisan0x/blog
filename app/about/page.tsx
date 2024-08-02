@@ -44,7 +44,7 @@ function EduTL() {
     return (
         <div className="grid gap-4 grid-cols-12">
             <div className="col-span-3">
-                <div className="text-center text-left mb-14">
+                <div className="text-center mb-14">
                     <h3 className="text-lg font-semibold">Education</h3>
                 </div>
             </div>
@@ -74,12 +74,12 @@ function WorkList() {
     return (
         <div className="grid gap-4 grid-cols-12">
             <div className="col-span-3">
-                <div className="text-center text-left">
+                <div className="text-center">
                     <h3 className="text-lg font-semibold">Projects</h3>
                 </div>
             </div>
             <div className="relative col-span-9 space-y-12">
-                <div className="space-y-12 relative px-4 col-span-8 space-y-8 before:absolute before:top-2 before:bottom-0 before:w-0.5 before:-left-3 before:dark:bg-neutral-800">
+                <div className="space-y-12 relative px-4 col-span-8 before:absolute before:top-2 before:bottom-0 before:w-0.5 before:-left-3 before:dark:bg-neutral-800">
                     {ProjectsData.slice(0, 3).map(
                         ({ title, href, imgSrc, description }: any) => (
                             <div
