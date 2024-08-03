@@ -1,16 +1,16 @@
 import React from 'react'
 import Image from 'next/image'
-import TemisanProfile from '@/public/uploads/myimage.png'
+import TemisanProfile from '@/public/uploads/Temisan.jpg'
 
 const Temisan = () => {
     return (
         <Image
             src={TemisanProfile}
-            quality={95}
+            quality={100}
             width={300}
             height={300}
             alt="A photo of Temisan"
-            className="rounded-full"
+            className="rounded-full object-fill"
         />
     )
 }

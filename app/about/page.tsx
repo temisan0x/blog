@@ -2,7 +2,13 @@ import React from 'react'
 import Uq from '../components/Tems'
 import ProjectsData from '../work/ArtList'
 import Image from 'next/image'
-import Link from 'next/link'
+import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata:Metadata = {
+    title: 'About',
+    description: 'A litle about me ',
+}
 
 export default function AboutPage() {
     return (

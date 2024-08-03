@@ -7,7 +7,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 
 import { baseUrl } from './sitemap'
-import BasicExample from './components/Back2Top'
+import Back2Top from './components/Back2Top'
 
 export const metadata: Metadata = {
     metadataBase: new URL(baseUrl),
@@ -52,7 +52,7 @@ export default async function RootLayout({
                 suppressHydrationWarning={true}
                 className="antialiased flex flex-col"
             >
-                <Navbar /><BasicExample/>
+                <Navbar /><Back2Top/>
                 <main className="md:px-6 px-2 mx-auto max-w-4xl w-full md:max-w-2xl lg:max-w-3xl pt-10 h-auto flex-grow">
                     {children}
                 </main>
