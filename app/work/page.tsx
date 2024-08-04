@@ -11,6 +11,12 @@ export const metadata: Metadata = {
 export default function WorkPage() {
     return (
         <div className="min-h-screen">
+            <header className="mb-8">
+                <h1 className="text-3xl font-bold text-gray-200">My Work</h1>
+                <p className="prose text-base/[18px] text-gray-200 font-normal text">
+                   Please feel free to check out some projects, I have worked on and created over the years...
+                </p>
+            </header>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {ProjectsData.map((p, index) => (
                     <Card

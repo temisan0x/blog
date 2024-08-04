@@ -19,23 +19,17 @@ export default function Uq() {
                         href="https://github.com/temisan0x"
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
+                        className="group relative"
                     >
-                        <div className="group">
-                            <div className="relative">
-                                <ProfileImageLarge />
-                                <div className="z-20 absolute h-8 w-8 -bottom-2 -right-0">
-                                    <Image
-                                        src={'/images/github.png'}
-                                        alt=""
-                                        width={200}
-                                        height={200}
-                                        className="bg-white overflow-hidden rounded-full"
-                                    />
-                                </div>
-                            </div>
-                            <div>
-                                <div></div>
-                            </div>
+                        <ProfileImageLarge />
+                        <div className="absolute h-8 w-8 -bottom-2 -right-2 z-20">
+                            <Image
+                                src='/images/github.png'
+                                alt="GitHub"
+                                width={32}  // Adjusted to match h-8 w-8
+                                height={32} // Adjusted to match h-8 w-8
+                                className="bg-white overflow-hidden rounded-full"
+                            />
                         </div>
                     </motion.a>
                     <div>
@@ -56,7 +50,7 @@ export default function Uq() {
                         className="flex text-xs space-x-2.5 items-center leading-none text-fuchsia-400 border px-2.5 py-0.5 bg-fuchsia-900/50 rounded-full border-fuchsia-800 mb-3"
                     >
                         <MagicWandIcon />
-                        <p>Front-end web developer</p>
+                        <p>Front-end Web Developer</p>
                     </motion.span>
                     <motion.span
                         initial={{ scale: 0.9, opacity: 0 }}
@@ -65,7 +59,7 @@ export default function Uq() {
                         className="flex space-x-2.5 text-xs items-center leading-none text-emerald-400 border px-2.5 py-0.5 bg-emerald-900/50 rounded-full border-emerald-800"
                     >
                         <MagicWandIcon />
-                        <p>Junior Back-end developer</p>
+                        <p>Junior Back-end Developer</p>
                     </motion.span>
                 </div>
             </motion.div>
