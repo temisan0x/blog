@@ -60,7 +60,7 @@ const FeaturedBlogPostsList = async () => {
                         className="group"
                         href={`/blog/${post.slug}`}
                     >
-                        <div className="flex p-4 mb-4  bg-white/5 border border-transparent rounded-md duration-200 cursor-pointer hover:translate-x-3 hover:dark:border-neutral-600/50">
+                        <div className="flex p-4 mb-4 bg-zinc-900 border border-transparent rounded-md duration-200 cursor-pointer hover:translate-x-3 hover:dark:border-neutral-600/50">
                             <div className="relative justify-items-center">
                                 <div className="w-16 h-16 rounded-full overflow-hidden">
                                     <Image

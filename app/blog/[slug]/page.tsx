@@ -1,10 +1,11 @@
-import { motion } from 'framer-motion';
-import styles from '@/app/page.module.css';
-import { BlogPosts } from '@/app/components/Posts';
 import { formatDate, getBlogPosts } from '../utils';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/app/components/breadcrumbs';
-import { CalendarIcon, ChatBubbleIcon } from '@radix-ui/react-icons';
+import {
+    ArrowRightIcon,
+    CalendarIcon,
+    ChatBubbleIcon,
+} from '@radix-ui/react-icons';
 import { CustomMdx } from '@/app/components/mdx';
 import Comments from '@/app/components/Comment';
 import Link from 'next/link';
@@ -31,7 +32,7 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
     // Determine the next post (if it exists)
     let nextPost = posts[currentIndex + 1];
     return (
-        <div className='min-h-screen'>
+        <div className="min-h-screen">
             <Breadcrumbs post={post} />
             <div className="flex items-center gap-x-2 font-mono dark:text-neutral-400 mb-2 text-sm">
                 <CalendarIcon />
@@ -43,30 +44,34 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
                 </time>
                 <ChatBubbleIcon />
                 <Link href="#comments">
-                    <p className="text-teal-400">
-                        Comments
-                    </p>
+                    <p className="text-teal-400">Comments</p>
                 </Link>
             </div>
             <h1 className="font-medium text-2xl tracking-tighter ">
                 {post.metadata.title}
             </h1>
-            <p className="my-4 italic">{post.metadata.summary}</p>
+            {/* <p className="my-4 italic">{post.metadata.summary}</p> */}
 
             <article className="prose prose-quoteless prose-neutral dark:prose-invert">
                 <CustomMdx source={post.content} />
-                <hr className="mb-4" />
             </article>
-            <hr />
             {nextPost && (
                 <div className="my-8">
-                    <h2 className="text-xl font-bold">Next Post:</h2>
+                    <hr className="w-full h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
                     <Link href={`/blog/${nextPost?.slug}`}>
-                        <div 
-                            className="p-4 bg-gray-800 rounded-md hover:bg-gray-700 transition duration-200"
-                        >
-                            <h3 className="text-lg font-semibold">{nextPost.metadata.title}</h3>
-                            <p className="text-sm text-gray-400">{nextPost.metadata.summary}</p>
+                        <div className="link-card p-4 bg-zinc-900 rounded-md transition duration-200 delay-300 no-underline">
+                            <h3 className="text-lg font-semibold">
+                                {nextPost.metadata.title}
+                            </h3>
+                            <div className="flex">
+                                <p className="text-sm text-gray-400">
+                                    {nextPost.metadata.summary}
+                                </p>
+                                <div className="continue-link flex items-center ml-2 text-sm no-underline">
+                                    <span>Continue</span>
+                                    <ArrowRightIcon />
+                                </div>
+                            </div>
                         </div>
                     </Link>
                 </div>
@@ -74,6 +79,6 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
             <Comments />
         </div>
     );
-}
+};
 
 export default FetchPost;
