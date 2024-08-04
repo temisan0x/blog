@@ -26,16 +26,17 @@ export default function AboutPage() {
 function About() {
     return (
         <div className="p-4 border border-zinc-800 rounded-md">
-            <h2 className="font-semibold">About</h2>
+            <h2 className="font-semibold">About Me</h2>
             <p className="text-sm prose">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-                cum neque possimus odit voluptates assumenda magnam dolorum id
-                minus aliquam magni temporibus, quidem officiis facilis quisquam
-                repellendus iure ad provident.
+                Hi, I’m Temy, a passionate MERN Stack developer based in Jos, Nigeria. With a love for coding, I specialize in MongoDB, Next.js, React.js, and Node.js. When I'm not diving into code, you might find me moderating the VLaunch community, exploring the latest in cryptocurrency, or writing technical articles.
+            </p>
+            <p className="text-sm prose mt-2">
+                My hobbies include writing, watching movies, and staying  with the evolving world of web3. I’m love to discuss philosophy, politics, or music. I strive to continuously improve my programming skills and stay at the forefront of tech innovations.
             </p>
         </div>
     )
 }
+
 
 const eduData = [
     {
