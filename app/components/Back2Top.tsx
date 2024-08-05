@@ -2,7 +2,7 @@
 import { ArrowUpIcon } from '@radix-ui/react-icons'
 import React, { useState, useEffect } from 'react'
 
-export default function BasicExample(): JSX.Element {
+export default function BackToTop(): JSX.Element {
     const [showButton, setShowButton] = useState(false)
 
     const handleScroll = () => {

@@ -9,6 +9,7 @@ const nextConfig = {
               pathname: '**',
           },
       ],
+      domains: ['pwrites.princeton.edu'],
   },
     webpack: (config, { isServer }) => {
       if (!isServer) {

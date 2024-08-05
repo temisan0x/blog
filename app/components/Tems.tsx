@@ -4,8 +4,14 @@ import { ProfileImageLarge } from './ui/adminImg'
 import Image from 'next/image'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { useState, useEffect } from 'react'
 
 export default function Uq() {
+    const [counter, setCounter] = useState(0);
+    useEffect(() => {
+        setCounter(counter + 1);
+    },[])
+
     return (
         <div className="py-12">
             <motion.div
@@ -39,6 +45,12 @@ export default function Uq() {
                         <p className="text-gray-400 leading-none">
                             Jos, Nigeria
                         </p>
+                        {/* <div>
+                            <p>Click to increase <button className='bg-zinc-500 py-1 px-4' onClick={()=> setCounter(counter + 1)}>Me!</button></p>
+                            <p>Click to decrease <button className='bg-zinc-500 py-1 px-4' onClick={()=> setCounter(counter - 1)}>Me!</button></p>
+
+                         <p>   {counter}</p>
+                        </div> */}
                     </div>
                 </div>
 
