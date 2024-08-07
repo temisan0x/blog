@@ -32,8 +32,8 @@ export default function Uq() {
                             <Image
                                 src='/images/github.png'
                                 alt="GitHub"
-                                width={32}  // Adjusted to match h-8 w-8
-                                height={32} // Adjusted to match h-8 w-8
+                                width={32}  
+                                height={32}
                                 className="bg-white overflow-hidden rounded-full"
                             />
                         </div>
