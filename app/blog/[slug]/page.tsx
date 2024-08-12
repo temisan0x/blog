@@ -10,7 +10,7 @@ import { CustomMdx } from '@/app/components/mdx'
 import Comments from '@/app/components/Comment'
 import Link from 'next/link'
 
-// Generate static parameters for dynamic routes
+
 export async function generateStaticParams() {
     let posts = getBlogPosts()
     return posts.map((post) => ({
@@ -18,7 +18,6 @@ export async function generateStaticParams() {
     }))
 }
 
-// Fetch and display a specific post
 const FetchPost = ({ params }: { params: { slug: string } }) => {
     let posts = getBlogPosts()
     let post = posts.find((post) => post.slug === params.slug)
@@ -52,7 +51,7 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
             </h1>
             {/* <p className="my-4 italic">{post.metadata.summary}</p> */}
 
-            <article className="prose prose-quoteless prose-neutral dark:prose-invert">
+            <article className="prose prose-quoteless prose-neutral dark:prose-invert mb-10">
                 <CustomMdx source={post.content} />
             </article>
             {nextPost && (
