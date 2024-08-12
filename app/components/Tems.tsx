@@ -65,7 +65,7 @@ export default function Uq() {
                         className="flex space-x-2.5 text-xs items-center leading-none text-emerald-400 border px-2.5 py-0.5 bg-emerald-900/50 rounded-full border-emerald-800"
                     >
                         <MagicWandIcon />
-                        <p>Junior Back-end Developer</p>
+                        <p>Back-end Developer</p>
                     </motion.span>
                 </div>
             </motion.div>
