@@ -17,8 +17,17 @@ module.exports = {
       },
       rotate: {
         '360': '360deg',
+      },
+      typography: {
+        quoteless: {
+          css: {
+            
+          }
+        }
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/typography'),
+  ],
 };

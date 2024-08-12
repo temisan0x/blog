@@ -29,7 +29,7 @@
     "typescript": "5.3.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.13",
+    "@tailwindcss/typography": "^0.5.14",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.35",
     "prettier": "^3.2.5",

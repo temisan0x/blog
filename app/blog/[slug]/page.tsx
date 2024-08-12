@@ -1,37 +1,36 @@
-import { formatDate, getBlogPosts } from '../utils';
-import { notFound } from 'next/navigation';
-import { Breadcrumbs } from '@/app/components/breadcrumbs';
+import { formatDate, getBlogPosts } from '../utils'
+import { notFound } from 'next/navigation'
+import { Breadcrumbs } from '@/app/components/breadcrumbs'
 import {
     ArrowRightIcon,
     CalendarIcon,
     ChatBubbleIcon,
-} from '@radix-ui/react-icons';
-import { CustomMdx } from '@/app/components/mdx';
-import Comments from '@/app/components/Comment';
-import Link from 'next/link';
+} from '@radix-ui/react-icons'
+import { CustomMdx } from '@/app/components/mdx'
+import Comments from '@/app/components/Comment'
+import Link from 'next/link'
 
 // Generate static parameters for dynamic routes
 export async function generateStaticParams() {
-    let posts = getBlogPosts();
+    let posts = getBlogPosts()
     return posts.map((post) => ({
         slug: post.slug,
-    }));
+    }))
 }
-
 
 // Fetch and display a specific post
 const FetchPost = ({ params }: { params: { slug: string } }) => {
-    let posts = getBlogPosts();
-    let post = posts.find((post) => post.slug === params.slug);
+    let posts = getBlogPosts()
+    let post = posts.find((post) => post.slug === params.slug)
     if (!post) {
-        notFound();
+        notFound()
     }
 
     // Find the index of the current post
-    let currentIndex = posts.findIndex((post) => post.slug === params.slug);
+    let currentIndex = posts.findIndex((post) => post.slug === params.slug)
 
     // Determine the next post (if it exists)
-    let nextPost = posts[currentIndex + 1];
+    let nextPost = posts[currentIndex + 1]
     return (
         <div className="min-h-screen">
             <Breadcrumbs post={post} />
@@ -79,7 +78,7 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
             )}
             {/* <Comments /> */}
         </div>
-    );
-};
+    )
+}
 
-export default FetchPost;
+export default FetchPost
