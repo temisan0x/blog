@@ -18,6 +18,7 @@ export async function generateStaticParams() {
     }));
 }
 
+
 // Fetch and display a specific post
 const FetchPost = ({ params }: { params: { slug: string } }) => {
     let posts = getBlogPosts();
@@ -76,7 +77,7 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
                     </Link>
                 </div>
             )}
-            <Comments />
+            {/* <Comments /> */}
         </div>
     );
 };
