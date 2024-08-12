@@ -5,7 +5,7 @@ import { Metadata } from 'next'
 
 export const metadata: Metadata = {
     title: 'Work',
-    description: 'The list of my work.'
+    description: 'The list of my work.',
 }
 
 export default function WorkPage() {
@@ -14,7 +14,8 @@ export default function WorkPage() {
             <header className="mb-8">
                 <h1 className="text-3xl font-bold text-gray-200">My Work</h1>
                 <p className="prose text-base/[18px] text-gray-200 font-normal text">
-                   Please feel free to check out some projects, I have worked on and created over the years...
+                    Explore some of the projects I've worked on and
+                    created over the years...
                 </p>
             </header>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
