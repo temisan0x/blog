@@ -14,9 +14,9 @@ export default function Home() {
                     <h2 className="text-gray-200 ">Recent Post:</h2>
                 </div>
                 <div>
-                    <Link href="/blog">
-                        <button className="dark:bg-neutral-900 px-5 py-2 hover:dark:border-neutral-600/5 border border-transparent transition duration-300 ease-in-out rounded-sm">
-                            <CaretRightIcon />
+                    <Link href="/work">
+                        <button className="dark:bg-neutral-900 px-5 py-2 border border-transparent transition duration-300 ease-in-out rounded-sm hover:border-zinc-800">
+                            <CaretRightIcon className="h-4 w-4 transition-transform transform hover:translate-x-1" />
                         </button>
                     </Link>
                 </div>
@@ -28,8 +28,8 @@ export default function Home() {
                 </div>
                 <div>
                     <Link href="/work">
-                        <button className="dark:bg-neutral-900 px-5 py-2 hover:dark:border-neutral-600/5 border border-transparent transition duration-300 ease-in-out rounded-sm">
-                            <CaretRightIcon />
+                        <button className="dark:bg-neutral-900 px-5 py-2 border border-transparent transition duration-300 ease-in-out rounded-sm hover:border-zinc-800">
+                            <CaretRightIcon className="h-4 w-4 transition-transform transform hover:translate-x-1" />
                         </button>
                     </Link>
                 </div>
@@ -60,7 +60,7 @@ const FeaturedBlogPostsList = async () => {
                         className="group"
                         href={`/blog/${post.slug}`}
                     >
-                        <div className="flex p-4 mb-4 bg-zinc-900 border border-transparent rounded-md duration-200 cursor-pointer hover:translate-x-3 hover:dark:border-neutral-600/50">
+                        <div className="flex p-4 mb-4 bg-zinc-900 border border-transparent rounded-md duration-200 cursor-pointer  hover:dark:border-zinc-800">
                             <div className="relative justify-items-center">
                                 <div className="w-16 h-16 overflow-hidden rounded-full">
                                     <Image
@@ -95,10 +95,16 @@ const RecentWork = () => {
     return (
         <figure>
             {ArtList.slice(0, 1).map((id) => (
-                <Link href="https://temycodes.vercel.app/" key={id.title} className="group">
-                    <div className="flex bg-zinc-800 opacity-80 group-hover:opacity-100 mb-4 rounded-md">
-                        <div className='w-full relative h-[240px] min-h-[240px] overflow-hidden place-self-center'>
-                            <div className='absolute left-8 bottom-4 z-10 py-2 px-4 text-xs md:text-sm font-semibold block rounded bg-black/70'>{id.title}</div>
+                <Link
+                    href="https://temycodes.vercel.app/"
+                    key={id.title}
+                    className="group"
+                >
+                    <div className="flex opacity-80 group-hover:opacity-100 mb-4 rounded-md">
+                        <div className="w-full relative h-[240px] min-h-[240px] overflow-hidden place-self-center">
+                            <div className="absolute left-8 bottom-4 z-10 py-2 px-4 text-xs md:text-sm font-semibold block rounded bg-black/70">
+                                {id.title}
+                            </div>
                             <Image
                                 src={id.thumbnail || '/images/'}
                                 alt={id.title}
