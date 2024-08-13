@@ -73,7 +73,7 @@ const Navbar = () => {
                 </div>
                 {isOpen && (
                     <div className="md:hidden">
-                        <div className="px-2 pt-2 pb-3 space-y-1 font-sans">
+                        <div className=" pt-2 pb-3 space-y-1 font-sans">
                             <Link
                                 href="/"
                                 className="block px-3 py-2 rounded-md text-sm font-medium text-gray-300 hover:text-white hover:bg-gray-700 transition-colors duration-200"
