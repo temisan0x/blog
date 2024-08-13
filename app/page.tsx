@@ -96,11 +96,11 @@ const RecentWork = () => {
                 <Link href="https://temycodes.vercel.app/" key={id.title} className="group">
                     <div className="flex bg-zinc-800 opacity-80 group-hover:opacity-100 mb-4 rounded-md">
                         <div className='w-full relative h-[240px] min-h-[240px] overflow-hidden place-self-center'>
-                            <div className='absolute left-8 bottom-4 z-10 py-2 px-4 font-semibold block rounded bg-black/70'>{id.title}</div>
+                            <div className='absolute left-8 bottom-4 z-10 py-2 px-4 text-xs md:text-sm font-semibold block rounded bg-black/70'>{id.title}</div>
                             <Image
                                 src={id.thumbnail || '/images/'}
                                 alt={id.title}
-                                className="object-center object-cover grayscale group-hover:grayscale-0 rounded group-hover:scale-125 duration-300"
+                                className="object-center object-cover  rounded group-hover:scale-125 duration-300"
                                 fill={true}
                             />
                         </div>
