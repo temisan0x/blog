@@ -66,7 +66,7 @@ function EduTL() {
                                 {year}
                             </time>
                             <h3 className="text-md font-semibold tracking-wide">
-                                {desc} at {title}
+                                {desc} at a {title}
                             </h3>
                             <p className="text-zinc-400 text-sm">{place}</p>
                         </div>
