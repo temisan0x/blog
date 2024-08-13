@@ -39,7 +39,7 @@ export default function Uq() {
                         <p className="text-gray-400 leading-none">
                             Jos, Nigeria
                         </p>
-                        <span className="flex text-xs items-center leading-none text-emerald-400 border bg-emerald-900/50 rounded-full border-emerald-800 px-2 gap-2">
+                        <span className="flex text-xs items-center leading-none text-emerald-400 border bg-emerald-900/50 rounded-full border-emerald-800 px-2 gap-2 w-36">
                             <MagicWandIcon/>
                             <p className="text-center">Web Developer</p>
                         </span>
