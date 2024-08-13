@@ -7,10 +7,10 @@ import { motion } from 'framer-motion'
 import { useState, useEffect } from 'react'
 
 export default function Uq() {
-    const [counter, setCounter] = useState(0);
+    const [counter, setCounter] = useState(0)
     useEffect(() => {
-        setCounter(counter + 1);
-    },[])
+        setCounter(counter + 1)
+    }, [])
 
     return (
         <div className="py-12">
@@ -18,9 +18,9 @@ export default function Uq() {
                 initial={{ opacity: 0, y: -50 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5 }}
-                className="flex items-center justify-start space-x-8"
+                className="flex items-center justify-start space-x-8 w-full flex-col gap-5 md:gap-0"
             >
-                <div className="flex items-center space-x-5">
+                <div className="flex justify-normal space-x-5 w-full">
                     <motion.a
                         href="https://github.com/temisan0x"
                         whileHover={{ scale: 1.1 }}
@@ -30,9 +30,9 @@ export default function Uq() {
                         <ProfileImageLarge />
                         <div className="absolute h-8 w-8 -bottom-2 -right-2 z-20">
                             <Image
-                                src='/images/github.png'
+                                src="/images/github.png"
                                 alt="GitHub"
-                                width={32}  
+                                width={32}
                                 height={32}
                                 className="bg-white overflow-hidden rounded-full"
                             />
@@ -48,24 +48,10 @@ export default function Uq() {
                     </div>
                 </div>
 
-                <div>
-                    <motion.span
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.2 }}
-                        className="flex text-xs space-x-2.5 items-center leading-none text-fuchsia-400 border px-2.5 py-0.5 bg-fuchsia-900/50 rounded-full border-fuchsia-800 mb-3"
-                    >
+                <div className="w-full mt-10 flex mx-auto">
+                    <motion.span className="flex text-xs space-x-2.5 items-center leading-none text-fuchsia-400 border px-2.5 py-0.5 bg-fuchsia-900/50 rounded-full border-fuchsia-800 mt-6 w-full">
                         <MagicWandIcon />
-                        <p>Front-end Web Developer</p>
-                    </motion.span>
-                    <motion.span
-                        initial={{ scale: 0.9, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        transition={{ duration: 0.5, delay: 0.4 }}
-                        className="flex space-x-2.5 text-xs items-center leading-none text-emerald-400 border px-2.5 py-0.5 bg-emerald-900/50 rounded-full border-emerald-800"
-                    >
-                        <MagicWandIcon />
-                        <p>Back-end Developer</p>
+                        <p className="text-center">Web Developer</p>
                     </motion.span>
                 </div>
             </motion.div>
