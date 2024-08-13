@@ -28,7 +28,7 @@ export default function Uq() {
                         className="group relative"
                     >
                         <ProfileImageLarge />
-                        <div className="absolute h-8 w-8 -bottom-2 -right-2 z-20">
+                        <div className="absolute h-8 w-8 bottom-2 -right-2 z-20">
                             <Image
                                 src="/images/github.png"
                                 alt="GitHub"
