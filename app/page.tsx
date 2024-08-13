@@ -62,7 +62,7 @@ const FeaturedBlogPostsList = async () => {
                     >
                         <div className="flex p-4 mb-4 bg-zinc-900 border border-transparent rounded-md duration-200 cursor-pointer hover:translate-x-3 hover:dark:border-neutral-600/50">
                             <div className="relative justify-items-center">
-                                <div className="w-16 h-16 overflow-hidden">
+                                <div className="w-16 h-16 overflow-hidden rounded-full">
                                     <Image
                                         src={
                                             post.metadata.image ||
@@ -70,7 +70,9 @@ const FeaturedBlogPostsList = async () => {
                                         }
                                         alt="Background"
                                         className="w-full h-full rounded-full object-cover"
-                                        fill={true}
+                                        width={200}
+                                        height={200}
+                                        quality={90}
                                     />
                                 </div>
                             </div>
