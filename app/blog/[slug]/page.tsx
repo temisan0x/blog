@@ -75,7 +75,7 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
                     </Link>
                 </div>
             )}
-            {/* <Comments /> */}
+            <Comments />
         </div>
     )
 }
