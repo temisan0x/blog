@@ -10,7 +10,7 @@ const Navbar = () => {
 
   return (
     <nav className=" border-zinc-800 w-full bg-neutral-900 dark:bg-neutral-900">
-      <div className="container mx-auto px-6">
+      <div className="container mx-auto px-1">
         <div className="flex items-center justify-between py-4">
         <Link href="/" className="text-white relative text-2xl" passHref>
                 <Image
