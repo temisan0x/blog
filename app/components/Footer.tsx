@@ -12,7 +12,7 @@ const Footer: React.FC = () => {
     <footer className="bg-[#1A1A1A] py-3 text-white">
       <div className="flex justify-center flex-col items-center">
         <Link href="/" className="text-white text-2xl mb-2" passHref>
-          <Image src={NavbarImg} alt={"temycodes"} width={80} height={100} />
+          <Image src={NavbarImg} alt={"temycodes"} width={80} height={100}  loading="lazy"/>
         </Link>
         <div className="flex gap-3">
           <Link

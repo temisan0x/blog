@@ -34,6 +34,7 @@ const Blogpost = async () =>  {
                                         alt="Background"
                                         className="w-full h-full rounded-full object-contain overflow-hidden"
                                         fill={true}
+                                         loading="lazy"
                                     />
                                 </div>
                             </div>

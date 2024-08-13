@@ -34,7 +34,7 @@ export default function Card({
                         className="inset-0 object-cover bg-clip-border bg-black shadow-lg absolute h-full w-full group-hover:scale-125 duration-300"
                         width={544}
                         height={306}
-                        // fill={true}
+                        loading="lazy"
                     />
                 </div>
                 <div className="flex flex-col justify-center">

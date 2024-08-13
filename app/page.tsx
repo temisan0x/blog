@@ -73,6 +73,7 @@ const FeaturedBlogPostsList = async () => {
                                         width={200}
                                         height={200}
                                         quality={90}
+                                        loading="lazy"
                                     />
                                 </div>
                             </div>
@@ -110,6 +111,7 @@ const RecentWork = () => {
                                 alt={id.title}
                                 className="object-center object-cover  rounded group-hover:scale-125 duration-300"
                                 fill={true}
+                                loading="lazy"
                             />
                         </div>
                     </div>

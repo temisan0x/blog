@@ -10,7 +10,6 @@ import { CustomMdx } from '@/app/components/mdx'
 import Comments from '@/app/components/Comment'
 import Link from 'next/link'
 
-
 export async function generateStaticParams() {
     let posts = getBlogPosts()
     return posts.map((post) => ({

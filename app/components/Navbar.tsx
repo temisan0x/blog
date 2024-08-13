@@ -21,6 +21,7 @@ const Navbar = () => {
                             alt="Temy Codes Logo"
                             width={100}
                             height={100}
+                             loading="lazy"
                         />
                     </Link>
                     <div className="hidden md:flex space-x-10 font-sans">

@@ -77,7 +77,7 @@ function Table({ data }: { data: TableData }) {
 function Imgfull({ src, alt, height, width }: ImgfullProps) {
     return (
         <div>
-            <Image alt={alt} src={src} width={width} height={height} />
+            <Image alt={alt} src={src} width={width} height={height}  loading="lazy"/>
         </div>
     )
 }

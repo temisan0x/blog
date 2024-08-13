@@ -28,7 +28,7 @@ function About() {
         <div className="p-4 border border-zinc-800 rounded-md">
             <h2 className="font-semibold">About Me</h2>
             <p className="text-sm prose dark:prose-invert">
-                Hi, I’m Temy, a passionate MERN Stack developer based in Jos, Nigeria. With a love for coding, I specialize in MongoDB, Next.js, React.js, and Node.js. When I'm not diving into code, you might find me moderating the VLaunch community, exploring the latest in cryptocurrency, or writing technical articles.
+                Hi, I’m Temy, a passionate MERN Stack developer based in Jos, Nigeria. With a love for coding, I specialize in MongoDB, Next.js, React.js, and Node.js. When I'm not diving into code, you might find me moderating the crypto community, exploring the latest in cryptocurrency, or writing technical articles.
             </p>
             <p className="text-sm prose mt-2 dark:prose-invert">
                 My hobbies include writing, watching movies, and staying  with the evolving world of web3. I’m love to discuss philosophy, politics, or music. I strive to continuously improve my programming skills and stay at the forefront of tech innovations.
@@ -107,6 +107,7 @@ function WorkList() {
                                         alt=""
                                         width={400}
                                         height={400}
+                                         loading="lazy"
                                     />
                                 </div>
                             </div>
