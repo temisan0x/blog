@@ -46,7 +46,7 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
                     <p className="text-teal-400">Comments</p>
                 </Link>
             </div>
-            <h1 className="font-medium text-2xl tracking-tighter ">
+            <h1 className="font-medium text-2xl tracking-tighter mb-5">
                 {post.metadata.title}
             </h1>
             {/* <p className="my-4 italic">{post.metadata.summary}</p> */}

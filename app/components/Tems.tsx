@@ -45,8 +45,8 @@ export default function Uq() {
                         <p className="text-gray-400 leading-none">
                             Jos, Nigeria
                         </p>
-                        <span className="flex text-xs space-x-2.5 items-center leading-none text-fuchsia-400 border px-2.5 py-0.5 bg-fuchsia-900/50 rounded-full border-fuchsia-800 absolute">
-                            <MagicWandIcon />
+                        <span className="flex text-xs space-x-2.5 items-center leading-nonetext-emerald-400 border px-2.5 py-0.5 bg-emerald-900/50 rounded-full border-emerald-800"
+                    >  <MagicWandIcon />
                             <p className="text-center">Web Developer</p>
                         </span>
                     </div>
