@@ -2,15 +2,9 @@
 import { MagicWandIcon } from '@radix-ui/react-icons'
 import { ProfileImageLarge } from './ui/adminImg'
 import Image from 'next/image'
-import Link from 'next/link'
 import { motion } from 'framer-motion'
-import { useState, useEffect } from 'react'
 
 export default function Uq() {
-    const [counter, setCounter] = useState(0)
-    useEffect(() => {
-        setCounter(counter + 1)
-    }, [])
 
     return (
         <div className="py-12">
@@ -45,8 +39,8 @@ export default function Uq() {
                         <p className="text-gray-400 leading-none">
                             Jos, Nigeria
                         </p>
-                        <span className="flex text-xs space-x-2.5 items-center leading-nonetext-emerald-400 border px-2.5 py-0.5 bg-emerald-900/50 rounded-full border-emerald-800"
-                    >  <MagicWandIcon />
+                        <span className="flex text-xs items-center leading-none text-emerald-400 border bg-emerald-900/50 rounded-full border-emerald-800 px-2 gap-2">
+                            <MagicWandIcon/>
                             <p className="text-center">Web Developer</p>
                         </span>
                     </div>
