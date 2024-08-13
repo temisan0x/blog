@@ -15,7 +15,7 @@ export default function Home() {
                 </div>
                 <div>
                     <Link href="/blog">
-                        <button className="animate-pulse dark:bg-neutral-900 px-5 py-2 hover:dark:border-neutral-600/5 border border-transparent transition duration-300 ease-in-out rounded-sm">
+                        <button className="dark:bg-neutral-900 px-5 py-2 hover:dark:border-neutral-600/5 border border-transparent transition duration-300 ease-in-out rounded-sm">
                             <CaretRightIcon />
                         </button>
                     </Link>
@@ -28,7 +28,7 @@ export default function Home() {
                 </div>
                 <div>
                     <Link href="/work">
-                        <button className="animate-pulse dark:bg-neutral-900 px-5 py-2 hover:dark:border-neutral-600/5 border border-transparent transition duration-300 ease-in-out rounded-sm">
+                        <button className="dark:bg-neutral-900 px-5 py-2 hover:dark:border-neutral-600/5 border border-transparent transition duration-300 ease-in-out rounded-sm">
                             <CaretRightIcon />
                         </button>
                     </Link>
