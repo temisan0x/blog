@@ -18,7 +18,7 @@ export default function WorkPage() {
                     created over the years...
                 </p>
             </header>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                 {ProjectsData.map((p, index) => (
                     <Card
                         key={index}

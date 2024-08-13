@@ -38,11 +38,11 @@ export default function Card({
                     />
                 </div>
                 <div className="flex flex-col justify-center">
-                    <h4 className="text-sm tracking-tighter prose font-semibold">
+                    <h4 className="text-sm tracking-tighter prose font-semibold text-zinc-100">
                         {title}
                     </h4>
                     <p
-                        className="text-sm prose truncate overflow-clip tracking-tighter"
+                        className="text-sm prose truncate overflow-clip tracking-tighter text-zinc-400"
                         title={description}
                     >
                         {description}
