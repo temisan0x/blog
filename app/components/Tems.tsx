@@ -45,14 +45,11 @@ export default function Uq() {
                         <p className="text-gray-400 leading-none">
                             Jos, Nigeria
                         </p>
+                        <span className="flex text-xs space-x-2.5 items-center leading-none text-fuchsia-400 border px-2.5 py-0.5 bg-fuchsia-900/50 rounded-full border-fuchsia-800 absolute">
+                            <MagicWandIcon />
+                            <p className="text-center">Web Developer</p>
+                        </span>
                     </div>
-                </div>
-
-                <div className="w-full mt-10 flex mx-auto">
-                    <motion.span className="flex text-xs space-x-2.5 items-center leading-none text-fuchsia-400 border px-2.5 py-0.5 bg-fuchsia-900/50 rounded-full border-fuchsia-800 mt-6 w-full">
-                        <MagicWandIcon />
-                        <p className="text-center">Web Developer</p>
-                    </motion.span>
                 </div>
             </motion.div>
         </div>
