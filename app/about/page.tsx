@@ -43,7 +43,6 @@ const eduData = [
         title: 'Technology Training Program',
         desc: 'A Year at Brytosoft: Garnered Experience in HTML, CSS, and PHP',
         year: '2020 - 2021',
-        place: 'Nigeria',
     },
 ]
 
@@ -57,18 +56,17 @@ function EduTL() {
             </div>
             <div className="relative space-y-6 col-span-9">
                 <div className="space-y-12 relative px-4 col-span-8 before:absolute before:top-2 before:bottom-0 before:w-0.5 before:-left-3 before:dark:bg-neutral-800">
-                    {eduData.map(({ title, desc, year, place }) => (
+                    {eduData.map(({ title, desc, year }) => (
                         <div
                             key={title}
                             className="flex flex-col relative before:absolute before:top-[3px] before:w-4 before:h-4 before:rounded-full before:left-[-35px] before:z-[1] before:dark:bg-neutral-600"
                         >
-                            <time className="text-xs tracking-wide uppercase text-gray-500">
+                            <time className="text-sm tracking-wide uppercase">
                                 {year}
                             </time>
-                            <h3 className="text-md font-semibold tracking-wide">
+                            <h3 className="text-md font-semibold tracking-wide text-zinc-400">
                                 {desc} at a {title}
                             </h3>
-                            <p className="text-zinc-400 text-sm">{place}</p>
                         </div>
                     ))}
                 </div>

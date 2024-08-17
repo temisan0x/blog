@@ -48,12 +48,12 @@ export default function Card({
                         {description}
                     </p>
                     <div
-                        className="text-sm truncate w-full md:w-28 overflow-hidden tags"
+                        className="text-xs w-full bg-slate-700 space-y-16 my-3 rounded-sm"
                         title={projectType}
                     >
-                        <p className="bg-slate-700 p-1 rounded-sm inline max-w-3">
-                            {projectType}
-                        </p>
+                        <div>
+                            {projectType} 
+                        </div>
                     </div>
                 </div>
             </div>

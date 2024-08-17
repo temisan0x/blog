@@ -32,7 +32,7 @@ const Footer: React.FC = () => {
         </div>
 
         <div className="mt-2 text-white text-sm">
-          <p>Created By Temisan &copy;&lt;{currentYear}/&gt;</p>
+          <p>Created By Temisan &copy; &lt;{currentYear}/&gt;</p>
         </div>
       </div>
     </footer>
