@@ -92,15 +92,18 @@ function PinnedMessage({ href, source, children }: PinnedMessageData) {
                 </span>
             </span>
             <div className="p-8">{children}</div>
-            <div className="flex px-8 py-2 bg-neutral-900 border-t border-zinc-700">
-                <a href={href}>
-                    <Link2Icon className="inline mr-1" />
-                    {source}
-                </a>
-            </div>
+            {source && (
+                <div className="flex px-8 py-2 bg-neutral-900 border-t border-zinc-700">
+                    <a href={href} className="text-blue-400 hover:underline flex items-center">
+                        <Link2Icon className="inline mr-1" />
+                        {source}
+                    </a>
+                </div>
+            )}
         </div>
-    )
+    );
 }
+
 
 function ImgLg(props: ImgProps) {
     return (
