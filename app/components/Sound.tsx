@@ -6,14 +6,16 @@ import React, { useRef } from 'react'
 interface SoundProps {
     children: React.ReactNode
     href: string
+    soundScr: string
 }
 
-function Sound({ children, href }: SoundProps) {
+function Sound({ children, href, soundScr }: SoundProps) {
     const audioRef = useRef<HTMLAudioElement | null>(null)
 
     //function to play the sound
     const playSound = () => {
         if (audioRef.current) {
+            audioRef.current.currentTime = 0
             audioRef.current.play().catch((error) => {
                 console.error('Failed to play audio', error)
             })
@@ -23,7 +25,7 @@ function Sound({ children, href }: SoundProps) {
     return (
         <Link href={href} onClick={playSound}>
             {children}
-            <audio ref={audioRef} src="../sound/clickSound.mp3" />
+            <audio ref={audioRef} src={soundScr} />
         </Link>
     )
 }

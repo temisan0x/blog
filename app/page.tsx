@@ -17,7 +17,7 @@ export default function Home() {
                     <h2 className="text-gray-200 ">Recent Post:</h2>
                 </div>
                 <div>
-                <Sound href="/blog">
+                <Sound href="/blog" soundScr='../sound/clickSound.mp3'>
                         <button className="dark:bg-neutral-900 px-5 py-2 border border-transparent transition duration-300 ease-in-out rounded-sm hover:border-zinc-800">
                             <CaretRightIcon className="h-4 w-4 transition-transform transform hover:translate-x-1" />
                         </button>
@@ -30,7 +30,7 @@ export default function Home() {
                     <h2 className="text-gray-200 ">Recent Work:</h2>
                 </div>
                 <div>
-                    <Sound href="/work">
+                    <Sound href="/work" soundScr='../sound/mouseclick.wav'>
                         <button className="dark:bg-neutral-900 px-5 py-2 border border-transparent transition duration-300 ease-in-out rounded-sm hover:border-zinc-800">
                             <CaretRightIcon className="h-4 w-4 transition-transform transform hover:translate-x-1" />
                         </button>
@@ -58,9 +58,9 @@ const FeaturedBlogPostsList = async () => {
                 })
                 .slice(0, 3)
                 .map((post) => (
-                    <Link
+                    <Sound
+                        soundScr='../sound/mouseclick.wav'
                         key={post.slug}
-                        className="group"
                         href={`/blog/${post.slug}`}
                     >
                         <div className="flex p-4 mb-4 bg-zinc-900 border border-transparent rounded-md duration-200 cursor-pointer  hover:dark:border-zinc-800">
@@ -89,7 +89,7 @@ const FeaturedBlogPostsList = async () => {
                                 </div>
                             </div>
                         </div>
-                    </Link>
+                    </Sound>
                 ))}
         </>
     )
