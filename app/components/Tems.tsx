@@ -3,6 +3,7 @@ import { MagicWandIcon } from '@radix-ui/react-icons'
 import { ProfileImageLarge } from './ui/adminImg'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
+import Sound from './Sound'
 
 export default function Uq() {
 
@@ -15,8 +16,8 @@ export default function Uq() {
                 className="flex items-center justify-start space-x-8 w-full flex-col gap-5 md:gap-0"
             >
                 <div className="flex justify-normal space-x-5 w-full">
-                    <motion.a
-                        href="https://github.com/temisan0x"
+                    <Sound href='https://github.com/temisan0x' soundScr='../sound/github.wav'>
+                    <motion.div
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                         className="group relative"
@@ -31,7 +32,8 @@ export default function Uq() {
                                 className="bg-white overflow-hidden rounded-full"
                             />
                         </div>
-                    </motion.a>
+                    </motion.div>
+                    </Sound>
                     <div>
                         <h2 className="text-xl font-medium leading-none">
                             Temisan Momodu
