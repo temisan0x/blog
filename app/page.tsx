@@ -4,8 +4,10 @@ import { CaretRightIcon } from '@radix-ui/react-icons'
 import { getBlogPosts } from './blog/utils'
 import Image from 'next/image'
 import ArtList from './work/ArtList'
+import Sound from './components/Sound'
 
 export default function Home() {
+
     return (
         <div className="min-h-screen">
             <Uq />
@@ -14,7 +16,7 @@ export default function Home() {
                     <h2 className="text-gray-200 ">Recent Post:</h2>
                 </div>
                 <div>
-                    <Link href="/work">
+                    <Link href="/blog">
                         <button className="dark:bg-neutral-900 px-5 py-2 border border-transparent transition duration-300 ease-in-out rounded-sm hover:border-zinc-800">
                             <CaretRightIcon className="h-4 w-4 transition-transform transform hover:translate-x-1" />
                         </button>
@@ -27,11 +29,13 @@ export default function Home() {
                     <h2 className="text-gray-200 ">Recent Work:</h2>
                 </div>
                 <div>
+                    <Sound>
                     <Link href="/work">
                         <button className="dark:bg-neutral-900 px-5 py-2 border border-transparent transition duration-300 ease-in-out rounded-sm hover:border-zinc-800">
                             <CaretRightIcon className="h-4 w-4 transition-transform transform hover:translate-x-1" />
                         </button>
                     </Link>
+                    </Sound>
                 </div>
             </div>
             <RecentWork />

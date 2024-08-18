@@ -51,7 +51,7 @@ function EduTL() {
         <div className="grid gap-4 grid-cols-12">
             <div className="col-span-3">
                 <div className="text-center mb-14">
-                    <h3 className="text-lg font-semibold">Education</h3>
+                    <h3 className="text-[15px] md:text-lg font-semibold">Education</h3>
                 </div>
             </div>
             <div className="relative space-y-6 col-span-9">
@@ -64,7 +64,7 @@ function EduTL() {
                             <time className="text-sm tracking-wide uppercase">
                                 {year}
                             </time>
-                            <h3 className="text-md font-semibold tracking-wide text-zinc-400">
+                            <h3 className="text-sm tracking-wide text-zinc-400">
                                 {desc} at a {title}
                             </h3>
                         </div>
@@ -77,10 +77,10 @@ function EduTL() {
 
 function WorkList() {
     return (
-        <div className="grid gap-4 grid-cols-12">
+        <div className="grid gap-4 grid-cols-12 mt-10">
             <div className="col-span-3">
                 <div className="text-center">
-                    <h3 className="text-lg font-semibold">Projects</h3>
+                    <h3 className="text-[15px] md:text-lg font-semibold">Projects</h3>
                 </div>
             </div>
             <div className="relative col-span-9 space-y-12">
@@ -96,9 +96,9 @@ function WorkList() {
                                         {title || 'undefined'}
                                     </h3>
                                 </Link>
-                                <p className="text-zinc-400 text-sm">
+                                <div className="text-zinc-400 text-sm">
                                     {description}
-                                </p>
+                                </div>
                                 <div className="h-24 w-full overflow-hidden rounded-md">
                                     <Image
                                         src={imgSrc || ''}
