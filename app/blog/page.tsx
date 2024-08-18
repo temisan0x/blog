@@ -2,6 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { getBlogPosts } from './utils'
+import Sound from '../components/Sound'
 
 function page() {
     return (
@@ -29,12 +30,12 @@ const BlogPosts = async () => {
                     return 1
                 })
                 .map((post) => (
-                    <Link
+                    <Sound
                         key={post.slug}
-                        className="group"
                         href={`/blog/${post.slug}`}
+                        soundScr='../sound/clickSound.mp3'
                     >
-                        <div className="flex p-4 mb-4  bg-zinc-900 border border-transparent rounded-md duration-200 cursor-pointer hover:translate-x-3 hover:dark:border-neutral-600/50">
+                        <div className="group flex p-4 mb-4  bg-zinc-900 border border-transparent rounded-md duration-200 cursor-pointer hover:translate-x-3 hover:dark:border-neutral-600/50">
                             <div className="relative justify-items-center">
                                 <div className="w-16 h-16 overflow-hidden rounded-full">
                                     <Image
@@ -60,7 +61,7 @@ const BlogPosts = async () => {
                                 </div>
                             </div>
                         </div>
-                    </Link>
+                    </Sound>
                 ))}
         </>
     )
