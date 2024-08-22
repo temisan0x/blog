@@ -48,7 +48,7 @@ export default function Card({
                         {description}
                     </p>
                     <div
-                        className="text-xs w-full bg-slate-700 space-y-16 my-3 rounded-sm"
+                        className="text-xs w-full space-y-16 my-3 rounded-sm"
                         title={projectType}
                     >
                         <div>
