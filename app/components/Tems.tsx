@@ -25,7 +25,7 @@ export default function Uq() {
                         <ProfileImageLarge />
                         <div className="absolute h-8 w-8 bottom-2 -right-2 z-20">
                             <Image
-                                src="/images/github.png"
+                                src="/images/art/github.png"
                                 alt="GitHub"
                                 width={32}
                                 height={32}
