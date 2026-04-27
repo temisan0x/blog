@@ -14,16 +14,23 @@ const Navbar = () => {
                 <div className="flex items-center justify-between py-4">
                     <Link
                         href="/"
-                        className="text-white relative text-2xl"
+                        className="group relative flex items-center justify-center h-12 w-12"
                     >
-                        <Image
-                            src={NavbarImg}
-                            alt="Temy Codes Logo"
-                            width={100}
-                            height={100}
-                             loading="lazy"
-                        />
+                        {/* Animated Gradient Glow */}
+                        <div className="absolute -inset-1 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-500"></div>
+
+                        {/* Perfect Circle Container */}
+                        <div className="relative h-full w-full rounded-full overflow-hidden border-2">
+                            <Image
+                                src={NavbarImg}
+                                alt="Temy Codes Logo"
+                                fill 
+                                className="object-cover" 
+                                loading="lazy"
+                            />
+                        </div>
                     </Link>
+
                     <div className="hidden md:flex space-x-10 font-sans">
                         <Link
                             href="/"

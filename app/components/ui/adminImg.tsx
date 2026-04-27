@@ -1,6 +1,6 @@
 import React from 'react'
 import Image from 'next/image'
-import TemisanProfile from '@/public/uploads/Temisan.jpg'
+import TemisanProfile from '@/public/uploads/author.png'
 
 const Temisan = () => {
     return (
