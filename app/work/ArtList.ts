@@ -10,122 +10,84 @@ interface ArtList {
 
 const ProjectsData: ArtList[] = [
     {
+        title: 'StripIt - Metadata Remover',
+        tags: 'React, Node.js, Express, Cloudinary',
+        description:
+            'Built a privacy-first tool that removes embedded metadata from images and videos before sharing. Full-stack system with React frontend and Node.js backend, integrated with Cloudinary for secure media processing.',
+        thumbnail: '/images/art/stripit.png',
+        href: 'https://stripit-fe.vercel.app/',
+        imgSrc: '/images/art/stripit.png',
+        tooltip: 'Privacy tool that removes hidden metadata from media files.',
+    },
+    {
+        title: 'Node Clip - Short-Form Video Generator',
+        tags: 'React, API Integration',
+        description:
+            'A browser-based system for generating, managing, and exporting short-form video clips using the Clip Generator API. Built to streamline content production workflows.',
+        thumbnail: '/images/art/clip-generator.png',
+        href: 'https://nodeclip.vercel.app/',
+        imgSrc: '/images/art/clip-generator.png',
+        tooltip: 'Create and export short-form video clips in the browser.',
+    },
+    {
         title: 'Temycodes Tech Blog',
         tags: 'Next.js, TypeScript, MongoDB',
         description:
-            'A comprehensive tech blog project built with Next.js, TypeScript, and MongoDB, featuring articles and tutorials.',
+            'A scalable content platform for publishing technical articles and tutorials. Built for structured content delivery and developer education.',
         thumbnail: '/images/art/temyblog2.png',
         href: 'https://temycodes.vercel.app/',
         imgSrc: '/images/art/temyblog.png',
-        tooltip: 'Tech blog built with Next.js, TypeScript, and MongoDB.',
+        tooltip: 'Developer-focused tech blog platform.',
     },
     {
-        title: 'E-commerce Website',
+        title: 'E-commerce Interface',
         tags: 'React.js, JavaScript, Tailwind CSS',
         description:
-            'A responsive e-commerce website built using React.js, JavaScript, and Tailwind CSS.',
+            'A responsive e-commerce frontend designed to simulate a modern shopping experience with optimized UI flow and usability-focused design.',
         thumbnail: '/images/art/fintec.png',
         href: 'https://fintech-fe.netlify.app/',
         imgSrc: '/images/art/fintec.png',
-        tooltip: 'Responsive e-commerce site built with React.js and Tailwind CSS.',
+        tooltip: 'Modern responsive e-commerce UI.',
     },
     {
-        title: 'Todo List App',
-        tags: 'HTML, CSS, JavaScript',
+        title: 'Multi-Step Sign-Up Flow',
+        tags: 'Next.js, React Hook Form, Redux, Tailwind CSS',
         description:
-            'A todo list app built with vanilla JavaScript, using the JSONPlaceholder API for demo data.',
-        thumbnail: '/images/art/fintec.png',
-        href: 'https://minimalist-todo-azure.vercel.app/',
-        imgSrc: '/images/art/todo.png',
-        tooltip: 'Simple todo list app built with vanilla JavaScript.',
-    },
-    {
-        title: 'Calculator App',
-        tags: 'HTML, CSS, JavaScript',
-        description:
-            'A dynamic calculator application built using HTML, CSS, and JavaScript.',
-        thumbnail: 'https://calculate-js-azure.vercel.app/',
-        imgSrc: '/images/art/calculator.png',
-        tooltip: 'Dynamic calculator app built with HTML, CSS, and JavaScript.',
-    },
-    {
-        title: 'Admin Dashboard',
-        tags: 'React.js, JavaScript, Tailwind CSS',
-        description:
-            'A simple dashboard built with React.js, React Day Picker, and Recharts.',
-        thumbnail: '/images/art/dashboard.png',
-        href: 'https://admin-dashboard-pied-chi.vercel.app/',
-        imgSrc: '/images/art/dashboard.png',
-        tooltip: 'Dashboard built with React.js, Day Picker, and Recharts.',
-    },
-    {
-        title: 'Bonsai Clone',
-        tags: 'HTML, CSS, JavaScript',
-        description:
-            'A desktop-only clone of the Bonsai website, focused on pricing plans, navigation, and UI elements.',
-        thumbnail: 'https://bonsai-ui.netlify.app/',
-        imgSrc: '/images/art/Bonsai.png',
-        tooltip: 'Bonsai website clone focused on UI, pricing, and navigation.',
-    },
-    {
-        title: 'Multi-Step Sign-Up Form',
-        tags: 'Next.js, JavaScript, Tailwind CSS',
-        description:
-            'A dynamic multi-step form built with Next.js, Axios, React Hook Form, Redux, and Tailwind CSS.',
+            'A structured onboarding system that guides users through multi-step data collection with validation, state persistence, and clean UX.',
         thumbnail: '/images/art/sign-up-form.png',
         href: 'https://nextjs-step-form.vercel.app/',
         imgSrc: '/images/art/sign-up-form.png',
-        tooltip: 'Multi-step form built with Next.js, Axios, Redux, and Tailwind CSS.',
+        tooltip: 'Multi-step onboarding with validation and state management.',
     },
     {
-        title: 'Star Wars Characters API',
-        tags: 'React.js, TypeScript, Star Wars API',
+        title: 'Star Wars API Explorer',
+        tags: 'React.js, TypeScript, API Integration',
         description:
-            'An interactive app displaying Star Wars characters, built with React.js, TypeScript, Axios, Lottie, Redux, and styled-components.',
+            'An interactive data exploration app that consumes and displays structured API data with advanced state handling and dynamic UI rendering.',
         thumbnail: '/images/art/starwars.png',
         href: 'https://starwars-topaz.vercel.app/',
         imgSrc: '/images/art/starwars.png',
-        tooltip: 'Star Wars character viewer built with React.js and styled-components.',
+        tooltip: 'Explore Star Wars character data via API.',
     },
     {
-        title: 'CSS-Tricks Card Carousel',
-        tags: 'HTML, CSS',
+        title: 'Admin Dashboard',
+        tags: 'React.js, Recharts, React Day Picker',
         description:
-            'A responsive card carousel built with pure HTML and CSS, inspired by CSS-Tricks.',
-        thumbnail: '/images/art/card-carousel.png',
-        href: 'https://codepen.io/heytemisan/pen/YzJzamK',
-        imgSrc: '/images/art/card-carousel.png',
-        tooltip: 'Responsive card carousel using only HTML and CSS.',
+            'A lightweight analytics dashboard for visualizing structured data with charts, filters, and calendar-based interaction.',
+        thumbnail: '/images/art/dashboard.png',
+        href: 'https://admin-dashboard-pied-chi.vercel.app/',
+        imgSrc: '/images/art/dashboard.png',
+        tooltip: 'Data visualization dashboard with charts and filters.',
     },
     {
-        title: 'First Yumaj Nigeria Limited',
+        title: 'WordPress Client Projects',
         tags: 'WordPress',
         description:
-            'Corporate website for an integrated services company, built with WordPress.',
-        thumbnail: '/images/art/firstyumaj.png',
-        href: 'https://firstyumaj.org/',
-        imgSrc: '/images/art/firstyumaj.png',
-        tooltip: 'Corporate site built with WordPress.',
-    },
-    {
-        title: 'Modipac for Peace & Charity',
-        tags: 'WordPress',
-        description:
-            'Non-profit organization website focused on peace and charity, built with WordPress.',
-        thumbnail: '/images/art/modipac.png',
-        href: 'https://www.modipac.org.ng/',
-        imgSrc: '/images/art/modipac.png',
-        tooltip: 'Non-profit site built with WordPress.',
-    },
-    {
-        title: 'Mazoachi Integrated Services',
-        tags: 'WordPress',
-        description:
-            'Business website for Mazoachi Integrated Services, built with WordPress.',
+            'A collection of production websites built for businesses and non-profits, focused on delivering responsive design, strong structure, and reliable content management.',
         thumbnail: '/images/art/mazoachi.png',
         href: 'https://mazoachi.com',
         imgSrc: '/images/art/mazoachi.png',
-        tooltip: 'Business website built with WordPress.',
+        tooltip: 'Business and NGO websites built with WordPress.',
     },
 ]
 
