@@ -10,16 +10,6 @@ interface ArtList {
 
 const ProjectsData: ArtList[] = [
     {
-        title: 'StripIt - Metadata Remover',
-        tags: 'React, Node.js, Express, Cloudinary',
-        description:
-            'Built a privacy-first tool that removes embedded metadata from images and videos before sharing. Full-stack system with React frontend and Node.js backend, integrated with Cloudinary for secure media processing.',
-        thumbnail: '/images/art/stripit.png',
-        href: 'https://stripit-fe.vercel.app/',
-        imgSrc: '/images/art/stripit.png',
-        tooltip: 'Privacy tool that removes hidden metadata from media files.',
-    },
-    {
         title: 'Node Clip - Short-Form Video Generator',
         tags: 'React, API Integration',
         description:
@@ -28,6 +18,16 @@ const ProjectsData: ArtList[] = [
         href: 'https://nodeclip.vercel.app/',
         imgSrc: '/images/art/clip-generator.png',
         tooltip: 'Create and export short-form video clips in the browser.',
+    },
+    {
+        title: 'StripIt - Metadata Remover',
+        tags: 'React, Node.js, Express, Cloudinary',
+        description:
+            'Built a privacy-first tool that removes embedded metadata from images and videos before sharing. Full-stack system with React frontend and Node.js backend, integrated with Cloudinary for secure media processing.',
+        thumbnail: '/images/art/stripit.png',
+        href: 'https://stripit-fe.vercel.app/',
+        imgSrc: '/images/art/stripit.png',
+        tooltip: 'Privacy tool that removes hidden metadata from media files.',
     },
     {
         title: 'Temycodes Tech Blog',
