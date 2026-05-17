@@ -7,8 +7,6 @@ import ArtList from './work/ArtList'
 import Sound from './components/Sound'
 
 export default function Home() {
-
-
     return (
         <div className="min-h-screen">
             <Uq />
@@ -17,11 +15,11 @@ export default function Home() {
                     <h2 className="text-gray-200 ">Recent Post:</h2>
                 </div>
                 <div>
-                <Sound href="/blog" soundScr='../sound/clickSound.mp3'>
+                    <Sound href="/blog" soundScr="../sound/clickSound.mp3">
                         <button className="dark:bg-neutral-900 px-5 py-2 border border-transparent transition duration-300 ease-in-out rounded-sm hover:border-zinc-800">
                             <CaretRightIcon className="h-4 w-4 transition-transform transform hover:translate-x-1" />
                         </button>
-                        </Sound>
+                    </Sound>
                 </div>
             </div>
             <FeaturedBlogPostsList />
@@ -30,7 +28,7 @@ export default function Home() {
                     <h2 className="text-gray-200 ">Recent Work:</h2>
                 </div>
                 <div>
-                    <Sound href="/work" soundScr='../sound/clickSound.mp3'>
+                    <Sound href="/work" soundScr="../sound/clickSound.mp3">
                         <button className="dark:bg-neutral-900 px-5 py-2 border border-transparent transition duration-300 ease-in-out rounded-sm hover:border-zinc-800">
                             <CaretRightIcon className="h-4 w-4 transition-transform transform hover:translate-x-1" />
                         </button>
@@ -59,7 +57,7 @@ const FeaturedBlogPostsList = async () => {
                 .slice(0, 3)
                 .map((post) => (
                     <Sound
-                        soundScr='../sound/mouseclick.wav'
+                        soundScr="../sound/mouseclick.wav"
                         key={post.slug}
                         href={`/blog/${post.slug}`}
                     >
