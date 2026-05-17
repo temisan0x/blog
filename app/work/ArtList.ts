@@ -10,16 +10,6 @@ interface ArtList {
 
 const ProjectsData: ArtList[] = [
     {
-        title: 'Node Clip - Short-Form Video Generator',
-        tags: 'React, API Integration',
-        description:
-            'A browser-based system for generating, managing, and exporting short-form video clips using the Clip Generator API. Built to streamline content production workflows.',
-        thumbnail: '/images/art/clip-generator.png',
-        href: 'https://nodeclip.vercel.app/',
-        imgSrc: '/images/art/clip-generator.png',
-        tooltip: 'Create and export short-form video clips in the browser.',
-    },
-    {
         title: 'StripIt - Metadata Remover',
         tags: 'React, Node.js, Express, Cloudinary',
         description:
@@ -28,6 +18,16 @@ const ProjectsData: ArtList[] = [
         href: 'https://stripit-fe.vercel.app/',
         imgSrc: '/images/art/stripit.png',
         tooltip: 'Privacy tool that removes hidden metadata from media files.',
+    },
+    {
+        title: 'Node Clip - Short-Form Video Generator',
+        tags: 'React, API Integration',
+        description:
+            'A browser-based system for generating, managing, and exporting short-form video clips using the Clip Generator API. Built to streamline content production workflows.',
+        thumbnail: '/images/art/clip-generator.png',
+        href: 'https://nodeclip.vercel.app/',
+        imgSrc: '/images/art/clip-generator.png',
+        tooltip: 'Create and export short-form video clips in the browser.',
     },
     {
         title: 'Temycodes Tech Blog',
