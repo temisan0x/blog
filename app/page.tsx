@@ -98,7 +98,7 @@ const RecentWork = () => {
         <figure>
             {ArtList.slice(0, 1).map((id) => (
                 <Link
-                    href="https://temycodes.vercel.app/"
+                    href="https://stripit-fe.vercel.app/"
                     key={id.title}
                     className="group"
                 >
