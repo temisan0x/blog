@@ -12,15 +12,18 @@ const Footer: React.FC = () => {
     <footer className="bg-neutral-900 border-t border-zinc-800 py-8 text-white mt-auto">
       <div className="flex flex-col items-center max-w-5xl mx-auto px-6">
         
-        {/* Perfect Circle Logo with Glow */}
-        <Link href="/" className="group relative flex items-center justify-center h-12 w-12 mb-4">
-          <div className="absolute -inset-1 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-full blur opacity-20 group-hover:opacity-60 transition duration-500"></div>
-          <div className="relative h-full w-full rounded-full overflow-hidden border-2 border-zinc-800 bg-neutral-800">
+        {/* Wordmark Logo Wrapper */}
+        <Link href="/" className="group relative flex items-center justify-center h-9 w-36 mb-6">
+          {/* Subtle horizontal glow effect */}
+          <div className="absolute -inset-2 bg-gradient-to-r from-blue-600/10 to-purple-600/10 rounded-md blur opacity-0 group-hover:opacity-100 transition duration-500"></div>
+          
+          {/* Proportional Image Container */}
+          <div className="relative w-full h-full">
             <Image 
               src={NavbarImg} 
-              alt="temycodes" 
+              alt="Temisan Logo" 
               fill 
-              className="object-cover"
+              className="object-contain object-center" /* Centered for the footer layout */
               loading="lazy"
             />
           </div>
