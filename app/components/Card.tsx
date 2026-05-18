@@ -51,9 +51,7 @@ export default function Card({
                         className="text-xs w-full space-y-16 my-3 rounded-sm"
                         title={projectType}
                     >
-                        <div>
-                            {projectType} 
-                        </div>
+                        <div>{projectType}</div>
                     </div>
                 </div>
             </div>

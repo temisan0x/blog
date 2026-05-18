@@ -23,18 +23,18 @@ export default function Home() {
                 </div>
             </div>
             <FeaturedBlogPostsList />
+                    <Sound href="/work" soundScr="../sound/clickSound.mp3">
             <div className="flex justify-between my-4">
                 <div className="place-self-center text-xl font-bold">
                     <h2 className="text-gray-200 ">Recent Work:</h2>
                 </div>
                 <div>
-                    <Sound href="/work" soundScr="../sound/clickSound.mp3">
                         <button className="dark:bg-neutral-900 px-5 py-2 border border-transparent transition duration-300 ease-in-out rounded-sm hover:border-zinc-800">
                             <CaretRightIcon className="h-4 w-4 transition-transform transform hover:translate-x-1" />
                         </button>
-                    </Sound>
                 </div>
             </div>
+                    </Sound>
             <RecentWork />
         </div>
     )
