@@ -148,7 +148,7 @@ function Relatepost({ title, href, desc, img, date }: RelatePostProps) {
 
 function BlueHighlighter({ children }: ChildProps) {
     return (
-        <span className="bg-gray-500 italic text-black font-semibold border-b-2 border-sky-600">
+        <span className="italic text-white font-semibold border-b-2 border-sky-600">
             {children}
         </span>
     )
