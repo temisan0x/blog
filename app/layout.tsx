@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import '@/app/global.css'
+import '/app/global.css'
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'

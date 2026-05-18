@@ -107,16 +107,18 @@ function PinnedMessage({ href, source, children }: PinnedMessageData) {
 
 function ImgLg(props: ImgProps) {
     return (
-        <div className="my-8 md:my-36 md:scale-125 lg:scale-150">
-            <figure className="w-full relative h-96">
+        <div className="my-8 w-full">
+            <figure className="w-full relative">
                 <img
                     src={props.src}
                     alt={props.alt}
-                    className="w-full h-full object-cover absolute inset-0"
+                    className="w-full h-auto object-contain"
                 />
-                <figcaption className="mt-2 mr-2 float-right relative p-2 bg-slate-500/4 animate-bounce dark:text-gray-500">
-                    <p> {props.caption}</p>
-                </figcaption>
+                {props.caption && (
+                    <figcaption className="mt-2 text-right text-sm dark:text-gray-500">
+                        {props.caption}
+                    </figcaption>
+                )}
             </figure>
         </div>
     )
