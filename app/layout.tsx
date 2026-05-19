@@ -1,7 +1,7 @@
 import { Metadata } from 'next'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
-import '/app/global.css'
+import '../app/global.css'
 
 import Navbar from './components/Navbar'
 import Footer from './components/Footer'
@@ -9,17 +9,13 @@ import Footer from './components/Footer'
 import { baseUrl } from './sitemap'
 import Back2Top from './components/Back2Top'
 
-
 export const metadata: Metadata = {
-      metadataBase: new URL(baseUrl),
+    metadataBase: new URL(baseUrl),
     title: {
         default: '.Temisan',
         template: '%s | .Temisan',
     },
     description: 'This is my dir.',
-    verification: {
-        google: '_5pf-WvB7eiZO5yA97uK7alx3hecZs0m6qHbmOYdzU8',
-    },
     openGraph: {
         title: 'My Dir',
         description: 'This is my dir.',
