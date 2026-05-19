@@ -9,6 +9,34 @@ import {
 import { CustomMdx } from '@/app/components/mdx'
 import Comments from '@/app/components/Comment'
 import Link from 'next/link'
+import React from 'react'
+
+function Table({ data, ...props }: { data: { headers: string[]; rows: string[][] } }) {
+    return (
+        <table {...props} className="w-full table-auto border-collapse">
+            <thead>
+                <tr>
+                    {data.headers.map((h) => (
+                        <th key={h} className="border px-2 py-1 text-left">
+                            {h}
+                        </th>
+                    ))}
+                </tr>
+            </thead>
+            <tbody>
+                {data.rows.map((r, i) => (
+                    <tr key={i}>
+                        {r.map((c, j) => (
+                            <td key={j} className="border px-2 py-1">
+                                {c}
+                            </td>
+                        ))}
+                    </tr>
+                ))}
+            </tbody>
+        </table>
+    )
+}
 
 export async function generateStaticParams() {
     let posts = getBlogPosts()
@@ -24,58 +52,25 @@ const FetchPost = ({ params }: { params: { slug: string } }) => {
         notFound()
     }
 
-    // Find the index of the current post
     let currentIndex = posts.findIndex((post) => post.slug === params.slug)
 
-    // Determine the next post (if it exists)
-    let nextPost = posts[currentIndex + 1]
-    return (
-        <div className="min-h-screen">
-            <Breadcrumbs post={post} />
-            <div className="flex items-center gap-x-2 font-mono dark:text-neutral-400 mb-2 text-sm">
-                <CalendarIcon />
-                <time
-                    className="oldstyle-nums"
-                    dateTime={post.metadata.publishedAt}
-                >
-                    {formatDate(post.metadata.publishedAt)}
-                </time>
-                <ChatBubbleIcon />
-                <Link href="#comments">
-                    <p className="text-teal-400">Comments</p>
-                </Link>
-            </div>
-            <h1 className="font-medium text-2xl tracking-tighter mb-5">
-                {post.metadata.title}
-            </h1>
-            <p className="my-4 italic">{post.metadata.summary}</p>
+    const tableData = {
+        headers: ['Option', 'Action', 'Outcome'],
+        rows: [
+            ['Option A', 'Fire 90% of your team, use AI alone', 'Same output as before'],
+            ['Option B', 'Keep your team + use AI as a multiplier', 'Ship 10x more than competitors'],
+        ],
+    };
 
-            <article className="prose prose-quoteless prose-neutral dark:prose-invert mb-10">
-                <CustomMdx source={post.content} />
-            </article>
-            {nextPost && (
-                <div className="my-8">
-                    <hr className="w-full h-px my-8 bg-gray-200 border-0 dark:bg-gray-700" />
-                    <Link href={`/blog/${nextPost?.slug}`}>
-                        <div className="link-card p-4 bg-zinc-900 rounded-md transition duration-200 delay-300 no-underline">
-                            <h3 className="text-lg font-semibold">
-                                {nextPost.metadata.title}
-                            </h3>
-                            <div className="flex">
-                                <p className="text-sm text-gray-400">
-                                    {nextPost.metadata.summary}
-                                </p>
-                                <div className="continue-link flex items-center ml-2 text-sm no-underline">
-                                    <span>Continue</span>
-                                    <ArrowRightIcon />
-                                </div>
-                            </div>
-                        </div>
-                    </Link>
-                </div>
-            )}
-            <Comments />
-        </div>
+   return (
+        <article className="prose prose-quoteless prose-neutral dark:prose-invert mb-10">
+            <CustomMdx 
+                source={post.content} 
+                components={{
+                    Table: (props: any) => <Table {...props} data={tableData} />
+                }}
+            />
+        </article>
     )
 }
 

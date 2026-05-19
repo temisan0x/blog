@@ -51,33 +51,55 @@ interface MiddleQuoteProps {
     cite: string
 }
 
-function Table({ data }: { data: TableData }) {
-    let headers = data?.headers.map((header, index) => (
-        <th key={index}>{header}</th>
+function Table({ data }: { data: TableData | undefined | null }) {
+  console.log('=== Table Debug ===');
+    console.log('Received data:', data);
+    console.log('Type of data:', typeof data);
+
+    if (!data?.headers || !data?.rows) {
+        return (
+            <div className="p-4 border border-red-500 bg-red-950 rounded">
+                Table data missing. Check console.
+            </div>
+        );
+    }
+
+    // No more JSON.parse needed
+    const headerCells = data.headers.map((header, index) => (
+        <th key={index} className="text-left px-4 py-2 text-sm text-gray-400 font-semibold border-b border-zinc-700">
+            {header}
+        </th>
     ))
 
-    let rows = data?.rows.map((row, index) => (
-        <tr key={index}>
-            {row.map((cell, cellIndex) => {
-                return <td key={cellIndex}>{cell}</td>
-            })}
+    const rowCells = data.rows.map((row, index) => (
+        <tr key={index} className="border-b border-zinc-800 hover:bg-zinc-900 transition-colors">
+            {row.map((cell, cellIndex) => (
+                <td key={cellIndex} className="px-4 py-3 text-sm text-white">
+                    {cell}
+                </td>
+            ))}
         </tr>
     ))
 
     return (
-        <table>
-            <thead>
-                <tr>{headers}</tr>
-            </thead>
-            <tbody>{rows}</tbody>
-        </table>
+        <div className="not-prose overflow-x-auto my-8 rounded-md border border-zinc-800">
+            <table className="w-full text-left">
+                <thead className="bg-zinc-900"><tr>{headerCells}</tr></thead>
+                <tbody>{rowCells}</tbody>
+            </table>
+        </div>
     )
 }
-
 function Imgfull({ src, alt, height, width }: ImgfullProps) {
     return (
         <div>
-            <Image alt={alt} src={src} width={width} height={height}  loading="lazy"/>
+            <Image
+                alt={alt}
+                src={src}
+                width={width}
+                height={height}
+                loading="lazy"
+            />
         </div>
     )
 }
@@ -94,16 +116,18 @@ function PinnedMessage({ href, source, children }: PinnedMessageData) {
             <div className="p-8">{children}</div>
             {source && (
                 <div className="flex px-8 py-2 bg-neutral-900 border-t border-zinc-700">
-                    <a href={href} className="text-blue-400 hover:underline flex items-center">
+                    <a
+                        href={href}
+                        className="text-blue-400 hover:underline flex items-center"
+                    >
                         <Link2Icon className="inline mr-1" />
                         {source}
                     </a>
                 </div>
             )}
         </div>
-    );
+    )
 }
-
 
 function ImgLg(props: ImgProps) {
     return (
@@ -205,11 +229,19 @@ let components = {
     Footarea,
 }
 
-export function CustomMdx(props: any) {
+export function CustomMdx({ 
+    source, 
+    components: userComponents = {}, 
+    ...props 
+}: any) {
     return (
         <MDXRemote
+            source={source}
+            components={{ 
+                ...components, 
+                ...userComponents 
+            }}
             {...props}
-            components={{ ...components, ...(props.components || []) }}
         />
     )
 }
