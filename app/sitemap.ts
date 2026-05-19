@@ -1,17 +1,18 @@
-import { getBlogPosts } from "./blog/utils";
+import { getBlogPosts } from './blog/utils'
 
-export const baseUrl = "https://temisan0x.vercel.app";
+export const baseUrl = 'https://temisan0x.vercel.app'
 
 export default async function sitemap() {
     let blogs = getBlogPosts().map((post) => ({
         url: `${baseUrl}/blog/${post.slug}`,
-        lastModified: post.metadata.publishedAt,
-    }));
+        lastModified:
+            post.metadata.publishedAt ?? new Date().toISOString().split('T')[0],
+    }))
 
     let routes = ['', '/blog', '/work', '/about'].map((route) => ({
         url: `${baseUrl}${route}`,
         lastModified: new Date().toISOString().split('T')[0],
-    }));
+    }))
 
-    return [...routes, ...blogs];
+    return [...routes, ...blogs]
 }
