@@ -31,7 +31,7 @@ export default function BackToTop(): JSX.Element {
 
     return (
         <>
-            {/* <!-- Back to top button --> */}
+            {/* <!-- Back to top buttoon --> */}
             {showButton && (
                 <div>
                     <button
