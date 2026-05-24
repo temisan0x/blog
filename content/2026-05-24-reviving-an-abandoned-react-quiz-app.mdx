@@ -1,0 +1,83 @@
+---
+title: I Revived A 4-Year-Old Abandoned React Quiz App
+publishedAt: '2026-05-24'
+summary: I took an old, broken React quiz app I abandoned years ago and turned it into a polished, fully functional project. Here's how I did it.
+image: https://res.cloudinary.com/dgi0pwcxz/image/upload/v1779632749/huyc31djsptyalwyqlgd.png
+tags: devchallenge, githubchallenge, react, typescript
+---
+
+
+*This is a submission for the [GitHub Finish-Up-A-Thon Challenge](https://dev.to/challenges/github-2026-05-21)*
+
+## What I Built
+I revived a 4-year-old React quiz app I abandoned on GitHub.
+
+It had been sitting untouched for years... broken, incomplete, and barely functional. When I fired it up, it didn't even make it past the loading screen.
+
+
+![Quiz App Loading Screen](https://res.cloudinary.com/dgi0pwcxz/image/upload/v1779625701/vgvdbybwsapk1r4ff74u.jpg)
+
+Sigh... I expected this anyway.
+
+I opened my browser console and, voila, I found a couple of errors:
+
+- `429 Too Many Requests` from the OpenTDB API
+- `Cannot read properties of undefined (reading 'map')` — the app was calling `.map()` on a failed API response
+
+![Browser console errors](https://res.cloudinary.com/dgi0pwcxz/image/upload/v1779626169/egcertboimxmrsjowdq0.jpg)
+
+The API kept firing on every render with no error handling anywhere, while the spinner just ran forever. A classic codebase built by a wannabe self-taught junior developer with limited understanding of JavaScript fundamentals.
+
+---
+
+## Demo
+
+Live demo: https://tryquizzify.vercel.app/  
+Repo: https://github.com/temisan0x/quiz-app  
+
+![Quizzy results screen](https://res.cloudinary.com/dgi0pwcxz/image/upload/v1779628062/p3io8tmshq7uk4nqr05g.jpg)
+
+## The Comeback Story
+
+And yeah... that was the starting point.
+
+First thing I did was slow down and actually trace what was breaking.
+
+
+In `api.ts`, I refactored the request logic:
+
+- Added a `response.ok` check so 429 errors don't silently pass through  
+- Guarded `data.results` with `Array.isArray` before mapping over it  
+- Wrapped `startTrivia` in a proper `try/catch/finally` so the loading state always resets, even when the API fails  
+
+That alone stopped the infinite loading spinner that made the app unusable.
+
+Next up was the actual gameplay. The original version didn't really feel like a complete quiz app. It just started and ended without feedback. It was boring, to say the least.
+
+![Old UI with stock photo background](https://res.cloudinary.com/dgi0pwcxz/image/upload/v1779630253/kq3s85audwzcxv492p26.jpg)
+
+So I added:
+
+- A difficulty selector (Easy, Medium, Hard)  
+- A proper results screen with score feedback  
+- A "Finish Quiz" state so users know when they're done  
+- Small sound effects for interactions to make it feel more responsive  
+
+The old UI was functional but, to be honest, it didn't match what the idea of the app was supposed to be. So I replaced it with a darker aesthetic, a more eccentric trivia-styled theme, and glassmorphism cards to make the content stand out.
+
+![New Quizzy UI mid-quiz](https://res.cloudinary.com/dgi0pwcxz/image/upload/v1779627661/h7u7qwxpvuucjs0xgbwe.jpg)
+
+---
+
+## My Experience with GitHub Copilot
+
+Copilot helped most during cleanup and refactoring.
+
+It was useful for spotting repetitive patterns and suggesting safer ways to handle async API calls. A few times it pointed out edge cases around response handling that I hadn’t fully considered.
+
+I didn’t just follow it blindly, but it definitely sped things up when I was tightening the data flow and fixing the loading logic.
+
+At one point it suggested checking `Array.isArray(data.results)` before mapping — which ended up preventing a silent crash I had completely overlooked.
+
+---
+It's not a perfect app... but it's a finished one, and that's the point.
